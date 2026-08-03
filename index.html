@@ -362,6 +362,22 @@ a{color:inherit;}
   background:#fff;border:1px solid #cfe0d9;border-radius:7px;padding:5px 10px;}
 .official .osrc a:hover{border-color:var(--accent);color:var(--accent);}
 
+
+/* ---------- self-check ---------- */
+.st-intro{font-size:13.5px;color:var(--ink-soft);margin:0 0 20px;line-height:1.65;}
+.st-intro b{color:var(--accent);}
+.stq{margin-bottom:16px;}
+.stq-l{font-family:"Noto Serif TC",serif;font-weight:700;font-size:16px;margin-bottom:9px;}
+.stopts{display:flex;flex-wrap:wrap;gap:8px;}
+.stbtn{padding:9px 14px;border:1px solid var(--line-strong);background:var(--paper);border-radius:9px;
+  cursor:pointer;font-size:13.5px;font-weight:500;color:var(--ink);transition:border-color .12s,background .12s,color .12s;}
+.stbtn:hover{border-color:var(--accent);}
+.stbtn.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
+.st-wait{margin-top:6px;padding:16px;border:1px dashed var(--line-strong);border-radius:10px;color:var(--muted);font-size:13px;text-align:center;}
+.st-res{margin-top:12px;}
+
+/* ---------- self-check end ---------- */
+
 /* ---------- footer ---------- */
 footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
 .foot{max-width:var(--max);margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;}
@@ -401,9 +417,9 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
 <header class="topbar">
   <a class="brand" href="#top"><span class="mk">DB</span>資料庫使用限制</a>
   <nav aria-label="頁面導覽">
-    <a href="#ai-flow">決策流程</a>
     <a href="#matrix">查條款</a>
     <a href="#ai-copyright">法律依據</a>
+    <a href="#ai-flow">自我檢測</a>
     <a href="#about">關於</a>
   </nav>
 </header>
@@ -434,7 +450,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
     </div>
 
     <div class="wayfinder" aria-label="你想做什麼">
-      <a class="way" href="#ai-flow"><span class="wn">01</span><h3>能不能把文章上傳給 AI？</h3><p>用決策流程一步步判斷，得到分層建議。</p><span class="go">開始判斷 →</span></a>
+      <a class="way" href="#ai-flow"><span class="wn">01</span><h3>能不能把文章上傳給 AI？</h3><p>用最底下的小測驗，選一選就知道。</p><span class="go">去自我檢測 →</span></a>
       <a class="way" href="#matrix"><span class="wn">02</span><h3>某個資料庫怎麼規定？</h3><p>19 個資料庫 × 下載／文字探勘／AI 比較表。</p><span class="go">查條款 →</span></a>
       <a class="way" href="#ai-copyright"><span class="wn">03</span><h3>法律依據是什麼？</h3><p>2026 判例、台歐日法規與著作權分析。</p><span class="go">看依據 →</span></a>
     </div>
@@ -445,30 +461,13 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
     </div>
   </section>
 
-  <section class="section wrap" id="ai-flow">
-    <div class="shead">
-      <div>
-        <div class="kick">Interactive</div>
-        <h2>能不能上傳給 AI？決策流程</h2>
-      </div>
-      <p>回答幾個問題，得到分層的建議與依據。隨時可回上一步或重新開始。</p>
-    </div>
-    <div class="flow">
-      <div class="flowtop">
-        <span class="ft">DECISION FLOW</span>
-        <span class="fstep" id="flowstep"></span>
-      </div>
-      <div class="flowbody" id="flowbody"></div>
-    </div>
-  </section>
-
   <section class="section wrap" id="matrix">
     <div class="shead">
       <div>
         <div class="kick">Comparison</div>
         <h2>資料庫怎麼規定</h2>
       </div>
-      <p>點任一列展開：看三種情境的白話說明、條款原文摘錄，與官方來源連結。</p>
+      <p>點任一列展開，看白話說明、條款原文和官方連結。（「文字探勘／TDM」＝讓電腦一次讀大量文獻自動分析，不是人工一篇篇讀。）</p>
     </div>
 
     <div class="checklist">
@@ -511,13 +510,13 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
   <section class="section wrap" id="ai-copyright">
     <div class="shead">
       <div>
-        <div class="kick">Go deeper</div>
-        <h2>為什麼？著作權、判例與法規</h2>
+        <div class="kick">Deeper</div>
+        <h2>搞懂規則：著作權、判例、各國怎麼管</h2>
       </div>
-      <p>條款寫「遵循著作權法」，但那是另一套規則。這一段拆解合約與著作權兩層，並整理 2026 判例與台歐日法規。</p>
+      <p>條款寫「遵循著作權法」，但著作權是另一套規則。這一段把「合約」和「著作權」兩層分開講清楚，再帶你看 2026 的判例和各國法規。</p>
     </div>
 
-    <p class="lead">你會發現許多條款都寫「遵循著作權法」——但<b>條款是合約，著作權法是另一套規則</b>。即使著作權上可能構成合理使用，合約仍可能另外限制（違反合約與著作權侵權是兩回事，各自獨立）；反之亦然。判斷「下載資料庫文章、上傳 AI 輔助閱讀／摘要／翻譯／改寫」有沒有問題，要把這兩層分開看。</p>
+    <p class="lead">很多條款都寫「遵循著作權法」，但要注意：<b>條款是「合約」，著作權法是另一套規則，兩者各自獨立</b>。就算著作權上你可能主張合理使用，合約還是可以另外禁止（違約和侵權是兩回事）。所以判斷「下載文章、丟給 AI 摘要／翻譯／改寫」有沒有問題，得把這兩層分開看。</p>
 
     <div class="twolayer">
       <div class="layer contract">
@@ -532,8 +531,8 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       </div>
     </div>
 
-    <p class="subhead">四種用途，風險階梯式上升</p>
-    <p class="subnote">共同判準：輸出若與原作達到「實質相似」就會侵權；純粹講事實與觀念的摘要通常沒事，近乎逐字的翻譯或貼近改寫則重現了受保護的表達。</p>
+    <p class="subhead">四種用法，風險從低到高</p>
+    <p class="subnote">一個通則：AI 吐出來的東西如果跟原文「很像」就會侵權。純粹講事實、觀念的摘要通常沒事；越接近逐字翻譯、或照著改寫，就越危險。</p>
     <div class="ladder">
       <div class="step s1">
         <div class="lv">Lower risk</div>
@@ -555,8 +554,8 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       </div>
     </div>
 
-    <p class="subhead">2026 關鍵案件</p>
-    <p class="subnote">注意：這些指標案件幾乎都是告「AI 公司」的訓練端訴訟，不是告個別使用者；且均為<b>美國案件，對台灣法院沒有拘束力</b>，僅供了解國際趨勢。</p>
+    <p class="subhead">2026 年幾個重要判例（都在國外）</p>
+    <p class="subnote">先講清楚：這些幾乎都是在告「AI 公司」怎麼訓練模型，不是告你我這種使用者；而且<b>都是美國案子，對台灣法院沒有約束力</b>，只是讓你了解國際上吵到哪裡。</p>
     <div class="cases">
       <div class="casecard">
         <span class="yr">美國 · 2026/7 終局核准</span>
@@ -590,8 +589,8 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       </div>
     </div>
 
-    <p class="subhead">2026 法規地圖</p>
-    <p class="subnote">共同重點：各地多朝「附退出機制的 TDM 例外」發展，但豁免多為「訓練／分析」而非「幫我讀」，且都不會凌駕你和資料庫簽的那份合約。港、中與台灣各為不同法域，見解不能互相套用。</p>
+    <p class="subhead">各國怎麼管「拿資料餵 AI」？（2026）</p>
+    <p class="subnote">先解釋一個一直出現的詞——<b>文字探勘（TDM，Text and Data Mining）</b>：讓電腦一次讀大量文獻、自動抓取分析，而不是一篇篇人工讀。重點來了：各國的 AI／TDM 例外多半是給「訓練、分析」用的，<b>不是</b>給「幫我把這篇讀懂」用的，而且都擋不住你跟資料庫簽的合約。港、中、台各是不同法域，判決不能互相套。</p>
     <div class="jmap">
       <div class="jblock">
         <h4>台灣</h4>
@@ -617,7 +616,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
           <li><b>搭配 opt-out：</b>權利人可用「機器可讀訊號」明確保留權利，排除著作被用於 AI 訓練。</li>
         </ul>
         <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
-          <a href="https://libguides.hkust.edu.hk/ai-literacy/copyright" target="_blank" rel="noreferrer">HKUST 圖書館指引 ↗</a>
+          <a href="http://www.ipd.gov.hk/en/copyright/current-topics/public-consultation-on-copyright-and-artificial/index.html" target="_blank" rel="noreferrer">香港知識產權署 · 公眾諮詢 ↗</a>
           <a href="https://www.legco.gov.hk/yr2025/english/panels/ci/papers/ci20250218cb2-240-4-e.pdf" target="_blank" rel="noreferrer">立法會文件（2025/2）↗</a>
         </div>
       </div>
@@ -711,8 +710,8 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
           <li>著作人＝「作出必要安排的人」；保護 50 年。比台、美更寬。</li>
         </ul>
         <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
-          <a href="https://libguides.hkust.edu.hk/ai-literacy/copyright" target="_blank" rel="noreferrer">HKUST 指引 ↗</a>
-          <a href="https://libguides.lib.hku.hk/copyright_hku/ai" target="_blank" rel="noreferrer">HKU 法律圖書館 ↗</a>
+          <a href="https://www.elegislation.gov.hk/hk/cap528" target="_blank" rel="noreferrer">香港版權條例（官方）↗</a>
+          <a href="https://www.penningtonslaw.com/insights/ai-art-and-global-approaches-to-copyright-law-us-supreme-court-declines-to-review-the-case-of-thaler-v-perlmutter/" target="_blank" rel="noreferrer">Penningtons（共同法比較）↗</a>
         </div>
       </div>
       <div class="jblock">
@@ -729,7 +728,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
     </div>
 
     <p class="subhead">換個角度：保護你自己的著作不被 AI 訓練</p>
-    <p class="subnote">如果你是作者或老師，想避免自己的論文、講義、作品被 AI 擷取或訓練，可以這樣做。（此段主要整理自 HKUST 圖書館 AI 素養指引。）</p>
+    <p class="subnote">如果你是作者或老師，想避免自己的論文、講義、作品被 AI 擷取或訓練，可以從這幾個方向著手。</p>
     <div class="safelist">
       <div class="q"><span class="n">A</span><div><h3>圖片／藝術作品</h3><p>用 Glaze（防護，讓風格難被模仿）或 Nightshade（反制，把圖變成「毒樣本」干擾訓練）——皆為芝加哥大學開發。<a class="law" href="https://glaze.cs.uchicago.edu/" target="_blank" rel="noreferrer" style="text-decoration:none">Glaze ↗</a> <a class="law" href="https://nightshade.cs.uchicago.edu/whatis.html" target="_blank" rel="noreferrer" style="text-decoration:none">Nightshade ↗</a></p></div></div>
       <div class="q"><span class="n">B</span><div><h3>網站／文字</h3><p>設定 robots.txt 阻擋爬蟲；可參考 ai.robots.txt 的 AI 爬蟲清單，EFF 有操作說明。<a class="law" href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noreferrer" style="text-decoration:none">ai.robots.txt ↗</a> <a class="law" href="https://www.eff.org/deeplinks/2023/12/no-robotstxt-how-ask-chatgpt-and-google-bard-not-use-your-website-training" target="_blank" rel="noreferrer" style="text-decoration:none">EFF ↗</a></p></div></div>
@@ -737,15 +736,81 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       <div class="q"><span class="n">D</span><div><h3>追蹤授權動向</h3><p>用 Ithaka S+R 的「Generative AI Licensing Agreement Tracker」查各出版社是否已簽 AI 授權。<a class="law" href="https://sr.ithaka.org/our-work/generative-ai-licensing-agreement-tracker/" target="_blank" rel="noreferrer" style="text-decoration:none">Ithaka Tracker ↗</a></p></div></div>
     </div>
 
+        <p class="subhead">學術出版社怎麼跟外部 AI（GPT、Perplexity…）洽談</p>
+    <p class="subnote">資料庫<b>自家平台內建</b>的 AI 工具（像 Scopus AI、JSTOR 的工具），本館另有專頁整理 →&nbsp;<a href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:600;text-decoration:none">NCCU 圖書館 · 資料庫 AI 功能 ↗</a>。這裡談的是另一件事：出版社怎麼跟<b>消費級 AI 平台</b>談合作。大致兩種模式。</p>
+    <div class="owns">
+      <div class="jblock">
+        <h4>模式 A · 上游：授權內容給 AI「訓練」</h4>
+        <div class="st">先付一筆授權金 · OpenAI、微軟、Google 多採此</div>
+        <ul>
+          <li>把內容賣給 AI 公司拿去訓練模型，通常是<b>一次性或分期的授權金</b>。</li>
+          <li>學術例子：<b>Taylor &amp; Francis</b> × 微軟（約 US$10M）、<b>Springer Nature</b> × Google（約 US$23M）、<b>Wiley</b>（2026 會計年度 AI 授權約 US$49M）；Cambridge 改採「作者可選擇加入（opt-in）」。</li>
+          <li>OpenAI 是最活躍的買家；其董事長 Bret Taylor 2026 作證時直言，這類授權是「<b>為了避免訴訟</b>」。</li>
+          <li><b>爭議：</b>多數作者沒被告知、也分不到錢，因此有人主張「乾脆走開放取用」。</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
+          <a href="https://digiday.com/media/a-timeline-of-the-major-deals-between-publishers-and-ai-tech-companies-in-2025/" target="_blank" rel="noreferrer">Digiday（交易時間軸）↗</a>
+          <a href="https://www.bloomberg.com/news/articles/2025-06-10/academic-publishers-sign-ai-deals-as-trump-cuts-research-funding" target="_blank" rel="noreferrer">Bloomberg ↗</a>
+          <a href="https://sr.ithaka.org/our-work/generative-ai-licensing-agreement-tracker/" target="_blank" rel="noreferrer">Ithaka 授權追蹤器 ↗</a>
+        </div>
+      </div>
+      <div class="jblock">
+        <h4>模式 B · 下游：接進 answer engine、即時顯示＋引用</h4>
+        <div class="st">按使用付費 · Perplexity 的做法</div>
+        <ul>
+          <li>內容被接進 AI 的回答裡、<b>附出處連結</b>，使用者直接讀到（不是拿去訓練）。</li>
+          <li><b>Perplexity 出版商計畫</b>：內容<b>每被引用一次</b>就分廣告／訂閱收入（Comet Plus 方案出版商拿 80%）。跟 OpenAI「先付一筆」不同，這是「用一次算一次」。</li>
+          <li>Mistral × AFP 也屬這類（明講「不拿去訓練」，只即時引用）。</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
+          <a href="https://llmpulse.ai/blog/perplexity-publishers-program/" target="_blank" rel="noreferrer">Perplexity 出版商計畫解析 ↗</a>
+          <a href="https://everything-pr.com/perplexity-s-publisher-deals-what-pr-pros-need-to-know/" target="_blank" rel="noreferrer">PR News（Comet Plus 分潤）↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="official" style="margin-top:16px">
+      <div class="oh"><span class="obadge">學術界首例</span><strong>Wiley × Perplexity（2025）</strong></div>
+      <ol>
+        <li>Wiley 把它的 <b>STM（科學／技術／醫學）教材</b>接進 Perplexity 的 answer engine。</li>
+        <li>學生和教師可以<b>透過 Perplexity 直接用到學校已購買的 Wiley 內容</b>，回答會附引用、可回溯來源。</li>
+        <li>由校方管理員向 Wiley 業務開通這個連接；被 Wiley 與 Perplexity 稱為學術出版界的「first-of-its-kind」。</li>
+        <li><b>對照組：</b>規模較小的出版社談不動個別合約，於是有「集體授權」在發展——如美國 Copyright Clearance Center（CCC）的 AI 授權方案、英國 CLA。</li>
+      </ol>
+      <div class="osrc"><span class="sl">官方出處</span>
+        <a href="https://www.perplexity.ai/hub/blog/perplexity-partners-with-wiley-to-power-educational-ai-search" target="_blank" rel="noreferrer">Perplexity 官方部落格 ↗</a>
+        <a href="https://www.wiley.com/en-us/solutions-partnerships/academic-institutions/instructors-administrators/perplexity/" target="_blank" rel="noreferrer">Wiley 官方 · Perplexity ↗</a>
+        <a href="https://www.amediaoperator.com/analysis/collective-licensing-ai-pls-cla-copyright/" target="_blank" rel="noreferrer">集體授權（CCC／CLA）↗</a>
+      </div>
+    </div>
+
+    <p class="subhead">各國圖書館也在動：以日本為例</p>
+    <p class="subnote">你可能聽過「日本很多資料 AI 都找得到」——這跟日本較寬的著作權法（§30-4，見上面各國比較）＋國會圖書館的主動數位化有關。</p>
+    <div class="owns" style="grid-template-columns:1fr">
+      <div class="jblock">
+        <h4>日本國會圖書館（NDL）</h4>
+        <div class="st">次世代デジタルライブラリー · 開放資料集</div>
+        <ul>
+          <li>把<b>著作權已過期</b>的數位館藏做成「次世代デジタルライブラリー」：全文 AI 檢索、自動圖像／插圖檢索、古籍 AI-OCR。</li>
+          <li>還把訓練用的<b>資料集與 OCR 模型開源</b>（CC BY），讓大量日文舊資料變得「AI 找得到、也能拿來分析」。</li>
+          <li>撐起這件事的，正是日本較寬的著作權法 §30-4；相對地，台灣沒有這種明文豁免，公共領域數位化與開放的步調也較保守。</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">官方出處</span>
+          <a href="https://lab.ndl.go.jp/dl/" target="_blank" rel="noreferrer">NDL 官方 · 次世代デジタルライブラリー ↗</a>
+          <a href="https://github.com/ndl-lab" target="_blank" rel="noreferrer">NDL 官方開源（GitHub）↗</a>
+        </div>
+      </div>
+    </div>
+
     <p class="subhead">比較安全的做法</p>
     <p class="subnote">現實層面：就目前公開資訊，尚少見到因個人研讀而把單篇 PDF 貼進 AI 就被追訴的案例，個人非商業研究也有主張合理使用的空間；但「少見被訴」不等於「明確合法」，而且合約的違反、與著作權能否主張合理使用，是兩回事。</p>
     <div class="safelist">
-      <div class="q"><span class="n">1</span><div><h3>用機構已授權、且不訓練/不保留的工具</h3><p>企業或教育版、明確不儲存也不拿去訓練者，風險最低；避免用會保存或抓取內容的免費工具。<a class="law" href="https://libanswers.jcu.edu.au/faq/276701" target="_blank" rel="noreferrer" style="text-decoration:none">James Cook Univ. ↗</a></p></div></div>
-      <div class="q"><span class="n">2</span><div><h3>用資料庫「內建」的 AI 功能</h3><p>如 ScienceDirect 閱讀助手、Ovid、ProQuest 研究助手——出版社已自行授權。<a class="law" href="https://camosun.libguides.com/artificialintelligence/libraries" target="_blank" rel="noreferrer" style="text-decoration:none">Camosun College ↗</a></p></div></div>
-      <div class="q"><span class="n">3</span><div><h3>用開放取用／CC 授權內容</h3><p>仍要看 CC 條款；NC／ND 對商業性 AI 平台可能不相容。<a class="law" href="https://libguides.qub.ac.uk/AILibrary/uploadingtoLLMs" target="_blank" rel="noreferrer" style="text-decoration:none">Queen's Belfast ↗</a></p></div></div>
-      <div class="q"><span class="n">4</span><div><h3>不要上傳全文</h3><p>貼你自己的筆記、少量引文或重點，而非整篇 PDF。<a class="law" href="https://blog.tcea.org/can-i-upload-that-ai-copyright-and-our-classrooms/" target="_blank" rel="noreferrer" style="text-decoration:none">TCEA ↗</a></p></div></div>
-      <div class="q"><span class="n">5</span><div><h3>需要時取得授權，或先問學科館員</h3><p>不確定特定資料庫的允許範圍時，先問館員或出版社。<a class="law" href="https://researchguides.library.syr.edu/c.php?g=1341750&amp;p=10298151" target="_blank" rel="noreferrer" style="text-decoration:none">Syracuse Univ. ↗</a></p></div></div>
-      <div class="q"><span class="n">6</span><div><h3>上傳前先停一下</h3><p>按下夾檔前，先確認是否涉及著作權、隱私或機密。<a class="law" href="https://usawc.libguides.com/AItools/databaserestrictions" target="_blank" rel="noreferrer" style="text-decoration:none">US Army War College ↗</a></p></div></div>
+      <div class="q"><span class="n">1</span><div><h3>用機構已授權、且不訓練/不保留的工具</h3><p>企業或教育版、明確不儲存也不拿去訓練者，風險最低；避免用會保存或抓取內容的免費工具。<a class="law" href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer" style="text-decoration:none">國科會指引 ↗</a></p></div></div>
+      <div class="q"><span class="n">2</span><div><h3>用資料庫「內建」的 AI 功能</h3><p>如 ScienceDirect 閱讀助手、Ovid、ProQuest 研究助手——出版社已自行授權。<a class="law" href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="text-decoration:none">本館 · 資料庫 AI 功能 ↗</a></p></div></div>
+      <div class="q"><span class="n">3</span><div><h3>用開放取用／CC 授權內容</h3><p>仍要看 CC 條款；NC／ND 對商業性 AI 平台可能不相容。<a class="law" href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" rel="noreferrer" style="text-decoration:none">Creative Commons ↗</a></p></div></div>
+      <div class="q"><span class="n">4</span><div><h3>不要上傳全文</h3><p>貼你自己的筆記、少量引文或重點，而非整篇 PDF。<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">數發部手冊 ↗</a></p></div></div>
+      <div class="q"><span class="n">5</span><div><h3>需要時取得授權，或先問學科館員</h3><p>不確定特定資料庫的允許範圍時，先問館員或出版社。<a class="law" href="#matrix" style="text-decoration:none">回上面查條款 ↑</a></p></div></div>
+      <div class="q"><span class="n">6</span><div><h3>上傳前先停一下</h3><p>按下夾檔前，先確認是否涉及著作權、隱私或機密。<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">數發部手冊 ↗</a></p></div></div>
     </div>
 
     <details class="refs">
@@ -780,37 +845,52 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
         </div>
       </div>
       <div class="refgroup">
-        <h5>大學圖書館使用指引（上傳給 AI）</h5>
+        <h5>出版社與外部 AI 的合作</h5>
         <div class="reflist">
-          <a href="https://libguides.qub.ac.uk/AILibrary/uploadingtoLLMs" target="_blank" rel="noreferrer">Queen's University Belfast ↗</a>
-          <a href="https://camosun.libguides.com/artificialintelligence/libraries" target="_blank" rel="noreferrer">Camosun College ↗</a>
-          <a href="https://researchguides.library.syr.edu/c.php?g=1341750&amp;p=10298151" target="_blank" rel="noreferrer">Syracuse University ↗</a>
-          <a href="https://libanswers.jcu.edu.au/faq/276701" target="_blank" rel="noreferrer">James Cook University ↗</a>
-          <a href="https://gibs.libanswers.com/faq/444329" target="_blank" rel="noreferrer">GIBS Library ↗</a>
-          <a href="https://blog.tcea.org/can-i-upload-that-ai-copyright-and-our-classrooms/" target="_blank" rel="noreferrer">TCEA TechNotes ↗</a>
-          <a href="https://usawc.libguides.com/AItools/databaserestrictions" target="_blank" rel="noreferrer">US Army War College Library ↗</a>
+          <a href="https://www.perplexity.ai/hub/blog/perplexity-partners-with-wiley-to-power-educational-ai-search" target="_blank" rel="noreferrer">Perplexity 官方 — 與 Wiley 合作 ↗</a>
+          <a href="https://www.wiley.com/en-us/solutions-partnerships/academic-institutions/instructors-administrators/perplexity/" target="_blank" rel="noreferrer">Wiley 官方 — Perplexity 整合 ↗</a>
+          <a href="https://digiday.com/media/a-timeline-of-the-major-deals-between-publishers-and-ai-tech-companies-in-2025/" target="_blank" rel="noreferrer">Digiday — 出版社 × AI 交易時間軸 ↗</a>
+          <a href="https://www.bloomberg.com/news/articles/2025-06-10/academic-publishers-sign-ai-deals-as-trump-cuts-research-funding" target="_blank" rel="noreferrer">Bloomberg — 學術出版社 AI 授權 ↗</a>
+          <a href="https://llmpulse.ai/blog/perplexity-publishers-program/" target="_blank" rel="noreferrer">Perplexity 出版商計畫解析 ↗</a>
+          <a href="https://www.amediaoperator.com/analysis/collective-licensing-ai-pls-cla-copyright/" target="_blank" rel="noreferrer">集體授權（CCC／CLA）↗</a>
+          <a href="https://sr.ithaka.org/our-work/generative-ai-licensing-agreement-tracker/" target="_blank" rel="noreferrer">Ithaka S+R — 生成式 AI 授權追蹤器 ↗</a>
         </div>
       </div>
       <div class="refgroup">
-        <h5>延伸指引與工具（含 HKUST 指引引用之連結）</h5>
+        <h5>圖書館 AI 動態、保護著作與工具</h5>
         <div class="reflist">
-          <a href="https://libguides.hkust.edu.hk/ai-literacy/copyright" target="_blank" rel="noreferrer">HKUST Library — AI Literacy: AI &amp; Copyright ↗</a>
-          <a href="https://libguides.lib.hku.hk/copyright_hku/ai" target="_blank" rel="noreferrer">HKU Law Library — Copyright &amp; Gen AI ↗</a>
-          <a href="https://library-guides.ucl.ac.uk/generative-ai/copyright" target="_blank" rel="noreferrer">UCL — How Copyright Relates to GenAI ↗</a>
-          <a href="https://sr.ithaka.org/our-work/generative-ai-licensing-agreement-tracker/" target="_blank" rel="noreferrer">Ithaka S+R — Generative AI Licensing Agreement Tracker ↗</a>
-          <a href="https://authorsguild.org/news/model-clause-prohibiting-ai-training/" target="_blank" rel="noreferrer">Author's Guild — Model Clause Prohibiting AI Training ↗</a>
+          <a href="https://lab.ndl.go.jp/dl/" target="_blank" rel="noreferrer">日本國會圖書館 — 次世代デジタルライブラリー（官方）↗</a>
+          <a href="https://github.com/ndl-lab" target="_blank" rel="noreferrer">日本國會圖書館 — 開源程式與資料集（官方）↗</a>
+          <a href="https://authorsguild.org/news/model-clause-prohibiting-ai-training/" target="_blank" rel="noreferrer">Author's Guild — 禁止 AI 訓練示範條款 ↗</a>
           <a href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noreferrer">ai.robots.txt（GitHub）↗</a>
-          <a href="https://www.eff.org/deeplinks/2023/12/no-robotstxt-how-ask-chatgpt-and-google-bard-not-use-your-website-training" target="_blank" rel="noreferrer">EFF — No robots.txt ↗</a>
-          <a href="http://www.ipd.gov.hk/en/copyright/current-topics/public-consultation-on-copyright-and-artificial/index.html" target="_blank" rel="noreferrer">HK IPD — Copyright &amp; AI 公眾諮詢 ↗</a>
+          <a href="https://www.eff.org/deeplinks/2023/12/no-robotstxt-how-ask-chatgpt-and-google-bard-not-use-your-website-training" target="_blank" rel="noreferrer">EFF — 如何用 robots.txt 擋 AI ↗</a>
+          <a href="https://www.elegislation.gov.hk/hk/cap528" target="_blank" rel="noreferrer">香港版權條例（官方）↗</a>
         </div>
       </div>
     </details>
 
     <div class="legaldisc">
       <span class="i">!</span>
-      <p><b>這是資訊整理，不是法律意見。</b>本段為圖書館推廣目的所作的彙整，非律師意見，<b>也不對任何特定利用是否合法、是否構成合理使用作出保證或背書</b>；著作權與合理使用均須依個案事實逐案判斷，且此領域變動極快（查核日 2026-07-31）。牽涉 NCCU 正式政策或採購授權，請再與館內、研發處或校方法務確認具體合約，必要時洽詢專業律師。</p>
+      <p><b>這是資訊整理，不是法律意見。</b>本頁為推廣教育目的所作的整理，非律師意見，<b>也不對任何特定利用是否合法、是否構成合理使用作出保證或背書</b>；著作權與合理使用均須依個案事實逐案判斷，且此領域變動極快（查核日 2026-07-31）。牽涉 NCCU 正式政策或採購授權，請再與館內、研發處或校方法務確認具體合約，必要時洽詢專業律師。</p>
     </div>
   </section>
+  <section class="section wrap" id="ai-flow">
+    <div class="shead">
+      <div>
+        <div class="kick">Self-check</div>
+        <h2>自我檢測：能不能上傳給 AI？</h2>
+      </div>
+      <p>看完上面之後，用這個小測驗檢查你自己的情況：選一選，馬上出建議。</p>
+    </div>
+    <div class="flow">
+      <div class="flowtop">
+        <span class="ft">SELF-CHECK</span>
+        <span class="fstep" id="flowstep"></span>
+      </div>
+      <div class="flowbody" id="flowbody"></div>
+    </div>
+  </section>
+
 </main>
 
 <footer id="about">
@@ -1180,114 +1260,64 @@ buildBars();
 render();
 
 /* ---------- interactive decision flow ---------- */
-const FLOW={
-  start:"q_source",
-  q_source:{q:"你打算上傳的內容，來源是什麼？",opts:[
-    ["資料庫訂閱的文章全文","q_terms"],
-    ["開放取用 / CC 授權內容","q_cc"],
-    ["我自己的著作或筆記","r_own"],
-    ["公共領域（著作權已消滅）","r_pd"],
-    ["盜版網站或來源不明","r_pirate"]]},
-  q_cc:{q:"這份開放內容的 CC 授權是哪一種？",opts:[
-    ["CC BY / CC BY-SA（允許商業）","q_tool"],
-    ["含 NC（非商業）或 ND（禁改作）","r_cc_restrict"],
-    ["不確定授權條件","r_check_cc"]]},
-  q_terms:{q:"這個資料庫的條款，對「外部 AI / 大量下載」怎麼規定？（見下方比較表）",opts:[
-    ["明文禁止","r_terms_ban"],
-    ["未明確 / 需另行授權","r_terms_unclear"],
-    ["有條件允許（透過核准管道）","q_tool"]]},
-  q_tool:{q:"你要用哪一種 AI 工具？",opts:[
-    ["資料庫自己內建的 AI 功能","r_builtin"],
-    ["機構授權、且不訓練 / 不保留","q_use"],
-    ["免費消費級工具（可能保留 / 訓練）","r_free"]]},
-  q_use:{q:"你要 AI 幫你做什麼？",opts:[
-    ["輔助閱讀 / 摘要（自己看）","r_read"],
-    ["翻譯","q_distribute"],
-    ["改寫 / 產生新內容","q_distribute"]]},
-  q_distribute:{q:"成果會對外散布或發表嗎？",opts:[
-    ["只有我自己使用","r_adapt_private"],
-    ["會分享 / 發表 / 商業使用","r_adapt_public"]]},
-
-  r_own:{lv:"ok",title:"可以——你是著作權人",
-    why:"你自己寫的東西或筆記，你就是權利人，可以自由決定是否上傳。",
-    action:"仍要留意：內容若含他人的大段引文、受訪者個資或機密資料，另有隱私與保密考量。",links:[]},
-  r_pd:{lv:"ok",title:"多半可以——但先確認是公共領域",
-    why:"著作財產權存續期間屆滿的著作，任何人都可自由利用。",
-    action:"先確認它確實已進入公共領域：各國年限不同，且新的翻譯、編輯或版本可能另有著作權。",links:[]},
-  r_pirate:{lv:"red",title:"不建議——來源本身可能就有侵權問題",
-    why:"從盜版庫或來源不明處取得的內容，取得行為本身可能就是侵權。Bartz v. Anthropic 明確區分：用「合法取得」的內容訓練 AI 可能是合理使用，但「盜版下載取得」不受保護。",
-    action:"改用學校合法訂閱或開放取用的來源。",
-    links:[["JURIST — Bartz v. Anthropic","https://www.jurist.org/news/2026/07/judge-approves-record-1-5-billion-settlement-involving-anthropic/"]]},
-  r_cc_restrict:{lv:"amber",title:"要看清楚 CC 條款",
-    why:"含 NC（非商業）的授權，交給商業性 AI 平台可能不相容；含 ND（禁改作）的授權，翻譯或改寫會觸及「改作」限制。",
-    action:"確認該 CC 版本允許的範圍；不確定就當作不允許。",
-    links:[["Queen's Belfast 指引","https://libguides.qub.ac.uk/AILibrary/uploadingtoLLMs"]]},
-  r_check_cc:{lv:"amber",title:"先確認授權，再決定",
-    why:"不確定授權條件時，不宜先上傳。開放取用不等於「什麼都能做」。",
-    action:"查該文章的授權標示（CC BY / BY-NC / BY-ND…），或問學科館員。",
-    links:[["Syracuse 指引","https://researchguides.library.syr.edu/c.php?g=1341750&p=10298151"]]},
-  r_terms_ban:{lv:"red",title:"第一層就擋住了——別上傳全文",
-    why:"這個資料庫的條款明文禁止把內容交給外部 AI。這是「合約」這一層的限制，即使著作權上可能主張合理使用，也擋不住。",
-    action:"改用安全做法：資料庫內建 AI、機構授權且不訓練的工具，或只貼你自己的筆記與少量引文。",
-    links:[["看下方比較表","#matrix"]]},
-  r_terms_unclear:{lv:"blue",title:"預設當作不行，先確認",
-    why:"條款沒明講（未明確）或需另行授權時，穩妥的做法是當作「不允許」，不要把沉默當成同意。",
-    action:"向館方或出版社確認，或直接改用安全做法。",
-    links:[["看下方比較表","#matrix"]]},
-  r_builtin:{lv:"ok",title:"可以——出版社已授權",
-    why:"資料庫自己內建的 AI 摘要／閱讀助手（如 ScienceDirect、Ovid、ProQuest），是出版社在其平台內提供並授權的功能，不涉及把全文外傳到第三方。",
-    action:"優先使用這類內建功能；使用時仍應遵守該功能自身的使用條款。",
-    links:[["Camosun 指引","https://camosun.libguides.com/artificialintelligence/libraries"]]},
-  r_free:{lv:"red",title:"風險最高——別把全文丟給免費工具",
-    why:"把完整的訂閱文章上傳到可能保留、甚至拿去訓練的免費／消費級工具，等於一次全文重製＋對第三方揭露，合理使用立場最弱。",
-    action:"換成機構授權且不訓練／不保留的工具，或改用資料庫內建 AI，或只貼少量重點。",
-    links:[["Queen's Belfast","https://libguides.qub.ac.uk/AILibrary/uploadingtoLLMs"],["James Cook Univ.","https://libanswers.jcu.edu.au/faq/276701"]]},
-  r_read:{lv:"ok",title:"相對可防守——但動作仍是重製",
-    why:"為了自己讀懂而摘要，站在合理使用較能防守的一端（著作權保護表達、不及於觀念）。但「上傳全文」這個動作本身仍會構成一次重製（是否侵權，另看授權與合理使用），所以來源與工具的條件要顧好。",
-    action:"確認你走的是合法來源＋允許的工具；並注意輸出不要逐字重現原文。",
-    links:[["看下方比較表","#matrix"]]},
-  r_adapt_private:{lv:"amber",title:"個人自用較有空間，但這是「改作」",
-    why:"翻譯與改寫在著作權法屬於「改作」（§28），成果是衍生著作。純個人自用有一定合理使用空間，但份量越大、越貼近原文表達，風險越高。",
-    action:"控制份量，別把成果當作原文的替代；需要時取得授權。",links:[]},
-  r_adapt_public:{lv:"blue",title:"會散布，就需要授權",
-    why:"翻譯／改寫的成果一旦分享、發表或商業使用，屬於對衍生著作的公開利用，通常需要著作權人授權；越接近可替代原文，合理使用第四要件（市場影響）越不利。",
-    action:"取得授權，或改為「引用＋自己撰寫」，而非散布 AI 改寫的全文。",
-    links:[["看下方比較表","#matrix"]]}
+const ST={
+  src:[["db","資料庫訂閱的文章全文"],["cc","開放取用 / CC 授權"],["own","我自己寫的東西"],["pirate","盜版或來源不明"]],
+  tool:[["builtin","資料庫內建的 AI"],["inst","機構授權、不訓練/不保留"],["free","免費工具、可能訓練"]],
+  use:[["read","讀懂 / 摘要"],["translate","翻譯"],["rewrite","改寫、而且要分享"]]
 };
+function stVerdict(s){
+  const R=(lv,t,w,d)=>({lv:lv,title:t,why:w,todo:d});
+  if(!s.src) return null;
+  if(s.src==="pirate") return R("red","別用——來源本身就有疑慮","從盜版或來源不明處拿到的內容，「取得」這個動作本身就可能侵權（這正是 Bartz v. Anthropic 畫出的界線）。","改用學校合法訂閱、或開放取用的來源。");
+  if(s.src==="own") return R("ok","可以——你是著作權人","你自己寫的東西，你說了算。","只要留意裡面有沒有別人的大段文字、受訪者個資或機密。");
+  if(s.src==="cc") return R("amber","先看那篇的 CC 授權寫什麼","「開放取用」不等於什麼都能做：帶 NC（非商業）的，交給商業 AI 平台可能不相容；帶 ND（禁改作）的，就不能拿去翻譯或改寫。","先確認授權標示（CC BY / BY-NC / BY-ND…），不確定就當作不行。");
+  if(!s.tool) return null;
+  if(s.tool==="builtin") return R("ok","最推薦——用資料庫自己的 AI","像 Scopus AI、ScienceDirect Reading Assistant、JSTOR 的 AI 工具，是出版社自己做、已經授權的，內容不會外流到別家公司，還會附出處。","直接用這些內建功能，別把 PDF 貼到別的地方。");
+  if(s.tool==="free") return R("red","風險最高——別把全文丟進免費 AI","把整篇訂閱文章貼進「可能保留、還拿去訓練」的免費工具，等於一次全文重製＋交給第三方，多半也違反資料庫條款。","換成不訓練/不保留的工具、或資料庫內建 AI，或只貼重點。");
+  if(!s.use) return null;
+  if(s.use==="read") return R("amber","大致可以，但先確認條款","用不訓練/不保留的機構工具、只為自己讀懂，是比較站得住腳的一端。但「上傳全文」仍算一次重製，也要先確認這個資料庫沒禁止外部 AI（回上面「查條款」看看）。","確認來源和工具都合規；摘要別逐字照抄原文。");
+  if(s.use==="translate") return R("amber","翻譯：自己看可以，要分享得授權","翻譯在著作權法算「改作」。自己看有空間，但一旦分享或發表，通常要授權。","控制份量、別當成原文的替代品；要散布先取得授權。");
+  return R("blue","改寫又要分享＝需要授權","改寫是「改作」，做出來的是衍生著作；只要對外分享、發表或商業使用，通常需要著作權人授權。","改成「引用＋自己寫」，或先取得授權。");
+}
+const STLV={ok:"可以 / 風險低",amber:"留意 / 有條件",blue:"先確認 / 需授權",red:"不建議"};
 
-const LVTEXT={ok:"可以 / 風險低",amber:"留意 / 有條件",blue:"先確認 / 需授權",red:"不建議 / 禁止"};
-
-(function initFlow(){
+(function initSelfTest(){
   const body=document.getElementById("flowbody");
   const stepEl=document.getElementById("flowstep");
   if(!body) return;
-  let path=[], cur=FLOW.start;
+  const sel={src:null,tool:null,use:null};
   const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
-
-  function go(next,label){ path.push({node:cur,label}); cur=next; draw(); }
-  function back(){ if(path.length){ cur=path.pop().node; draw(); } }
-  function restart(){ path=[]; cur=FLOW.start; draw(); }
-  function crumbs(){ return path.length?`<div class="flowcrumbs">`+path.map(p=>`<span class="cb">${esc(p.label)}</span>`).join("")+`</div>`:""; }
-  function navbar(){ return `<div class="flownav">${path.length?`<button data-act="back">← 上一步</button>`:``}<button data-act="restart">↺ 重新開始</button></div>`; }
-
+  function group(key,label,opts){
+    return `<div class="stq"><div class="stq-l">${label}</div><div class="stopts">`+
+      opts.map(o=>`<button class="stbtn${sel[key]===o[0]?" on":""}" data-k="${key}" data-v="${o[0]}">${esc(o[1])}</button>`).join("")+
+      `</div></div>`;
+  }
   function draw(){
-    const n=FLOW[cur];
-    if(n.opts){
-      stepEl.textContent=`第 ${path.length+1} 步`;
-      body.innerHTML=crumbs()+`<p class="flowq">${esc(n.q)}</p><div class="flowopts">`+
-        n.opts.map((o,i)=>`<button class="flowopt" data-i="${i}">${esc(o[0])}<span class="arw">→</span></button>`).join("")+
-        `</div>`+(path.length?navbar():``);
-      body.querySelectorAll(".flowopt").forEach(b=>b.addEventListener("click",()=>{const o=n.opts[+b.dataset.i];go(o[1],o[0]);}));
-    } else {
-      stepEl.textContent="結果";
-      const links=(n.links||[]).map(l=>{const internal=l[1].charAt(0)==="#";
-        return `<a href="${l[1]}"${internal?"":' target="_blank" rel="noreferrer"'}>${esc(l[0])} ${internal?"↑":"↗"}</a>`;}).join("");
-      body.innerHTML=crumbs()+`<div class="flowres ${n.lv}"><span class="flowbadge"><span class="dot"></span>${LVTEXT[n.lv]}</span>`+
-        `<h3>${esc(n.title)}</h3><p>${esc(n.why)}</p>`+
-        `<div class="do"><b>建議做法</b><span>${esc(n.action)}</span></div>`+
-        (links?`<div class="rlinks">${links}</div>`:``)+`</div>`+navbar();
+    let html=`<p class="st-intro">選一選你的情況，下面就會<b>即時</b>給出建議——不用一直點下去、也不用從頭來過。</p>`;
+    html+=group("src","① 你要上傳的內容，是哪來的？",ST.src);
+    if(sel.src==="db") html+=group("tool","② 你打算用哪一種 AI 工具？",ST.tool);
+    if(sel.src==="db"&&sel.tool==="inst") html+=group("use","③ 你要 AI 幫你做什麼？",ST.use);
+    const v=stVerdict(sel);
+    if(v){
+      stepEl.textContent="有建議了";
+      html+=`<div class="flowres ${v.lv} st-res"><span class="flowbadge"><span class="dot"></span>${STLV[v.lv]}</span>`+
+        `<h3>${esc(v.title)}</h3><p>${esc(v.why)}</p>`+
+        `<div class="do"><b>怎麼做</b><span>${esc(v.todo)}</span></div></div>`;
+    }else{
+      stepEl.textContent="繼續選";
+      html+=`<div class="st-wait">再選下一題，就會出現建議。</div>`;
     }
-    body.querySelectorAll("[data-act]").forEach(b=>b.addEventListener("click",()=>{b.dataset.act==="back"?back():restart();}));
+    if(sel.src) html+=`<div class="flownav"><button data-act="reset">↺ 全部重選</button></div>`;
+    body.innerHTML=html;
+    body.querySelectorAll(".stbtn").forEach(b=>b.addEventListener("click",()=>{
+      const k=b.dataset.k;
+      sel[k]=(sel[k]===b.dataset.v)?null:b.dataset.v;
+      if(k==="src"&&sel.src!=="db"){sel.tool=null;sel.use=null;}
+      if(k==="tool"&&sel.tool!=="inst"){sel.use=null;}
+      draw();
+    }));
+    const rb=body.querySelector("[data-act='reset']");
+    if(rb) rb.addEventListener("click",()=>{sel.src=null;sel.tool=null;sel.use=null;draw();});
   }
   draw();
 })();
