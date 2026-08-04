@@ -5,27 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="快速查詢 19 個學術與新聞資料庫的公開條款，對「大量下載」、「文字探勘（TDM）」與「外部生成式 AI／RAG」三種情境分別怎麼規定。">
 <meta name="color-scheme" content="light">
-<title>資料庫怎麼規定：大量下載、文字探勘與 AI 使用</title>
+<title>避免侵權的資料庫使用方式：條款、著作權與 AI</title>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap");
 
 :root{
-  --ink:#1a201d;
-  --ink-soft:#4c554f;
-  --muted:#78807a;
-  --paper:#f6f3ec;
-  --card:#fffefb;
-  --line:#ded9cd;
-  --line-strong:#c4bfb2;
-  --accent:#1f4c42;
-  --accent-soft:#e3ede9;
+  /* 依《國立政治大學品牌識別手冊 2025.08 v4》標準色 */
+  --ink:#1c2331;
+  --ink-soft:#4b5362;
+  --muted:#7e8490;
+  --paper:#f3f3f1;
+  --card:#ffffff;
+  --line:#e5e3dd;
+  --line-strong:#cdc8bf;
+  --accent:#23417d;          /* 主色 · PANTONE 288 C · #23417D */
+  --accent-soft:#e6eaf2;
+  --red:#be3c32;             /* 輔助色 · 紅 · #BE3C32 */
+  --taupe:#d0cac2;           /* 輔助色 · 暖灰 · #D0CAC2 */
 
   /* 狀態語意色（禁止 / 有條件 / 需另行授權 / 未明確） */
-  --ban:#a83c2c;      --ban-bg:#f8e9e4;
-  --cond:#8a6015;     --cond-bg:#f7eeda;
-  --lic:#2c5a83;      --lic-bg:#e7f0f7;
-  --unclear:#6c716d;  --unclear-bg:#ecebe6;
-  --ok:#2f7d54;       --ok-bg:#e3efe8;
+  --ban:#be3c32;      --ban-bg:#f7e7e5;
+  --cond:#9a6f18;     --cond-bg:#f6efdb;
+  --lic:#3a6099;      --lic-bg:#e7edf6;
+  --unclear:#6f746f;  --unclear-bg:#ecebe8;
+  --ok:#2e7d54;       --ok-bg:#e4f0e9;
 
   --max:1120px;
 }
@@ -99,7 +102,7 @@ a{color:inherit;}
 
 /* ---------- note ---------- */
 .note{display:flex;gap:12px;margin:28px 0 0;padding:16px 18px;background:var(--accent-soft);
-  border:1px solid #cfe0d9;border-radius:10px;font-size:13.5px;color:#2c3d38;line-height:1.7;}
+  border:1px solid #d4ddee;border-radius:10px;font-size:13.5px;color:#2c3d38;line-height:1.7;}
 .note .i{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;
   display:grid;place-items:center;font-weight:700;font-size:13px;}
 
@@ -325,7 +328,7 @@ a{color:inherit;}
 .way{display:flex;flex-direction:column;gap:7px;padding:18px 20px;border:1px solid var(--line);
   border-radius:13px;background:var(--card);text-decoration:none;color:inherit;
   transition:border-color .14s,transform .06s,box-shadow .14s;}
-.way:hover{border-color:var(--accent);box-shadow:0 6px 20px -12px rgba(31,76,66,.45);}
+.way:hover{border-color:var(--accent);box-shadow:0 6px 20px -12px rgba(35,65,125,.4);}
 .way:active{transform:translateY(1px);}
 .way .wn{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;}
 .way h3{margin:0;font-size:17px;font-weight:700;font-family:"Noto Sans TC",sans-serif;line-height:1.35;}
@@ -344,7 +347,7 @@ a{color:inherit;}
 @media (max-width:640px){.wayfinder{grid-template-columns:1fr;}.checklist ol{grid-template-columns:1fr;}}
 
 /* ---------- taiwan official guidance ---------- */
-.official{border:1px solid #cfe0d9;background:var(--accent-soft);border-radius:13px;padding:20px 22px 18px;}
+.official{border:1px solid #d4ddee;background:var(--accent-soft);border-radius:13px;padding:20px 22px 18px;}
 .official .oh{display:flex;align-items:center;gap:10px;margin-bottom:13px;flex-wrap:wrap;}
 .official .obadge{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;
   background:var(--accent);color:#fff;padding:4px 10px;border-radius:6px;}
@@ -352,14 +355,14 @@ a{color:inherit;}
 .official ol{margin:0;padding:0;list-style:none;counter-reset:of;display:flex;flex-direction:column;gap:11px;}
 .official li{counter-increment:of;position:relative;padding-left:29px;font-size:13px;line-height:1.68;color:#2c3d38;}
 .official li::before{content:counter(of);position:absolute;left:0;top:1px;width:20px;height:20px;
-  display:grid;place-items:center;background:#fff;color:var(--accent);border:1px solid #cfe0d9;
+  display:grid;place-items:center;background:#fff;color:var(--accent);border:1px solid #d4ddee;
   border-radius:5px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;}
 .official li b{color:var(--ink);}
 .official .cite{color:var(--muted);font-size:11.5px;}
-.official .osrc{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px;padding-top:14px;border-top:1px solid #cfe0d9;}
+.official .osrc{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px;padding-top:14px;border-top:1px solid #d4ddee;}
 .official .osrc .sl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);align-self:center;text-transform:uppercase;}
 .official .osrc a{font-size:11.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);
-  background:#fff;border:1px solid #cfe0d9;border-radius:7px;padding:5px 10px;}
+  background:#fff;border:1px solid #d4ddee;border-radius:7px;padding:5px 10px;}
 .official .osrc a:hover{border-color:var(--accent);color:var(--accent);}
 
 
@@ -377,6 +380,44 @@ a{color:inherit;}
 .st-res{margin-top:12px;}
 
 /* ---------- self-check end ---------- */
+
+
+
+
+/* ---------- hero caption / tldr / glossary ---------- */
+.hcap{margin:10px 0 0;font-size:13px;color:var(--muted);line-height:1.6;max-width:680px;}
+.tldr{margin:20px 0 4px;border:1px solid var(--line-strong);border-left:4px solid var(--accent);border-radius:12px;background:var(--card);padding:16px 20px 17px;max-width:730px;}
+.tldr-h{font-family:"Noto Serif TC",serif;font-weight:800;font-size:16px;color:var(--accent);margin-bottom:11px;}
+.tldr ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;}
+.tldr li{font-size:13.5px;line-height:1.62;color:var(--ink-soft);}
+.tldr li a{color:var(--accent);font-weight:600;}
+.tldr .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;margin-right:8px;font-family:"Noto Sans TC",sans-serif;}
+.tldr .tag.ok{background:var(--ok-bg);color:var(--ok);}
+.tldr .tag.cond{background:var(--cond-bg);color:var(--cond);}
+.tldr .tag.ban{background:var(--ban-bg);color:var(--ban);}
+.tldr .tag.info{background:var(--accent-soft);color:var(--accent);}
+.gloss{margin:12px 0 4px;}
+.gloss dt{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:13.5px;color:var(--ink);margin-top:11px;}
+.gloss dd{margin:2px 0 0;font-size:13px;color:var(--ink-soft);line-height:1.6;}
+
+/* ---------- collapsible section ---------- */
+.foldsec{margin:34px 0 0;border-top:2px solid var(--line-strong);}
+.foldsec summary{cursor:pointer;list-style:none;padding:15px 0 4px;font-family:"Noto Serif TC",serif;font-weight:700;font-size:20px;color:var(--ink);display:flex;align-items:center;}
+.foldsec summary::-webkit-details-marker{display:none;}
+.foldsec summary::after{content:"＋ 展開";margin-left:auto;font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:13px;font-weight:600;align-self:center;}
+.foldsec[open] summary::after{content:"－ 收合";}
+.foldsec summary:hover{color:var(--accent);}
+.foldsec[open] summary{margin-bottom:6px;}
+
+/* ---------- comparison table ---------- */
+.cmp{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);}
+.cmp table{width:100%;border-collapse:collapse;min-width:660px;font-size:13px;}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:12px 15px;border-bottom:1px solid var(--line);line-height:1.62;}
+.cmp thead th{background:var(--accent-soft);color:var(--accent);font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:12.5px;}
+.cmp tbody th{font-family:"Noto Serif TC",serif;font-weight:800;color:var(--ink);white-space:nowrap;width:58px;}
+.cmp tbody td{color:var(--ink-soft);}
+.cmp tbody td em{color:var(--accent);font-style:normal;font-weight:600;}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0;}
 
 /* ---------- footer ---------- */
 footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
@@ -407,7 +448,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
 <body>
 
 <div class="datebar">
-  📅 本表資料查核日 <span class="d">2026 年 7 月 31 日</span>
+  📅 資料查核日 <span class="d">2026 年 8 月 4 日</span>
   <span class="sep">·</span>
   <span class="line">今天是 <span class="d" id="today">—</span></span>
   <span class="sep">·</span>
@@ -415,7 +456,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
 </div>
 
 <header class="topbar">
-  <a class="brand" href="#top"><span class="mk">DB</span>資料庫使用限制</a>
+  <a class="brand" href="#top"><span class="mk">政</span>避免侵權的資料庫使用方式</a>
   <nav aria-label="頁面導覽">
     <a href="#matrix">查條款</a>
     <a href="#ai-copyright">法律依據</a>
@@ -426,9 +467,19 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
 
 <main>
   <section class="hero wrap" id="top">
-    <div class="eyebrow">資料庫條款速查 · NCCU Library</div>
+    <div class="eyebrow">政大圖書館 · 給師生的資料庫 × AI 指南</div>
     <h1>下載、探勘、餵給 AI，<br><em>是三種不同的權利。</em></h1>
-    <p class="intro">給 NCCU 師生的實用指引——搞懂「從資料庫下載的文章，能不能交給 AI 摘要、翻譯或改寫」。往下可<b>查條款、跑決策流程、看法律依據</b>。</p>
+    <p class="hcap">（「下載」＝把檔案抓下來；「探勘／TDM」＝讓電腦一次讀大量文獻自動分析；「餵給 AI」＝把內容交給 ChatGPT 這類工具。）</p>
+    <p class="intro"><b>你還是可以合法用 AI，這頁教你怎麼用得安心。</b>給政大師生的實用指引：搞懂「從資料庫下載的文章，能不能交給 AI 摘要、翻譯或改寫」，往下可查條款、跑決策流程、看法律依據。</p>
+    <div class="tldr">
+      <div class="tldr-h">一分鐘結論</div>
+      <ul>
+        <li><span class="tag ok">可以</span>用資料庫「內建」的 AI（如 Scopus AI、JSTOR，本館另有專頁）、你自己寫的東西、公共領域或開放取用內容。</li>
+        <li><span class="tag cond">要小心</span>把訂閱文章「全文」貼給外部 AI（ChatGPT 等）——多半違反資料庫條款；先查條款，或只貼重點、自己的筆記。</li>
+        <li><span class="tag ban">別做</span>用爬蟲／機器人大量下載全文（19 個資料庫幾乎都禁止），或把盜版、來源不明的檔案餵 AI。</li>
+        <li><span class="tag info">想確認</span>自己的情況？拉到最底的<a href="#ai-flow">自我檢測</a>，選一選就知道。</li>
+      </ul>
+    </div>
     <p class="lede">同一個資料庫，能不能「大量下載」、能不能做「文字探勘（TDM）」、能不能把內容「交給外部生成式 AI／RAG」，往往分屬三套規定。這張表把 19 個常用學術與新聞資料庫的公開條款拆成這三欄，讓你先看結論、再看原文。</p>
 
     <div class="summary" aria-label="三種情境總覽">
@@ -589,75 +640,24 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       </div>
     </div>
 
-    <p class="subhead">各國怎麼管「拿資料餵 AI」？（2026）</p>
-    <p class="subnote">先解釋一個一直出現的詞——<b>文字探勘（TDM，Text and Data Mining）</b>：讓電腦一次讀大量文獻、自動抓取分析，而不是一篇篇人工讀。重點來了：各國的 AI／TDM 例外多半是給「訓練、分析」用的，<b>不是</b>給「幫我把這篇讀懂」用的，而且都擋不住你跟資料庫簽的合約。港、中、台各是不同法域，判決不能互相套。</p>
-    <div class="jmap">
-      <div class="jblock">
-        <h4>台灣</h4>
-        <div class="st">著作權法未修 TDM · AI 基本法 2025/12/23 三讀</div>
-        <ul>
-          <li><b>上傳＝重製：</b>以演算法利用他人著作「學習」可能涉及重製（§3），除合理使用外須取得授權（TIPO 函釋見解）。</li>
-          <li><b>合理使用四要件（§65）：</b>目的（商業/非營利教育）、著作性質、質量與比例、市場影響，逐案審酌。</li>
-          <li><b>沒有明文 TDM 豁免：</b>不像日本 §30-4，仍回到 §65 個案判斷；TIPO 表示將提出接軌國際的指引。</li>
-          <li><b>AI 基本法（2025/12/23 三讀通過）：</b>屬框架法（母法），以人為本、中央主管機關為國科會；不創設著作權豁免，也不授權上傳。</li>
-        </ul>
-        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
-          <a href="https://www.is-law.com/evaluation-of-generative-ai-models-accessing-creative-commons-resources-through-fair-use-guidelines/" target="_blank" rel="noreferrer">益思（TIPO 函釋/§65）↗</a>
-          <a href="https://www.leeandli.com/TW/Newsletters/7218.htm" target="_blank" rel="noreferrer">理律 ↗</a>
-          <a href="https://moda.gov.tw/press/press-releases/18316" target="_blank" rel="noreferrer">數發部 · AI 基本法三讀 ↗</a>
-        </div>
-      </div>
-      <div class="jblock">
-        <h4>香港</h4>
-        <div class="st">版權條例 · TDM 修法進行中</div>
-        <ul>
-          <li><b>公眾諮詢：</b>政府 2024/7–2025/2 就「著作權與 AI」諮詢，2025/2 發表報告提出修法方向。</li>
-          <li><b>將引入 TDM 例外：</b>商業與非商業皆可，但須通過「三步測試」——合法近用、不留侵權複製、保存紀錄。</li>
-          <li><b>搭配 opt-out：</b>權利人可用「機器可讀訊號」明確保留權利，排除著作被用於 AI 訓練。</li>
-        </ul>
-        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
-          <a href="http://www.ipd.gov.hk/en/copyright/current-topics/public-consultation-on-copyright-and-artificial/index.html" target="_blank" rel="noreferrer">香港知識產權署 · 公眾諮詢 ↗</a>
-          <a href="https://www.legco.gov.hk/yr2025/english/panels/ci/papers/ci20250218cb2-240-4-e.pdf" target="_blank" rel="noreferrer">立法會文件（2025/2）↗</a>
-        </div>
-      </div>
-      <div class="jblock">
-        <h4>中國大陸</h4>
-        <div class="st">法院個案 · 與港、台不同法域</div>
-        <ul>
-          <li><b>服務商責任：</b>2024/2 廣州互聯網法院判一家生成式 AI 服務商「構成著作權侵權」須負責，顯示服務商對輸出內容的侵權風險。</li>
-          <li><b>輸出可受保護：</b>2023/11 北京互聯網法院於個案認定 AI 生成內容「可」受著作權保護（見下方「AI 生成算誰的」）。</li>
-          <li><b>提醒：</b>中國大陸、香港、台灣各為不同法域，判決不能互相援用。</li>
-        </ul>
-        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
-          <a href="https://techinsights.linklaters.com/post/102j4cb/china-first-ai-output-copyright-infringement-case" target="_blank" rel="noreferrer">Linklaters（廣州案）↗</a>
-        </div>
-      </div>
-      <div class="jblock">
-        <h4>歐盟</h4>
-        <div class="st">DSM 指令 2019/790 · EU AI Act</div>
-        <ul>
-          <li><b>DSM 第 3 條：</b>非商業學術研究之 TDM，權利人不可退出。</li>
-          <li><b>DSM 第 4 條：</b>一般 TDM，權利人可保留／退出——出版社普遍已保留（Springer、Elsevier 明文依第 4 條第 3 款保留 TDM 與 AI 權利）。</li>
-          <li><b>AI Act：</b>GPAI 透明度與著作權義務分階段生效，但管的是 AI「提供者」，非個別讀者。</li>
-        </ul>
-        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
-          <a href="https://iknow.stpi.niar.org.tw/post/Read.aspx?PostID=21730" target="_blank" rel="noreferrer">科技產業資訊室 iKnow ↗</a>
-        </div>
-      </div>
-      <div class="jblock">
-        <h4>日本</h4>
-        <div class="st">著作權法 §30-4</div>
-        <ul>
-          <li><b>§30-4：</b>對「非享受」著作表達的目的（分析、訓練）有較寬的 TDM 豁免。</li>
-          <li><b>關鍵限制：</b>「幫我摘要好讀懂內容」屬於「享受」內容本身，落在 §30-4 之外。</li>
-          <li><b>趨勢收緊：</b>報業協會 2025 年底要求政府把新聞網站的「拒絕表示」法制化，對 RAG 施壓。</li>
-        </ul>
-        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
-          <a href="https://www.is-law.com/evaluation-of-generative-ai-models-accessing-creative-commons-resources-through-fair-use-guidelines/" target="_blank" rel="noreferrer">益思（§30-4）↗</a>
-          <a href="https://iknow.stpi.niar.org.tw/post/Read.aspx?PostID=21730" target="_blank" rel="noreferrer">iKnow ↗</a>
-        </div>
-      </div>
+    <p class="subhead">各地對照：法律怎麼管、圖書館怎麼把資料開放給 AI</p>
+    <p class="subnote">先解釋常出現的詞——<b>文字探勘（TDM）</b>：讓電腦一次讀大量文獻、自動抓取分析。下表左邊是「法律怎麼管『拿資料餵 AI』」；右邊換個角度，看<b>擁有資料的單位（圖書館、檔案館）怎麼讓自家館藏更容易被 AI 找到、用到</b>——也就是主動把館藏做成開放資料集、API，或餵給 AI 模型（業界叫「Collections as Data，把館藏當資料開放」）。</p>
+    <div class="cmp">
+      <table>
+        <thead><tr><th>地區</th><th>法律：能不能拿資料餵 AI</th><th>資料擁有者怎麼讓自家資料被 AI 用到</th></tr></thead>
+        <tbody>
+          <tr><th>台灣</th><td>沒有專門給 AI／TDM 的例外，要回到「合理使用」個案判斷，不確定性高；AI 基本法（2025/12 三讀）只定原則，沒有放寬著作權。</td><td>國家圖書館、政大等機構典藏持續數位化、走開放取用；但把館藏整理成「AI 可直接取用的開放資料集」規模仍在起步。</td></tr>
+          <tr><th>美國</th><td>也沒有專門例外，靠「合理使用（fair use）」；法院見解：<em>合法買來</em>的內容拿去訓練也許可以，盜版取得不行。</td><td>哈佛「Institutional Data Initiative」釋出 Institutional Books（3.94 億頁）讓館藏「可被 AI 直接用」；HathiTrust 開放全文特徵資料集供運算研究；國會圖書館推「Collections as Data」。</td></tr>
+          <tr><th>英國</th><td>只有「非商業研究」能做 TDM（§29A）；2025 本想開放到商業用途（讓權利人可退出），因創作界反彈而喊停。</td><td>大英圖書館把數位館藏做成「Collections as Data」開放資料集釋出；蘇格蘭國圖發布 AI 使用聲明。</td></tr>
+          <tr><th>歐盟</th><td>研究用途 TDM 開放（權利人不能拒絕）；一般用途也可做，但權利人能事先聲明「不給用（opt-out）」，出版社大多已聲明。</td><td>法國國圖（Gallica）、荷蘭 KB、挪威國圖 AI-Lab、Europeana 等，把館藏做成 API／開放資料集，方便 AI 檢索與研究。</td></tr>
+          <tr><th>日本</th><td>例外最寬——為「分析、訓練」等目的可用他人作品（§30-4）；但「幫我把這篇讀懂」不算，仍要授權。</td><td>國會圖書館（NDL）把版權過期館藏做成全文 AI 檢索，並開源訓練資料集與 OCR 模型（CC BY）。</td></tr>
+          <tr><th>韓國</th><td>想修法給 TDM 例外，但草案（2021 起）一直沒過；政府 2023 指引鼓勵先取得授權、並讓權利人可退出。</td><td>國家圖書館建置「AI 訓練資料集」（版權已清）餵給國家級 LLM；推「Library+」平台與 AI agent。</td></tr>
+          <tr><th>中國</th><td>法律沒明講 TDM；2023 起要求生成式 AI 服務要守著作權；法院判決不一（北京可受保護、廣州服務商侵權）。</td><td>國家級「開放資料集／餵 AI」的公開資訊有限，這裡先不臆測。</td></tr>
+          <tr><th>港／澳</th><td>香港正研議開放 TDM（須合法取得、可讓權利人退出），還在諮詢。澳門相關規範公開資訊少。</td><td>香港部分館藏數位化與開放資料仍在發展；澳門公開資訊少。</td></tr>
+        </tbody>
+      </table>
     </div>
+    <p class="subnote" style="margin-top:12px">提醒：台、港、中、澳各為不同法域，判決與規範不能互相套用；上表為概況，個案仍須依當地法律與最新進度確認。出處見文末「各地法規與圖書館開放資料」。</p>
 
     <p class="subhead">台灣官方指引怎麼說</p>
     <p class="subnote">數位發展部《公部門人工智慧應用參考手冊》（2026/1）與國科會《行政院及所屬機關（構）使用生成式 AI 參考指引》（2023/10）雖是寫給政府機關，但這些原則對校園師生一體適用，也正好替本頁的提醒背書。</p>
@@ -676,7 +676,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       </div>
     </div>
 
-    <p class="subhead">另一個問題：AI 生成的東西，著作權算誰的？</p>
+    <details class="foldsec"><summary>另一個問題：AI 生成的東西，著作權算誰的？</summary>
     <p class="subnote">前面談的是「輸入端」（能不能拿內容餵 AI）；這裡是「輸出端」——AI 幫你生成、翻譯或改寫的成果，能不能受保護、又算誰的。各法域立場不一，這對「你能否主張權利」很關鍵。境外法制僅供參考，在台灣仍以我國著作權法與智財局見解為準。</p>
     <div class="owns">
       <div class="jblock">
@@ -727,7 +727,9 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       </div>
     </div>
 
-    <p class="subhead">換個角度：保護你自己的著作不被 AI 訓練</p>
+    </details>
+
+    <details class="foldsec"><summary>換個角度：保護你自己的著作不被 AI 訓練</summary>
     <p class="subnote">如果你是作者或老師，想避免自己的論文、講義、作品被 AI 擷取或訓練，可以從這幾個方向著手。</p>
     <div class="safelist">
       <div class="q"><span class="n">A</span><div><h3>圖片／藝術作品</h3><p>用 Glaze（防護，讓風格難被模仿）或 Nightshade（反制，把圖變成「毒樣本」干擾訓練）——皆為芝加哥大學開發。<a class="law" href="https://glaze.cs.uchicago.edu/" target="_blank" rel="noreferrer" style="text-decoration:none">Glaze ↗</a> <a class="law" href="https://nightshade.cs.uchicago.edu/whatis.html" target="_blank" rel="noreferrer" style="text-decoration:none">Nightshade ↗</a></p></div></div>
@@ -736,7 +738,9 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       <div class="q"><span class="n">D</span><div><h3>追蹤授權動向</h3><p>用 Ithaka S+R 的「Generative AI Licensing Agreement Tracker」查各出版社是否已簽 AI 授權。<a class="law" href="https://sr.ithaka.org/our-work/generative-ai-licensing-agreement-tracker/" target="_blank" rel="noreferrer" style="text-decoration:none">Ithaka Tracker ↗</a></p></div></div>
     </div>
 
-        <p class="subhead">學術出版社怎麼跟外部 AI（GPT、Perplexity…）洽談</p>
+        </details>
+
+    <details class="foldsec"><summary>出版社怎麼跟外部 AI 洽談、還有 MCP（想深入再點開）</summary>
     <p class="subnote">資料庫<b>自家平台內建</b>的 AI 工具（像 Scopus AI、JSTOR 的工具），本館另有專頁整理 →&nbsp;<a href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:600;text-decoration:none">NCCU 圖書館 · 資料庫 AI 功能 ↗</a>。這裡談的是另一件事：出版社怎麼跟<b>消費級 AI 平台</b>談合作。大致兩種模式。</p>
     <div class="owns">
       <div class="jblock">
@@ -773,34 +777,46 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       <div class="oh"><span class="obadge">學術界首例</span><strong>Wiley × Perplexity（2025）</strong></div>
       <ol>
         <li>Wiley 把它的 <b>STM（科學／技術／醫學）教材</b>接進 Perplexity 的 answer engine。</li>
-        <li>學生和教師可以<b>透過 Perplexity 直接用到學校已購買的 Wiley 內容</b>，回答會附引用、可回溯來源。</li>
-        <li>由校方管理員向 Wiley 業務開通這個連接；被 Wiley 與 Perplexity 稱為學術出版界的「first-of-its-kind」。</li>
+        <li>學生和教師可以<b>透過 Perplexity 直接用到學校已購買的 Wiley 內容</b>（護理、商業、工程等領域），回答會附引用、可回溯來源。</li>
+        <li>透過學校訂閱的 <b>Perplexity Enterprise Pro</b> 取用；Wiley 是 Perplexity 的「<b>首個教育夥伴</b>」（2025/5 宣布），試辦學校含 Texas A&amp;M、Texas State 等。</li>
         <li><b>對照組：</b>規模較小的出版社談不動個別合約，於是有「集體授權」在發展——如美國 Copyright Clearance Center（CCC）的 AI 授權方案、英國 CLA。</li>
       </ol>
       <div class="osrc"><span class="sl">官方出處</span>
         <a href="https://www.perplexity.ai/hub/blog/perplexity-partners-with-wiley-to-power-educational-ai-search" target="_blank" rel="noreferrer">Perplexity 官方部落格 ↗</a>
-        <a href="https://www.wiley.com/en-us/solutions-partnerships/academic-institutions/instructors-administrators/perplexity/" target="_blank" rel="noreferrer">Wiley 官方 · Perplexity ↗</a>
+        <a href="https://newsroom.wiley.com/press-releases/press-release-details/2025/Wiley-and-Perplexity-Announce-New-AI-Search-Partnership/default.aspx" target="_blank" rel="noreferrer">Wiley 官方新聞稿 ↗</a>
         <a href="https://www.amediaoperator.com/analysis/collective-licensing-ai-pls-cla-copyright/" target="_blank" rel="noreferrer">集體授權（CCC／CLA）↗</a>
       </div>
     </div>
 
-    <p class="subhead">各國圖書館也在動：以日本為例</p>
-    <p class="subnote">你可能聽過「日本很多資料 AI 都找得到」——這跟日本較寬的著作權法（§30-4，見上面各國比較）＋國會圖書館的主動數位化有關。</p>
-    <div class="owns" style="grid-template-columns:1fr">
+    <p class="subhead">最新：用 MCP 把資料庫「直接接上」AI</p>
+    <p class="subnote">2025 下半年開始出現的新做法。<b>MCP（Model Context Protocol，模型情境協定）</b>是 Anthropic 提出、現在 OpenAI／Google／微軟都支援的開放標準（已交由 Linux Foundation 維護），可以想成「AI 的 USB-C」：讓 ChatGPT、Claude 這類 AI <b>直接連上</b>出版社的伺服器、即時取用同儕審查過的全文並附引用，比你自己貼 PDF、或叫 AI 上網搜尋都更直接、更可靠。</p>
+    <div class="owns">
       <div class="jblock">
-        <h4>日本國會圖書館（NDL）</h4>
-        <div class="st">次世代デジタルライブラリー · 開放資料集</div>
+        <h4>誰在做、怎麼接</h4>
         <ul>
-          <li>把<b>著作權已過期</b>的數位館藏做成「次世代デジタルライブラリー」：全文 AI 檢索、自動圖像／插圖檢索、古籍 AI-OCR。</li>
-          <li>還把訓練用的<b>資料集與 OCR 模型開源</b>（CC BY），讓大量日文舊資料變得「AI 找得到、也能拿來分析」。</li>
-          <li>撐起這件事的，正是日本較寬的著作權法 §30-4；相對地，台灣沒有這種明文豁免，公共領域數位化與開放的步調也較保守。</li>
+          <li><b>Wiley</b> 推出「Scholar Gateway／AI Gateway」MCP 伺服器（2025/10，與 Anthropic 合作），可接約 300 萬篇文章，支援 Claude、Perplexity、Mistral。</li>
+          <li><b>Scite.ai</b> MCP（2026/3）接 16 億條「智慧引文」；<b>Statista</b> 也有；平台商 Silverchair 用「Discovery Bridge」讓更多出版社快速上線。</li>
+          <li><b>怎麼接：</b>出版社架一台「MCP 伺服器」，你在 Claude／ChatGPT 裡把它加成「連接器」，AI 就能直接搜尋、取全文，回答會標出處。</li>
         </ul>
-        <div class="srcrow" style="margin-top:12px"><span class="sl">官方出處</span>
-          <a href="https://lab.ndl.go.jp/dl/" target="_blank" rel="noreferrer">NDL 官方 · 次世代デジタルライブラリー ↗</a>
-          <a href="https://github.com/ndl-lab" target="_blank" rel="noreferrer">NDL 官方開源（GitHub）↗</a>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
+          <a href="https://newsroom.wiley.com/press-releases/press-release-details/2025/Wiley-Partners-with-Anthropic-to-Accelerate-Responsible-AI-Integration-Across-Scholarly-Research/default.aspx" target="_blank" rel="noreferrer">Wiley 官方新聞稿 ↗</a>
+          <a href="https://www.silverchair.com/news/mcp-101/" target="_blank" rel="noreferrer">Silverchair（MCP 導讀）↗</a>
+        </div>
+      </div>
+      <div class="jblock">
+        <h4>會收費嗎？要注意什麼</h4>
+        <ul>
+          <li><b>收費：</b>目前兩種——多數<b>透過機構既有訂閱</b>使用（學校有訂就能接），也有的<b>按使用次數計費（pay-per-event）</b>。整體仍在早期、定價未定型。</li>
+          <li><b>風險：</b>MCP 伺服器方<b>看得到你的查詢</b>；也有 prompt injection 等資安疑慮；多數仍是 beta。</li>
+          <li><b>對圖書館的意義：</b>「哪些資料庫有官方 MCP、怎麼授權計費」會變成採購與讀者服務的新題目。</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
+          <a href="https://aarontay.substack.com/p/mcp-servers-and-academic-search-the" target="_blank" rel="noreferrer">Aaron Tay（MCP 與學術搜尋分析）↗</a>
         </div>
       </div>
     </div>
+
+    </details>
 
     <p class="subhead">比較安全的做法</p>
     <p class="subnote">現實層面：就目前公開資訊，尚少見到因個人研讀而把單篇 PDF 貼進 AI 就被追訴的案例，個人非商業研究也有主張合理使用的空間；但「少見被訴」不等於「明確合法」，而且合約的違反、與著作權能否主張合理使用，是兩回事。</p>
@@ -813,6 +829,21 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       <div class="q"><span class="n">6</span><div><h3>上傳前先停一下</h3><p>按下夾檔前，先確認是否涉及著作權、隱私或機密。<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">數發部手冊 ↗</a></p></div></div>
     </div>
 
+    <details class="foldsec"><summary>名詞小辭典（看到不懂的詞就點開）</summary>
+      <dl class="gloss">
+        <dt>文字探勘（TDM）</dt><dd>讓電腦一次讀大量文獻、自動抓取分析，不是一篇篇人工讀。</dd>
+        <dt>合理使用（fair use）</dt><dd>著作權法允許在特定情況下不經授權而利用他人作品；台灣看四要件、逐案判斷，不保證成立。</dd>
+        <dt>重製</dt><dd>把作品複製一份（含上傳到伺服器）；是不是侵權，另看有沒有授權或合理使用。</dd>
+        <dt>改作</dt><dd>把作品「再創作」成新版本，例如翻譯、改寫；是著作人的專有權利。</dd>
+        <dt>RAG（檢索增強生成）</dt><dd>AI 先去「找資料」再據以回答，答案通常附出處，比純靠記憶更不容易亂編。</dd>
+        <dt>MCP（模型情境協定）</dt><dd>讓 AI 直接「接上」某個資料源的開放標準，像「AI 的 USB-C」。</dd>
+        <dt>opt-out（退出／保留權利）</dt><dd>權利人事先聲明「我的作品不給 AI 用」。</dd>
+        <dt>answer engine（答案引擎）</dt><dd>像 Perplexity 那種「直接給答案＋附出處」的 AI 搜尋。</dd>
+        <dt>開放取用（OA）／CC 授權</dt><dd>作者以較寬鬆的授權公開作品；仍要看是哪一種 CC（NC 禁商用、ND 禁改作）。</dd>
+        <dt>公共領域</dt><dd>著作財產權已消滅、任何人都可自由利用的作品。</dd>
+      </dl>
+    </details>
+
     <details class="refs">
       <summary>完整資料出處</summary>
       <div class="refgroup">
@@ -824,6 +855,19 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
           <a href="https://www.hklaw.com/en/insights/publications/2026/05/major-publishers-challenge-ai-training-practices" target="_blank" rel="noreferrer">Holland &amp; Knight — Elsevier 等 v. Meta 分析 ↗</a>
           <a href="https://www.hklaw.com/en/insights/publications/2026/03/the-final-word-supreme-court-refuses-to-hear-case-on-ai-authorship" target="_blank" rel="noreferrer">Holland &amp; Knight — Thaler v. Perlmutter（最高法院拒審）↗</a>
           <a href="https://www.finnegan.com/en/insights/ip-updates/supreme-court-declines-to-hear-thaler-v-perlmutter-leaving-human-authorship-requirement-intact.html" target="_blank" rel="noreferrer">Finnegan — Thaler v. Perlmutter ↗</a>
+        </div>
+      </div>
+      <div class="refgroup">
+        <h5>各地法規與圖書館開放資料（法律怎麼管 vs 資料怎麼開放給 AI）</h5>
+        <div class="reflist">
+          <a href="https://www.techpolicy.press/ai-training-and-copyright-infringement-solutions-from-asia/" target="_blank" rel="noreferrer">TechPolicy.Press — 韓國等亞洲 TDM 立法 ↗</a>
+          <a href="https://asiaiplaw.com/article/south-korea-issues-guidance-on-copyright-and-ai-training-data" target="_blank" rel="noreferrer">Asia IP — 韓國 2026 AI 著作權指引 ↗</a>
+          <a href="https://arxiv.org/html/2502.15858v2" target="_blank" rel="noreferrer">arXiv — 生成式 AI 訓練與著作權（美/中/各國綜述）↗</a>
+          <a href="https://openhumanitiesdata.metajnl.com/articles/10.5334/johd.263" target="_blank" rel="noreferrer">Journal of Open Humanities Data — 館藏開放資料與 AI（含蘇格蘭/荷蘭國圖、Europeana）↗</a>
+          <a href="https://tech.yahoo.com/ai/articles/ai-chatbots-more-books-learn-130607809.html" target="_blank" rel="noreferrer">AP — 哈佛 Institutional Books：讓館藏「AI-ready」↗</a>
+          <a href="https://www.bl.uk/stories/blogs/posts/ai-and-machine-learning-with-british-library-collections" target="_blank" rel="noreferrer">大英圖書館 — Collections as Data ↗</a>
+          <a href="https://labs.loc.gov/" target="_blank" rel="noreferrer">美國國會圖書館 LC Labs ↗</a>
+          <a href="https://www.ajupress.com/view/20260204091870703" target="_blank" rel="noreferrer">韓國國家圖書館 — 2026 AI 工作計畫 ↗</a>
         </div>
       </div>
       <div class="refgroup">
@@ -848,7 +892,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
         <h5>出版社與外部 AI 的合作</h5>
         <div class="reflist">
           <a href="https://www.perplexity.ai/hub/blog/perplexity-partners-with-wiley-to-power-educational-ai-search" target="_blank" rel="noreferrer">Perplexity 官方 — 與 Wiley 合作 ↗</a>
-          <a href="https://www.wiley.com/en-us/solutions-partnerships/academic-institutions/instructors-administrators/perplexity/" target="_blank" rel="noreferrer">Wiley 官方 — Perplexity 整合 ↗</a>
+          <a href="https://newsroom.wiley.com/press-releases/press-release-details/2025/Wiley-and-Perplexity-Announce-New-AI-Search-Partnership/default.aspx" target="_blank" rel="noreferrer">Wiley 官方新聞稿 — 與 Perplexity 合作 ↗</a>
           <a href="https://digiday.com/media/a-timeline-of-the-major-deals-between-publishers-and-ai-tech-companies-in-2025/" target="_blank" rel="noreferrer">Digiday — 出版社 × AI 交易時間軸 ↗</a>
           <a href="https://www.bloomberg.com/news/articles/2025-06-10/academic-publishers-sign-ai-deals-as-trump-cuts-research-funding" target="_blank" rel="noreferrer">Bloomberg — 學術出版社 AI 授權 ↗</a>
           <a href="https://llmpulse.ai/blog/perplexity-publishers-program/" target="_blank" rel="noreferrer">Perplexity 出版商計畫解析 ↗</a>
@@ -871,7 +915,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
 
     <div class="legaldisc">
       <span class="i">!</span>
-      <p><b>這是資訊整理，不是法律意見。</b>本頁為推廣教育目的所作的整理，非律師意見，<b>也不對任何特定利用是否合法、是否構成合理使用作出保證或背書</b>；著作權與合理使用均須依個案事實逐案判斷，且此領域變動極快（查核日 2026-07-31）。牽涉 NCCU 正式政策或採購授權，請再與館內、研發處或校方法務確認具體合約，必要時洽詢專業律師。</p>
+      <p><b>這是資訊整理，不是法律意見。</b>本頁為推廣教育目的所作的整理，非律師意見，<b>也不對任何特定利用是否合法、是否構成合理使用作出保證或背書</b>；著作權與合理使用均須依個案事實逐案判斷，且此領域變動極快（查核日 2026-08-04）。牽涉 NCCU 正式政策或採購授權，請再與館內、研發處或校方法務確認具體合約，必要時洽詢專業律師。</p>
     </div>
   </section>
   <section class="section wrap" id="ai-flow">
@@ -903,7 +947,7 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
     </div>
     <div>
       <h3>資料來源與查核</h3>
-      <p class="meta">最後查核：2026-07-31</p>
+      <p class="meta">最後查核：2026-08-04</p>
       <p>各資料庫以其官方條款頁為主要依據。本次已逐一比對 ACM、Cambridge、EBSCO、Elsevier、IEEE、JSTOR、Oxford Academic、ProQuest、SAGE、Springer&nbsp;Nature、Taylor&nbsp;&amp;&nbsp;Francis、Wiley 的現行條款與出處連結。DBpia、CNKI、JapanKnowledge、日經、朝日、Airiti 等平台多有登入牆，以彙整當下的官方條款為準。</p>
       <p class="meta" style="margin-top:14px">National Chengchi University Library<br>推廣諮詢組</p>
     </div>
@@ -1293,7 +1337,7 @@ const STLV={ok:"可以 / 風險低",amber:"留意 / 有條件",blue:"先確認 /
       `</div></div>`;
   }
   function draw(){
-    let html=`<p class="st-intro">選一選你的情況，下面就會<b>即時</b>給出建議——不用一直點下去、也不用從頭來過。</p>`;
+    let html=`<p class="st-intro">選一選你的情況，下面就會<b>即時</b>出現對應的建議。</p>`;
     html+=group("src","① 你要上傳的內容，是哪來的？",ST.src);
     if(sel.src==="db") html+=group("tool","② 你打算用哪一種 AI 工具？",ST.tool);
     if(sel.src==="db"&&sel.tool==="inst") html+=group("use","③ 你要 AI 幫你做什麼？",ST.use);
