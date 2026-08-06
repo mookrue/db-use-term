@@ -78,7 +78,7 @@ a{color:inherit;}
   letter-spacing:.14em;color:var(--accent);text-transform:uppercase;}
 .hero h1{margin:16px 0 18px;font-size:clamp(34px,5.2vw,58px);line-height:1.14;font-weight:900;}
 .hero h1 em{font-style:normal;color:var(--accent);}
-.hero p.lede{max-width:640px;margin:0;color:var(--ink-soft);font-size:clamp(16px,1.6vw,18px);}
+.lede{max-width:640px;margin:0;color:var(--ink-soft);font-size:clamp(16px,1.6vw,18px);}
 
 .intro{max-width:680px;margin:16px 0 0;font-size:clamp(16px,1.9vw,20px);font-weight:600;
   color:var(--ink);line-height:1.62;}
@@ -384,6 +384,14 @@ a{color:inherit;}
 
 
 
+
+/* ---------- AI use disclosure ---------- */
+.aidisc{max-width:var(--max);margin:8px auto 0;padding:20px 24px 4px;}
+.aidisc-h{font-family:"Noto Serif TC",serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:8px;
+  display:inline-block;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:5px 12px;}
+.aidisc p{font-size:12.5px;line-height:1.75;color:#aeb8c6;max-width:900px;margin:12px 0 0;}
+.aidisc strong{color:#e7ecf3;}
+
 /* ---------- hero caption / tldr / glossary ---------- */
 .hcap{margin:10px 0 0;font-size:13px;color:var(--muted);line-height:1.6;max-width:680px;}
 .tldr{margin:20px 0 4px;border:1px solid var(--line-strong);border-left:4px solid var(--accent);border-radius:12px;background:var(--card);padding:16px 20px 17px;max-width:730px;}
@@ -420,7 +428,7 @@ a{color:inherit;}
 .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0;}
 
 /* ---------- footer ---------- */
-footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
+footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
 .foot{max-width:var(--max);margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;}
 .foot h3{color:#fff;font-size:15px;margin:0 0 10px;font-family:"Noto Sans TC",sans-serif;font-weight:700;}
 .foot p{margin:0 0 8px;font-size:13px;line-height:1.75;}
@@ -458,9 +466,9 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
 <header class="topbar">
   <a class="brand" href="#top"><span class="mk">政</span>避免侵權的資料庫使用方式</a>
   <nav aria-label="頁面導覽">
+    <a href="#ai-flow">自我檢測</a>
     <a href="#matrix">查條款</a>
     <a href="#ai-copyright">法律依據</a>
-    <a href="#ai-flow">自我檢測</a>
     <a href="#about">關於</a>
   </nav>
 </header>
@@ -477,9 +485,30 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
         <li><span class="tag ok">可以</span>用資料庫「內建」的 AI（如 Scopus AI、JSTOR，本館另有專頁）、你自己寫的東西、公共領域或開放取用內容。</li>
         <li><span class="tag cond">要小心</span>把訂閱文章「全文」貼給外部 AI（ChatGPT 等）——多半違反資料庫條款；先查條款，或只貼重點、自己的筆記。</li>
         <li><span class="tag ban">別做</span>用爬蟲／機器人大量下載全文（19 個資料庫幾乎都禁止），或把盜版、來源不明的檔案餵 AI。</li>
-        <li><span class="tag info">想確認</span>自己的情況？拉到最底的<a href="#ai-flow">自我檢測</a>，選一選就知道。</li>
+        <li><span class="tag info">想確認</span>自己的情況？下面的<a href="#ai-flow">自我檢測</a>，選一選就知道。</li>
       </ul>
     </div>
+
+  </section>
+
+  <section class="section wrap" id="ai-flow">
+    <div class="shead">
+      <div>
+        <div class="kick">Self-check</div>
+        <h2>自我檢測：能不能上傳給 AI？</h2>
+      </div>
+      <p>先給你一個快速自我檢測：選一選你的情況，馬上出建議；想看依據，往下都有完整說明。</p>
+    </div>
+    <div class="flow">
+      <div class="flowtop">
+        <span class="ft">SELF-CHECK</span>
+        <span class="fstep" id="flowstep"></span>
+      </div>
+      <div class="flowbody" id="flowbody"></div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="overview">
     <p class="lede">同一個資料庫，能不能「大量下載」、能不能做「文字探勘（TDM）」、能不能把內容「交給外部生成式 AI／RAG」，往往分屬三套規定。這張表把 19 個常用學術與新聞資料庫的公開條款拆成這三欄，讓你先看結論、再看原文。</p>
 
     <div class="summary" aria-label="三種情境總覽">
@@ -918,22 +947,6 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       <p><b>這是資訊整理，不是法律意見。</b>本頁為推廣教育目的所作的整理，非律師意見，<b>也不對任何特定利用是否合法、是否構成合理使用作出保證或背書</b>；著作權與合理使用均須依個案事實逐案判斷，且此領域變動極快（查核日 2026-08-04）。牽涉 NCCU 正式政策或採購授權，請再與館內、研發處或校方法務確認具體合約，必要時洽詢專業律師。</p>
     </div>
   </section>
-  <section class="section wrap" id="ai-flow">
-    <div class="shead">
-      <div>
-        <div class="kick">Self-check</div>
-        <h2>自我檢測：能不能上傳給 AI？</h2>
-      </div>
-      <p>看完上面之後，用這個小測驗檢查你自己的情況：選一選，馬上出建議。</p>
-    </div>
-    <div class="flow">
-      <div class="flowtop">
-        <span class="ft">SELF-CHECK</span>
-        <span class="fstep" id="flowstep"></span>
-      </div>
-      <div class="flowbody" id="flowbody"></div>
-    </div>
-  </section>
 
 </main>
 
@@ -951,6 +964,10 @@ footer{margin-top:64px;background:#15201c;color:#cdd6d1;}
       <p>各資料庫以其官方條款頁為主要依據。本次已逐一比對 ACM、Cambridge、EBSCO、Elsevier、IEEE、JSTOR、Oxford Academic、ProQuest、SAGE、Springer&nbsp;Nature、Taylor&nbsp;&amp;&nbsp;Francis、Wiley 的現行條款與出處連結。DBpia、CNKI、JapanKnowledge、日經、朝日、Airiti 等平台多有登入牆，以彙整當下的官方條款為準。</p>
       <p class="meta" style="margin-top:14px">National Chengchi University Library<br>推廣諮詢組</p>
     </div>
+  </div>
+  <div class="aidisc wrap">
+    <div class="aidisc-h">AI 使用揭露 — 本頁即為示範</div>
+    <p>本網頁由<strong>政大圖書館館員</strong>與生成式 AI（<strong>Claude Opus 4.8</strong>，Anthropic）協作完成：由館員設定需求與架構、查證所有法規與案件出處、審訂全部內容；AI 協助草擬與潤飾文字、整理資料、撰寫程式與版面。所有法律陳述以官方或權威法律來源為準，屬資訊整理、非法律意見。此段同時作為「<strong>如何揭露 AI 使用</strong>」的實際範例——揭露用了哪個工具、AI 做了什麼、以及人如何把關與負責。</p>
   </div>
 </footer>
 
@@ -1319,7 +1336,7 @@ function stVerdict(s){
   if(s.tool==="builtin") return R("ok","最推薦——用資料庫自己的 AI","像 Scopus AI、ScienceDirect Reading Assistant、JSTOR 的 AI 工具，是出版社自己做、已經授權的，內容不會外流到別家公司，還會附出處。","直接用這些內建功能，別把 PDF 貼到別的地方。");
   if(s.tool==="free") return R("red","風險最高——別把全文丟進免費 AI","把整篇訂閱文章貼進「可能保留、還拿去訓練」的免費工具，等於一次全文重製＋交給第三方，多半也違反資料庫條款。","換成不訓練/不保留的工具、或資料庫內建 AI，或只貼重點。");
   if(!s.use) return null;
-  if(s.use==="read") return R("amber","大致可以，但先確認條款","用不訓練/不保留的機構工具、只為自己讀懂，是比較站得住腳的一端。但「上傳全文」仍算一次重製，也要先確認這個資料庫沒禁止外部 AI（回上面「查條款」看看）。","確認來源和工具都合規；摘要別逐字照抄原文。");
+  if(s.use==="read") return R("amber","大致可以，但先確認條款","用不訓練/不保留的機構工具、只為自己讀懂，是比較站得住腳的一端。但「上傳全文」仍算一次重製，也要先確認這個資料庫沒禁止外部 AI（往下的「查條款」可以查）。","確認來源和工具都合規；摘要別逐字照抄原文。");
   if(s.use==="translate") return R("amber","翻譯：自己看可以，要分享得授權","翻譯在著作權法算「改作」。自己看有空間，但一旦分享或發表，通常要授權。","控制份量、別當成原文的替代品；要散布先取得授權。");
   return R("blue","改寫又要分享＝需要授權","改寫是「改作」，做出來的是衍生著作；只要對外分享、發表或商業使用，通常需要著作權人授權。","改成「引用＋自己寫」，或先取得授權。");
 }
