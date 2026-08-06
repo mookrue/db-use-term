@@ -70,6 +70,9 @@ a{color:inherit;}
 .topbar nav{display:flex;gap:22px;font-size:14px;font-weight:500;}
 .topbar nav a{text-decoration:none;color:var(--ink-soft);}
 .topbar nav a:hover{color:var(--accent);}
+.topbar nav a.lang{border:1px solid var(--line-strong);border-radius:6px;padding:3px 9px;font-size:12px;font-weight:600;color:var(--accent);}
+.topbar nav a.lang:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
 
 /* ---------- hero ---------- */
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px;}
@@ -470,6 +473,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
     <a href="#matrix">查條款</a>
     <a href="#ai-copyright">法律依據</a>
     <a href="#about">關於</a>
+    <a class="lang" href="en.html" aria-label="English version">EN</a>
   </nav>
 </header>
 
@@ -669,6 +673,23 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       </div>
     </div>
 
+    <p class="subhead">台灣官方指引怎麼說</p>
+    <p class="subnote">數位發展部《公部門人工智慧應用參考手冊》（2026/1）與國科會《行政院及所屬機關（構）使用生成式 AI 參考指引》（2023/10）雖是寫給政府機關，但這些原則對校園師生一體適用，也正好替本頁的提醒背書。</p>
+    <div class="official">
+      <div class="oh"><span class="obadge">台灣官方指引</span><strong>拿資料用 AI，政府自己怎麼說</strong></div>
+      <ol>
+        <li><b>會用到哪些法：</b>政府盤點，AI 應用涉及《著作權法》《個人資料保護法》《營業秘密法》等。<span class="cite">（手冊 1.6）</span></li>
+        <li><b>資料要乾淨：</b>訓練與使用的資料，應排除侵害著作權與個資的相關資料。<span class="cite">（手冊檢核 2.3.2）</span></li>
+        <li><b>現成 AI 會「吃」資料、機密別餵：</b>現成生成式 AI 服務提供的資料「有可能被服務提供商直接再次使用」；不要在公開或 API 串接的服務輸入個人或機密資料，機密文書更應親自撰寫、禁用生成式 AI。<span class="cite">（手冊 3.1.3、4.3.6；國科會指引）</span></li>
+        <li><b>要守服務條款：</b>使用時應遵守 AI 服務的相關使用條款，確保法令遵循。<span class="cite">（手冊 4.2.7）</span></li>
+        <li><b>別把 AI 當專家、也別全信：</b>法律、醫學等要求精確的領域，不應把生成式 AI 當作專家的替代方案；產出須由人做客觀且專業的最終判斷、不可完全信任。<span class="cite">（手冊 p.9；國科會指引）</span></li>
+      </ol>
+      <div class="osrc"><span class="sl">官方出處</span>
+        <a href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer">數發部《公部門 AI 應用參考手冊》↗</a>
+        <a href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer">國科會《使用生成式 AI 參考指引》↗</a>
+      </div>
+    </div>
+
     <p class="subhead">各地對照：法律怎麼管、圖書館怎麼把資料開放給 AI</p>
     <p class="subnote">先解釋常出現的詞——<b>文字探勘（TDM）</b>：讓電腦一次讀大量文獻、自動抓取分析。下表左邊是「法律怎麼管『拿資料餵 AI』」；右邊換個角度，看<b>擁有資料的單位（圖書館、檔案館）怎麼讓自家館藏更容易被 AI 找到、用到</b>——也就是主動把館藏做成開放資料集、API，或餵給 AI 模型（業界叫「Collections as Data，把館藏當資料開放」）。</p>
     <div class="cmp">
@@ -688,21 +709,15 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
     </div>
     <p class="subnote" style="margin-top:12px">提醒：台、港、中、澳各為不同法域，判決與規範不能互相套用；上表為概況，個案仍須依當地法律與最新進度確認。出處見文末「各地法規與圖書館開放資料」。</p>
 
-    <p class="subhead">台灣官方指引怎麼說</p>
-    <p class="subnote">數位發展部《公部門人工智慧應用參考手冊》（2026/1）與國科會《行政院及所屬機關（構）使用生成式 AI 參考指引》（2023/10）雖是寫給政府機關，但這些原則對校園師生一體適用，也正好替本頁的提醒背書。</p>
-    <div class="official">
-      <div class="oh"><span class="obadge">台灣官方指引</span><strong>拿資料用 AI，政府自己怎麼說</strong></div>
-      <ol>
-        <li><b>會用到哪些法：</b>政府盤點，AI 應用涉及《著作權法》《個人資料保護法》《營業秘密法》等。<span class="cite">（手冊 1.6）</span></li>
-        <li><b>資料要乾淨：</b>訓練與使用的資料，應排除侵害著作權與個資的相關資料。<span class="cite">（手冊檢核 2.3.2）</span></li>
-        <li><b>現成 AI 會「吃」資料、機密別餵：</b>現成生成式 AI 服務提供的資料「有可能被服務提供商直接再次使用」；不要在公開或 API 串接的服務輸入個人或機密資料，機密文書更應親自撰寫、禁用生成式 AI。<span class="cite">（手冊 3.1.3、4.3.6；國科會指引）</span></li>
-        <li><b>要守服務條款：</b>使用時應遵守 AI 服務的相關使用條款，確保法令遵循。<span class="cite">（手冊 4.2.7）</span></li>
-        <li><b>別把 AI 當專家、也別全信：</b>法律、醫學等要求精確的領域，不應把生成式 AI 當作專家的替代方案；產出須由人做客觀且專業的最終判斷、不可完全信任。<span class="cite">（手冊 p.9；國科會指引）</span></li>
-      </ol>
-      <div class="osrc"><span class="sl">官方出處</span>
-        <a href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer">數發部《公部門 AI 應用參考手冊》↗</a>
-        <a href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer">國科會《使用生成式 AI 參考指引》↗</a>
-      </div>
+    <p class="subhead">比較安全的做法</p>
+    <p class="subnote">現實層面：就目前公開資訊，尚少見到因個人研讀而把單篇 PDF 貼進 AI 就被追訴的案例，個人非商業研究也有主張合理使用的空間；但「少見被訴」不等於「明確合法」，而且合約的違反、與著作權能否主張合理使用，是兩回事。</p>
+    <div class="safelist">
+      <div class="q"><span class="n">1</span><div><h3>用機構已授權、且不訓練/不保留的工具</h3><p>企業或教育版、明確不儲存也不拿去訓練者，風險最低；避免用會保存或抓取內容的免費工具。<a class="law" href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer" style="text-decoration:none">國科會指引 ↗</a></p></div></div>
+      <div class="q"><span class="n">2</span><div><h3>用資料庫「內建」的 AI 功能</h3><p>如 ScienceDirect 閱讀助手、Ovid、ProQuest 研究助手——出版社已自行授權。<a class="law" href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="text-decoration:none">本館 · 資料庫 AI 功能 ↗</a></p></div></div>
+      <div class="q"><span class="n">3</span><div><h3>用開放取用／CC 授權內容</h3><p>仍要看 CC 條款；NC／ND 對商業性 AI 平台可能不相容。<a class="law" href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" rel="noreferrer" style="text-decoration:none">Creative Commons ↗</a></p></div></div>
+      <div class="q"><span class="n">4</span><div><h3>不要上傳全文</h3><p>貼你自己的筆記、少量引文或重點，而非整篇 PDF。<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">數發部手冊 ↗</a></p></div></div>
+      <div class="q"><span class="n">5</span><div><h3>需要時取得授權，或先問學科館員</h3><p>不確定特定資料庫的允許範圍時，先問館員或出版社。<a class="law" href="#matrix" style="text-decoration:none">回上面查條款 ↑</a></p></div></div>
+      <div class="q"><span class="n">6</span><div><h3>上傳前先停一下</h3><p>按下夾檔前，先確認是否涉及著作權、隱私或機密。<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">數發部手冊 ↗</a></p></div></div>
     </div>
 
     <details class="foldsec"><summary>另一個問題：AI 生成的東西，著作權算誰的？</summary>
@@ -846,17 +861,6 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
     </div>
 
     </details>
-
-    <p class="subhead">比較安全的做法</p>
-    <p class="subnote">現實層面：就目前公開資訊，尚少見到因個人研讀而把單篇 PDF 貼進 AI 就被追訴的案例，個人非商業研究也有主張合理使用的空間；但「少見被訴」不等於「明確合法」，而且合約的違反、與著作權能否主張合理使用，是兩回事。</p>
-    <div class="safelist">
-      <div class="q"><span class="n">1</span><div><h3>用機構已授權、且不訓練/不保留的工具</h3><p>企業或教育版、明確不儲存也不拿去訓練者，風險最低；避免用會保存或抓取內容的免費工具。<a class="law" href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer" style="text-decoration:none">國科會指引 ↗</a></p></div></div>
-      <div class="q"><span class="n">2</span><div><h3>用資料庫「內建」的 AI 功能</h3><p>如 ScienceDirect 閱讀助手、Ovid、ProQuest 研究助手——出版社已自行授權。<a class="law" href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="text-decoration:none">本館 · 資料庫 AI 功能 ↗</a></p></div></div>
-      <div class="q"><span class="n">3</span><div><h3>用開放取用／CC 授權內容</h3><p>仍要看 CC 條款；NC／ND 對商業性 AI 平台可能不相容。<a class="law" href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" rel="noreferrer" style="text-decoration:none">Creative Commons ↗</a></p></div></div>
-      <div class="q"><span class="n">4</span><div><h3>不要上傳全文</h3><p>貼你自己的筆記、少量引文或重點，而非整篇 PDF。<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">數發部手冊 ↗</a></p></div></div>
-      <div class="q"><span class="n">5</span><div><h3>需要時取得授權，或先問學科館員</h3><p>不確定特定資料庫的允許範圍時，先問館員或出版社。<a class="law" href="#matrix" style="text-decoration:none">回上面查條款 ↑</a></p></div></div>
-      <div class="q"><span class="n">6</span><div><h3>上傳前先停一下</h3><p>按下夾檔前，先確認是否涉及著作權、隱私或機密。<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">數發部手冊 ↗</a></p></div></div>
-    </div>
 
     <details class="foldsec"><summary>名詞小辭典（看到不懂的詞就點開）</summary>
       <dl class="gloss">
