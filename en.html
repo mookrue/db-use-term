@@ -1,0 +1,1391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A practical guide for NCCU students and staff. See what 19 academic and news databases allow for bulk downloading, text and data mining (TDM), and sending content to outside AI tools like ChatGPT.">
+<meta name="color-scheme" content="light">
+<title>Using Databases with AI Without Breaking Copyright</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap");
+
+:root{
+  /* Colors from the NCCU Visual Identity Guidelines 2025.08 v4 */
+  --ink:#1c2331;
+  --ink-soft:#4b5362;
+  --muted:#7e8490;
+  --paper:#f3f3f1;
+  --card:#ffffff;
+  --line:#e5e3dd;
+  --line-strong:#cdc8bf;
+  --accent:#23417d;          /* main color · PANTONE 288 C · #23417D */
+  --accent-soft:#e6eaf2;
+  --red:#be3c32;             /* accent · red · #BE3C32 */
+  --taupe:#d0cac2;           /* accent · warm gray · #D0CAC2 */
+
+  /* status colors: prohibited / conditional / license required / unspecified */
+  --ban:#be3c32;      --ban-bg:#f7e7e5;
+  --cond:#9a6f18;     --cond-bg:#f6efdb;
+  --lic:#3a6099;      --lic-bg:#e7edf6;
+  --unclear:#6f746f;  --unclear-bg:#ecebe8;
+  --ok:#2e7d54;       --ok-bg:#e4f0e9;
+
+  --max:1120px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;color:var(--ink);background:var(--paper);
+  font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;letter-spacing:.01em;}
+button,input{font:inherit;color:inherit;}
+a{color:inherit;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+.mono{font-family:"IBM Plex Mono",monospace;}
+
+/* ---------- date reminder bar ---------- */
+.datebar{background:var(--accent);color:#fff;
+  padding:11px max(20px,calc((100vw - var(--max))/2));
+  font-size:13.5px;line-height:1.65;text-align:center;}
+.datebar b{font-weight:700;}
+.datebar .d{font-family:"IBM Plex Mono",monospace;font-weight:600;
+  background:rgba(255,255,255,.18);padding:2px 8px;border-radius:6px;
+  white-space:nowrap;display:inline-block;}
+.datebar .sep{opacity:.45;margin:0 6px;}
+@media (max-width:640px){
+  .datebar{font-size:12.5px;text-align:left;}
+  .datebar .sep{display:none;}
+  .datebar .line{display:block;margin-top:4px;}
+}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:30;height:60px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+  padding:0 max(20px,calc((100vw - var(--max))/2));
+  background:rgba(246,243,236,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;}
+.brand .mk{display:grid;place-items:center;width:30px;height:30px;background:var(--accent);
+  color:#fff;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;border-radius:6px;}
+.topbar nav{display:flex;gap:22px;font-size:14px;font-weight:500;}
+.topbar nav a{text-decoration:none;color:var(--ink-soft);}
+.topbar nav a:hover{color:var(--accent);}
+.topbar nav a.lang{border:1px solid var(--line-strong);border-radius:6px;padding:3px 9px;font-size:12px;font-weight:600;color:var(--accent);}
+.topbar nav a.lang:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+
+/* ---------- hero ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px;}
+.hero{padding:64px 0 34px;}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+  letter-spacing:.14em;color:var(--accent);text-transform:uppercase;}
+.hero h1{margin:16px 0 18px;font-size:clamp(34px,5.2vw,58px);line-height:1.14;font-weight:900;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.lede{max-width:640px;margin:0;color:var(--ink-soft);font-size:clamp(16px,1.6vw,18px);}
+
+.intro{max-width:680px;margin:16px 0 0;font-size:clamp(16px,1.9vw,20px);font-weight:600;
+  color:var(--ink);line-height:1.62;}
+.intro b{color:var(--accent);}
+
+/* ---------- summary strip ---------- */
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0 8px;}
+.sumcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 20px 18px;
+  display:flex;flex-direction:column;gap:12px;}
+.sumcard .lane{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;}
+.sumcard .lane .ic{width:24px;height:24px;flex:0 0 24px;display:grid;place-items:center;border-radius:6px;
+  background:var(--accent-soft);color:var(--accent);font-size:13px;}
+.sumcard .headline{font-family:"Noto Serif TC",serif;font-weight:700;font-size:19px;line-height:1.35;}
+.sumcard .headline b{color:var(--ban);}
+.bars{display:flex;flex-direction:column;gap:7px;margin-top:2px;}
+.barrow{display:grid;grid-template-columns:74px 1fr 30px;align-items:center;gap:8px;font-size:12px;}
+.barrow .bl{color:var(--muted);}
+.bartrack{height:7px;border-radius:99px;background:#eceae3;overflow:hidden;}
+.barfill{display:block;height:100%;border-radius:99px;min-width:3px;}
+.barrow .bn{text-align:right;font-family:"IBM Plex Mono",monospace;color:var(--ink-soft);}
+
+/* ---------- note ---------- */
+.note{display:flex;gap:12px;margin:28px 0 0;padding:16px 18px;background:var(--accent-soft);
+  border:1px solid #d4ddee;border-radius:10px;font-size:13.5px;color:#2c3d38;line-height:1.7;}
+.note .i{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-weight:700;font-size:13px;}
+
+/* ---------- section heading ---------- */
+.section{padding:56px 0 0;}
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:22px;}
+.shead .kick{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.13em;color:var(--accent);text-transform:uppercase;}
+.shead h2{margin:6px 0 0;font-size:clamp(24px,3vw,34px);font-weight:900;}
+.shead p{margin:0;max-width:360px;color:var(--muted);font-size:13.5px;}
+
+/* ---------- controls ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px;}
+.search{flex:1 1 260px;min-width:220px;height:44px;display:flex;align-items:center;gap:8px;
+  background:var(--card);border:1px solid var(--line);border-radius:9px;padding:0 12px;}
+.search input{border:0;outline:0;background:transparent;width:100%;min-width:0;}
+.search .mag{color:var(--muted);}
+.search .clr{border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:18px;padding:2px 4px;}
+.filters{display:flex;flex-wrap:wrap;gap:7px;}
+.filters button{height:38px;padding:0 13px;border:1px solid var(--line-strong);background:transparent;
+  border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;color:var(--ink-soft);}
+.filters button:hover{border-color:var(--accent);color:var(--accent);}
+.filters button.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:6px 2px 16px;color:var(--muted);font-size:12.5px;}
+.legend span{display:flex;align-items:center;gap:6px;}
+.legend i{width:9px;height:9px;border-radius:3px;display:inline-block;}
+.legend .ban{background:var(--ban);}.legend .cond{background:var(--cond);}
+.legend .lic{background:var(--lic);}.legend .unclear{background:var(--unclear);}
+
+/* ---------- table ---------- */
+.table{border-top:2px solid var(--ink);}
+.thead,.rmain{display:grid;grid-template-columns:minmax(220px,1.5fr) repeat(3,.85fr) 32px;
+  align-items:center;column-gap:16px;}
+.thead{padding:12px 16px;border-bottom:1px solid var(--ink);
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
+.row{border-bottom:1px solid var(--line);background:var(--card);}
+.row.open{background:#fffdf7;box-shadow:inset 3px 0 0 var(--accent);}
+.rmain{width:100%;padding:16px;border:0;background:none;text-align:left;cursor:pointer;}
+.rmain:hover .dbname{color:var(--accent);}
+.dbname{font-weight:700;font-size:15.5px;}
+.dbname small{display:block;margin-top:4px;color:var(--muted);font-size:11px;font-weight:400;line-height:1.5;}
+.rmain b{display:none;}
+.chev{justify-self:end;width:26px;height:26px;display:grid;place-items:center;border:1px solid var(--line-strong);
+  border-radius:6px;font-size:17px;color:var(--ink-soft);}
+
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:99px;
+  font-size:12.5px;font-weight:700;white-space:nowrap;border:1px solid transparent;}
+.pill i{width:6px;height:6px;border-radius:50%;background:currentColor;}
+.pill.ban{color:var(--ban);background:var(--ban-bg);}
+.pill.cond{color:var(--cond);background:var(--cond-bg);}
+.pill.lic{color:var(--lic);background:var(--lic-bg);}
+.pill.unclear{color:var(--unclear);background:var(--unclear-bg);}
+
+/* ---------- detail ---------- */
+.detail{padding:2px 16px 24px;}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:6px;}
+.dcell{padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;}
+.dcell .dh{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+.dcell .dh strong{font-size:13px;color:var(--ink);}
+.dcell p{margin:0;font-size:13px;line-height:1.7;color:var(--ink-soft);}
+
+.evidence{margin-top:16px;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+.evidence summary{list-style:none;cursor:pointer;padding:12px 16px;font-size:12.5px;font-weight:700;
+  color:var(--accent);display:flex;align-items:center;gap:8px;background:var(--accent-soft);}
+.evidence summary::-webkit-details-marker{display:none;}
+.evidence summary::before{content:"＋";font-family:"IBM Plex Mono",monospace;}
+.evidence[open] summary::before{content:"−";}
+.evidence .body{padding:14px 16px;max-height:280px;overflow:auto;
+  font-size:12.5px;line-height:1.85;color:var(--ink-soft);white-space:pre-wrap;
+  border-top:1px solid var(--line);background:#fffdf7;}
+
+.sources{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.sources .slabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+  color:var(--muted);text-transform:uppercase;align-self:center;margin-right:2px;}
+.sources a{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border:1px solid var(--line-strong);
+  border-radius:8px;font-size:12.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);}
+.sources a:hover{border-color:var(--accent);color:var(--accent);}
+
+.empty{padding:48px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line);}
+.count{text-align:right;color:var(--muted);font-size:12.5px;margin-top:12px;}
+
+/* ---------- decision guide ---------- */
+.guide{margin-top:16px;}
+.qgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.q{display:flex;gap:14px;padding:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;}
+.q .n{flex:0 0 30px;height:30px;display:grid;place-items:center;border-radius:8px;
+  background:var(--accent);color:#fff;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;}
+.q h3{margin:2px 0 6px;font-size:16px;font-weight:700;font-family:"Noto Sans TC",sans-serif;}
+.q p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+
+/* ---------- ai copyright section ---------- */
+.lead{max-width:720px;color:var(--ink-soft);font-size:15px;line-height:1.75;margin:0 0 26px;}
+.lead b{color:var(--ink);}
+.twolayer{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px;}
+.layer{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;}
+.layer .tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+  padding:3px 9px;border-radius:6px;margin-bottom:10px;text-transform:uppercase;}
+.layer.contract .tag{background:var(--lic-bg);color:var(--lic);}
+.layer.copyright .tag{background:var(--cond-bg);color:var(--cond);}
+.layer h3{margin:0 0 8px;font-size:18px;font-weight:700;font-family:"Noto Sans TC",sans-serif;}
+.layer p{margin:0;font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+
+.subhead{font-family:"Noto Serif TC",serif;font-weight:700;font-size:20px;margin:44px 0 6px;}
+.subnote{margin:0 0 18px;color:var(--muted);font-size:13px;max-width:640px;}
+
+.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.step{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--card);position:relative;overflow:hidden;}
+.step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;}
+.step.s1::before{background:var(--cond);}
+.step.s2::before{background:#c07a3a;}
+.step.s3::before{background:var(--ban);}
+.step .lv{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
+.step h4{margin:6px 0 8px;font-size:16px;font-weight:700;font-family:"Noto Sans TC",sans-serif;}
+.step p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.step .law{display:inline-block;margin-top:9px;font-size:11.5px;color:var(--accent);
+  background:var(--accent-soft);border-radius:5px;padding:2px 7px;font-family:"IBM Plex Mono",monospace;}
+
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.casecard{border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;background:var(--card);display:flex;flex-direction:column;}
+.casecard .yr{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.05em;}
+.casecard h4{margin:5px 0 8px;font-size:15.5px;font-weight:700;font-family:"Noto Sans TC",sans-serif;line-height:1.4;}
+.casecard p{margin:0 0 12px;font-size:12.5px;color:var(--ink-soft);line-height:1.65;flex:1;}
+.casecard .take{font-size:12px;color:var(--ink);background:var(--paper);border:1px solid var(--line);
+  border-radius:8px;padding:8px 10px;margin-bottom:12px;line-height:1.6;}
+.casecard .take b{color:var(--accent);}
+
+.jmap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.owns{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.jblock{border-top:2px solid var(--ink);padding-top:14px;}
+.jblock h4{margin:0 0 4px;font-size:16px;font-weight:900;font-family:"Noto Serif TC",serif;}
+.jblock .st{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin-bottom:10px;}
+.jblock ul{margin:0;padding:0;list-style:none;}
+.jblock li{font-size:13px;color:var(--ink-soft);line-height:1.6;padding:7px 0;border-bottom:1px solid var(--line);}
+.jblock li:last-child{border-bottom:0;}
+.jblock li b{color:var(--ink);}
+
+.safelist{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+.srcrow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:auto;}
+.srcrow .sl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
+.srcrow a,.reflist a{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid var(--line-strong);
+  border-radius:7px;font-size:11.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);}
+.srcrow a:hover,.reflist a:hover{border-color:var(--accent);color:var(--accent);}
+
+.refs{margin-top:44px;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:8px 22px 20px;}
+.refs summary{cursor:pointer;padding:14px 0 12px;font-weight:700;font-size:15px;color:var(--accent);list-style:none;
+  font-family:"Noto Sans TC",sans-serif;}
+.refs summary::-webkit-details-marker{display:none;}
+.refs summary::before{content:"＋ ";font-family:"IBM Plex Mono",monospace;}
+.refs[open] summary::before{content:"− ";}
+.refgroup{padding:12px 0;border-top:1px solid var(--line);}
+.refgroup h5{margin:0 0 10px;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.06em;
+  color:var(--muted);text-transform:uppercase;}
+.reflist{display:flex;flex-wrap:wrap;gap:8px;}
+
+.legaldisc{display:flex;gap:12px;margin:26px 0 0;padding:16px 18px;background:#f7eeda;
+  border:1px solid #e6d5a8;border-radius:10px;font-size:13px;color:#5c4a1c;line-height:1.7;}
+.legaldisc .i{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--cond);color:#fff;
+  display:grid;place-items:center;font-weight:700;font-size:13px;}
+
+@media (max-width:860px){
+  .twolayer,.ladder,.cases,.jmap,.owns,.safelist{grid-template-columns:1fr;}
+}
+
+/* ---------- interactive decision flow ---------- */
+.flow{border:1px solid var(--line-strong);border-radius:16px;background:var(--card);
+  overflow:hidden;max-width:820px;}
+.flowtop{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 20px;background:var(--accent);color:#fff;}
+.flowtop .ft{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;}
+.flowtop .fstep{font-size:12px;opacity:.85;}
+.flowbody{padding:24px 24px 26px;}
+.flowcrumbs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+.flowcrumbs .cb{font-size:11px;color:var(--muted);background:var(--paper);border:1px solid var(--line);
+  border-radius:99px;padding:3px 10px;}
+.flowcrumbs .cb b{color:var(--accent);font-weight:600;}
+.flowq{font-family:"Noto Serif TC",serif;font-weight:700;font-size:21px;line-height:1.4;margin:0 0 18px;}
+.flowopts{display:flex;flex-direction:column;gap:10px;}
+.flowopt{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+  text-align:left;padding:15px 18px;border:1px solid var(--line-strong);border-radius:11px;
+  background:var(--paper);cursor:pointer;font-size:14.5px;font-weight:500;color:var(--ink);
+  transition:border-color .12s,background .12s,transform .05s;}
+.flowopt:hover{border-color:var(--accent);background:var(--accent-soft);}
+.flowopt:active{transform:translateY(1px);}
+.flowopt .arw{color:var(--muted);font-size:16px;}
+.flowopt:hover .arw{color:var(--accent);}
+
+.flownav{display:flex;gap:10px;margin-top:20px;}
+.flownav button{font-size:13px;font-weight:500;padding:9px 16px;border-radius:9px;cursor:pointer;
+  border:1px solid var(--line-strong);background:transparent;color:var(--ink-soft);}
+.flownav button:hover{border-color:var(--accent);color:var(--accent);}
+
+.flowres{border-left:5px solid var(--muted);border-radius:0 12px 12px 0;padding:20px 22px;background:var(--paper);}
+.flowres.ok{border-color:var(--ok);background:var(--ok-bg);}
+.flowres.amber{border-color:var(--cond);background:var(--cond-bg);}
+.flowres.blue{border-color:var(--lic);background:var(--lic-bg);}
+.flowres.red{border-color:var(--ban);background:var(--ban-bg);}
+.flowbadge{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13px;
+  padding:5px 12px;border-radius:99px;margin-bottom:12px;background:#fff;}
+.flowres.ok .flowbadge{color:var(--ok);}
+.flowres.amber .flowbadge{color:var(--cond);}
+.flowres.blue .flowbadge{color:var(--lic);}
+.flowres.red .flowbadge{color:var(--ban);}
+.flowbadge .dot{width:8px;height:8px;border-radius:50%;background:currentColor;}
+.flowres h3{margin:0 0 10px;font-size:20px;font-weight:900;font-family:"Noto Serif TC",serif;color:var(--ink);}
+.flowres p{margin:0 0 12px;font-size:13.5px;line-height:1.75;color:var(--ink-soft);}
+.flowres .do{display:flex;gap:9px;font-size:13px;line-height:1.65;color:var(--ink);
+  background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.06);border-radius:9px;padding:11px 13px;}
+.flowres .do b{color:var(--accent);}
+.flowres .rlinks{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+.flowres .rlinks a{font-size:11.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);
+  background:#fff;border:1px solid var(--line-strong);border-radius:7px;padding:5px 10px;}
+.flowres .rlinks a:hover{border-color:var(--accent);color:var(--accent);}
+
+@media (max-width:640px){
+  .flowq{font-size:18px;}
+  .flowopt{font-size:13.5px;padding:13px 15px;}
+}
+
+
+/* ---------- hero wayfinder ---------- */
+.wayfinder{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:36px 0 0;}
+.way{display:flex;flex-direction:column;gap:7px;padding:18px 20px;border:1px solid var(--line);
+  border-radius:13px;background:var(--card);text-decoration:none;color:inherit;
+  transition:border-color .14s,transform .06s,box-shadow .14s;}
+.way:hover{border-color:var(--accent);box-shadow:0 6px 20px -12px rgba(35,65,125,.4);}
+.way:active{transform:translateY(1px);}
+.way .wn{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;}
+.way h3{margin:0;font-size:17px;font-weight:700;font-family:"Noto Sans TC",sans-serif;line-height:1.35;}
+.way p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.55;}
+.way .go{margin-top:6px;font-size:12.5px;font-weight:600;color:var(--accent);}
+
+/* ---------- matrix checklist ---------- */
+.checklist{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:16px 20px 18px;margin-bottom:20px;}
+.checklist .ch-h{font-family:"Noto Serif TC",serif;font-weight:700;font-size:15px;margin-bottom:11px;color:var(--ink);}
+.checklist ol{margin:0;padding:0;list-style:none;counter-reset:ck;display:grid;grid-template-columns:1fr 1fr;gap:9px 24px;}
+.checklist li{counter-increment:ck;position:relative;padding-left:27px;font-size:12.5px;color:var(--ink-soft);line-height:1.55;}
+.checklist li::before{content:counter(ck);position:absolute;left:0;top:1px;width:18px;height:18px;
+  display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);
+  border-radius:5px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;}
+.checklist li b{color:var(--ink);font-weight:600;}
+@media (max-width:640px){.wayfinder{grid-template-columns:1fr;}.checklist ol{grid-template-columns:1fr;}}
+
+/* ---------- taiwan official guidance ---------- */
+.official{border:1px solid #d4ddee;background:var(--accent-soft);border-radius:13px;padding:20px 22px 18px;}
+.official .oh{display:flex;align-items:center;gap:10px;margin-bottom:13px;flex-wrap:wrap;}
+.official .obadge{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;
+  background:var(--accent);color:#fff;padding:4px 10px;border-radius:6px;}
+.official .oh strong{font-family:"Noto Serif TC",serif;font-size:16px;color:var(--ink);}
+.official ol{margin:0;padding:0;list-style:none;counter-reset:of;display:flex;flex-direction:column;gap:11px;}
+.official li{counter-increment:of;position:relative;padding-left:29px;font-size:13px;line-height:1.68;color:#2c3d38;}
+.official li::before{content:counter(of);position:absolute;left:0;top:1px;width:20px;height:20px;
+  display:grid;place-items:center;background:#fff;color:var(--accent);border:1px solid #d4ddee;
+  border-radius:5px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;}
+.official li b{color:var(--ink);}
+.official .cite{color:var(--muted);font-size:11.5px;}
+.official .osrc{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px;padding-top:14px;border-top:1px solid #d4ddee;}
+.official .osrc .sl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);align-self:center;text-transform:uppercase;}
+.official .osrc a{font-size:11.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);
+  background:#fff;border:1px solid #d4ddee;border-radius:7px;padding:5px 10px;}
+.official .osrc a:hover{border-color:var(--accent);color:var(--accent);}
+
+
+/* ---------- self-check ---------- */
+.st-intro{font-size:13.5px;color:var(--ink-soft);margin:0 0 20px;line-height:1.65;}
+.st-intro b{color:var(--accent);}
+.stq{margin-bottom:16px;}
+.stq-l{font-family:"Noto Serif TC",serif;font-weight:700;font-size:16px;margin-bottom:9px;}
+.stopts{display:flex;flex-wrap:wrap;gap:8px;}
+.stbtn{padding:9px 14px;border:1px solid var(--line-strong);background:var(--paper);border-radius:9px;
+  cursor:pointer;font-size:13.5px;font-weight:500;color:var(--ink);transition:border-color .12s,background .12s,color .12s;}
+.stbtn:hover{border-color:var(--accent);}
+.stbtn.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
+.st-wait{margin-top:6px;padding:16px;border:1px dashed var(--line-strong);border-radius:10px;color:var(--muted);font-size:13px;text-align:center;}
+.st-res{margin-top:12px;}
+
+/* ---------- self-check end ---------- */
+
+
+
+
+
+/* ---------- AI use disclosure ---------- */
+.aidisc{max-width:var(--max);margin:8px auto 0;padding:20px 24px 4px;}
+.aidisc-h{font-family:"Noto Serif TC",serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:8px;
+  display:inline-block;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:5px 12px;}
+.aidisc p{font-size:12.5px;line-height:1.75;color:#aeb8c6;max-width:900px;margin:12px 0 0;}
+.aidisc strong{color:#e7ecf3;}
+
+/* ---------- hero caption / tldr / glossary ---------- */
+.hcap{margin:10px 0 0;font-size:13px;color:var(--muted);line-height:1.6;max-width:680px;}
+.tldr{margin:20px 0 4px;border:1px solid var(--line-strong);border-left:4px solid var(--accent);border-radius:12px;background:var(--card);padding:16px 20px 17px;max-width:730px;}
+.tldr-h{font-family:"Noto Serif TC",serif;font-weight:800;font-size:16px;color:var(--accent);margin-bottom:11px;}
+.tldr ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;}
+.tldr li{font-size:13.5px;line-height:1.62;color:var(--ink-soft);}
+.tldr li a{color:var(--accent);font-weight:600;}
+.tldr .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;margin-right:8px;font-family:"Noto Sans TC",sans-serif;}
+.tldr .tag.ok{background:var(--ok-bg);color:var(--ok);}
+.tldr .tag.cond{background:var(--cond-bg);color:var(--cond);}
+.tldr .tag.ban{background:var(--ban-bg);color:var(--ban);}
+.tldr .tag.info{background:var(--accent-soft);color:var(--accent);}
+.gloss{margin:12px 0 4px;}
+.gloss dt{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:13.5px;color:var(--ink);margin-top:11px;}
+.gloss dd{margin:2px 0 0;font-size:13px;color:var(--ink-soft);line-height:1.6;}
+
+/* ---------- collapsible section ---------- */
+.foldsec{margin:34px 0 0;border-top:2px solid var(--line-strong);}
+.foldsec summary{cursor:pointer;list-style:none;padding:15px 0 4px;font-family:"Noto Serif TC",serif;font-weight:700;font-size:20px;color:var(--ink);display:flex;align-items:center;}
+.foldsec summary::-webkit-details-marker{display:none;}
+.foldsec summary::after{content:"+ Expand";margin-left:auto;font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:13px;font-weight:600;align-self:center;}
+.foldsec[open] summary::after{content:"− Collapse";}
+.foldsec summary:hover{color:var(--accent);}
+.foldsec[open] summary{margin-bottom:6px;}
+
+/* ---------- comparison table ---------- */
+.cmp{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);}
+.cmp table{width:100%;border-collapse:collapse;min-width:660px;font-size:13px;}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:12px 15px;border-bottom:1px solid var(--line);line-height:1.62;}
+.cmp thead th{background:var(--accent-soft);color:var(--accent);font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:12.5px;}
+.cmp tbody th{font-family:"Noto Serif TC",serif;font-weight:800;color:var(--ink);white-space:nowrap;width:58px;}
+.cmp tbody td{color:var(--ink-soft);}
+.cmp tbody td em{color:var(--accent);font-style:normal;font-weight:600;}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0;}
+
+/* ---------- footer ---------- */
+footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
+.foot{max-width:var(--max);margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;}
+.foot h3{color:#fff;font-size:15px;margin:0 0 10px;font-family:"Noto Sans TC",sans-serif;font-weight:700;}
+.foot p{margin:0 0 8px;font-size:13px;line-height:1.75;}
+.foot .meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#8fa39a;letter-spacing:.04em;}
+.foot a{color:#cdd6d1;}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .summary{grid-template-columns:1fr;}
+  .dgrid{grid-template-columns:1fr;}
+  .qgrid{grid-template-columns:1fr;}
+  .foot{grid-template-columns:1fr;gap:24px;}
+  .topbar nav{display:none;}
+  .thead{display:none;}
+  .rmain{grid-template-columns:1fr 26px;gap:10px;row-gap:10px;}
+  .dbname{grid-column:1;grid-row:1;}
+  .chev{grid-column:2;grid-row:1;}
+  .rmain>span:nth-of-type(1),.rmain>span:nth-of-type(2),.rmain>span:nth-of-type(3){
+    grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;}
+  .rmain b{display:block;font-size:12px;color:var(--muted);font-weight:500;}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="datebar">
+  📅 Data checked: <span class="d">Aug 4, 2026</span>
+  <span class="sep">·</span>
+  <span class="line">Today: <span class="d" id="today">—</span></span>
+  <span class="sep">·</span>
+  <span class="line"><b>Terms can change at any time. Always check a database’s current terms before you rely on them.</b></span>
+</div>
+
+<header class="topbar">
+  <a class="brand" href="#top"><span class="mk">NCCU</span>Databases, copyright &amp; AI</a>
+  <nav aria-label="Page navigation">
+    <a href="#ai-flow">Self-check</a>
+    <a href="#matrix">The terms</a>
+    <a href="#ai-copyright">The law</a>
+    <a href="#about">About</a>
+    <a class="lang" href="index.html" aria-label="Chinese version">中</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap" id="top">
+    <div class="eyebrow">NCCU Library · a database &amp; AI guide for students and staff</div>
+    <h1>Download, mine, feed&nbsp;to&nbsp;AI:<br><em>three different rights.</em></h1>
+    <p class="hcap">(&ldquo;Download&rdquo; means saving a file. &ldquo;Mining&rdquo; (TDM) means letting a computer read and analyze many texts at once. &ldquo;Feed to AI&rdquo; means giving content to a tool like ChatGPT.)</p>
+    <p class="intro"><b>You can still use AI legally. This page shows you how to do it safely.</b> It answers one question for NCCU students and staff: can you give an article from a library database to an AI tool to summarize, translate, or rewrite? Below, you can check the terms, run the self-check, and read the legal basis.</p>
+    <div class="tldr">
+      <div class="tldr-h">The one-minute answer</div>
+      <ul>
+        <li><span class="tag ok">OK</span>Use a database’s own <b>built-in</b> AI, such as Scopus AI or JSTOR. (The Library has a separate page on these.) You can also use your own writing, public-domain works, or open-access content.</li>
+        <li><span class="tag cond">Careful</span>Pasting a <b>full-text</b> subscribed article into an outside AI like ChatGPT usually breaks the database’s terms. Check the terms first, or paste only key points or your own notes.</li>
+        <li><span class="tag ban">Don’t</span>Bulk-download full text with crawlers or bots. Nearly all 19 databases forbid this. Also, don’t give AI any file that is pirated or from an unknown source.</li>
+        <li><span class="tag info">Not sure?</span>Use the <a href="#ai-flow">self-check</a> below. It gives you an answer in a few taps.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="section wrap" id="ai-flow">
+    <div class="shead">
+      <div>
+        <div class="kick">Self-check</div>
+        <h2>Self-check: can I upload this to AI?</h2>
+      </div>
+      <p>Start with a quick self-check. Pick your situation, and you’ll get advice right away. The reasons come further down.</p>
+    </div>
+    <div class="flow">
+      <div class="flowtop">
+        <span class="ft">SELF-CHECK</span>
+        <span class="fstep" id="flowstep"></span>
+      </div>
+      <div class="flowbody" id="flowbody"></div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="overview">
+    <p class="lede">For any one database, three separate sets of rules usually apply: one for <b>bulk downloading</b>, one for <b>text and data mining (TDM)</b>, and one for <b>sending content to outside AI tools</b>. This table sorts the public terms of 19 common academic and news databases into those three columns. You see the bottom line first, then the source text.</p>
+
+    <div class="summary" aria-label="Overview of the three cases">
+      <div class="sumcard">
+        <div class="lane"><span class="ic">⬇</span>Bulk download &amp; scraping</div>
+        <div class="headline">Almost always <b>banned</b>.<br>None of the 19 databases let you mass-download with crawlers or bots.</div>
+        <div class="bars" data-lane="dl"></div>
+      </div>
+      <div class="sumcard">
+        <div class="lane"><span class="ic">⛏</span>Text &amp; data mining (TDM)</div>
+        <div class="headline">&ldquo;Conditional&rdquo; at best.<br>Even then, you need lawful access, a noncommercial purpose, and an approved API or contract.</div>
+        <div class="bars" data-lane="tdm"></div>
+      </div>
+      <div class="sumcard">
+        <div class="lane"><span class="ic">✦</span>External AI / RAG</div>
+        <div class="headline">None allow it outright.<br>At best, you need a separate license. Most simply forbid it.</div>
+        <div class="bars" data-lane="ai"></div>
+      </div>
+    </div>
+
+    <div class="wayfinder" aria-label="What do you want to do?">
+      <a class="way" href="#ai-flow"><span class="wn">01</span><h3>Can I upload an article to AI?</h3><p>Use the self-check above. Just a few taps.</p><span class="go">To the self-check →</span></a>
+      <a class="way" href="#matrix"><span class="wn">02</span><h3>What does a given database say?</h3><p>Compare 19 databases: download, TDM, and AI.</p><span class="go">Check the terms →</span></a>
+      <a class="way" href="#ai-copyright"><span class="wn">03</span><h3>What’s the legal basis?</h3><p>2026 court cases, rules in Taiwan, the EU and Japan, and copyright analysis.</p><span class="go">See the basis →</span></a>
+    </div>
+
+    <div class="note">
+      <span class="i">i</span>
+      <p><strong>This is a summary of terms, not legal advice.</strong> Your school’s signed license agreements, a product’s own terms, and open-access licenses (like CC BY) may add to or override what you see here. Check with the publisher or platform before you rely on it.</p>
+    </div>
+  </section>
+
+  <section class="section wrap" id="matrix">
+    <div class="shead">
+      <div>
+        <div class="kick">Comparison</div>
+        <h2>What each database allows</h2>
+      </div>
+      <p>Tap any row to open it. You’ll see plain-language notes, the source clauses, and official links. (&ldquo;TDM&rdquo; means letting a computer read and analyze many texts at once, instead of one by one.)</p>
+    </div>
+
+    <div class="checklist">
+      <div class="ch-h">Five things to check before you read the table</div>
+      <ol>
+        <li><b>What kind of access do you have?</b> A campus subscription, a personal account, open access, and an API each allow different things.</li>
+        <li><b>Do you need the full text or just metadata?</b> Being able to get DOIs or abstracts doesn’t mean you can get full-text PDFs.</li>
+        <li><b>Is this noncommercial research?</b> Most TDM exceptions apply only to noncommercial research.</li>
+        <li><b>Will the data leave the approved place?</b> Uploading it to an outside AI or a vector store makes a new copy and shares it.</li>
+        <li><b>Does the contract mention AI or RAG?</b> A standard TDM license does not automatically cover training, RAG, or fine-tuning.</li>
+      </ol>
+    </div>
+
+    <div class="controls">
+      <label class="search">
+        <span class="sr-only">Search databases or clause keywords</span>
+        <span class="mag" aria-hidden="true">⌕</span>
+        <input id="q" placeholder="Search databases, AI, API, RAG, TDM…">
+        <button class="clr" id="clr" aria-label="Clear search" style="display:none">×</button>
+      </label>
+      <div class="filters" id="filters" aria-label="Filter"></div>
+    </div>
+
+    <div class="legend" aria-label="Status key">
+      <span><i class="ban"></i>Prohibited: clearly banned, with no general way to get a license</span>
+      <span><i class="cond"></i>Conditional: allowed if you meet the conditions (lawful access, noncommercial, an approved route)</span>
+      <span><i class="lic"></i>License required: not allowed by default, but you can ask for or contract one</span>
+      <span><i class="unclear"></i>Unspecified: the public terms don’t clearly say</span>
+    </div>
+
+    <div class="table">
+      <div class="thead" aria-hidden="true">
+        <span>Database</span><span>Bulk download</span><span>TDM</span><span>External AI / RAG</span><span></span>
+      </div>
+      <div id="rows"></div>
+    </div>
+    <p class="count" id="count"></p>
+  </section>
+
+  <section class="section wrap" id="ai-copyright">
+    <div class="shead">
+      <div>
+        <div class="kick">Deeper</div>
+        <h2>Understanding the rules: copyright, court cases, and how countries handle it</h2>
+      </div>
+      <p>Terms often say &ldquo;follow copyright law,&rdquo; but copyright is a separate set of rules. This section explains the two layers — the contract and copyright — then walks you through 2026 court cases and the rules in different countries.</p>
+    </div>
+
+    <p class="lead">Many terms say &ldquo;follow copyright law.&rdquo; But keep this in mind: <b>the terms are a contract, and copyright law is a separate set of rules. The two work independently.</b> Even if you could claim fair use under copyright, the contract can still forbid it. (Breaking a contract and infringing copyright are two different things.) So to judge whether it’s a problem to download an article and hand it to AI to summarize, translate, or rewrite, look at both layers on their own.</p>
+
+    <div class="twolayer">
+      <div class="layer contract">
+        <span class="tag">Layer 1 · Contract</span>
+        <h3>The database license terms</h3>
+        <p>This is usually the most direct limit, and often the deciding one. As the table above shows, most database terms forbid or restrict handing full text to an outside AI. Even if you could claim fair use under copyright, this layer still stops you. The library buys a license — you don’t personally own the content.</p>
+      </div>
+      <div class="layer copyright">
+        <span class="tag">Layer 2 · Copyright law</span>
+        <h3>Reproduction, adaptation, fair use</h3>
+        <p>When you upload full text to AI, <b>you make a copy and hand it to a third party — before the AI even starts to summarize.</b> Under Taiwan’s Copyright Act, this is usually an act of <b>reproduction</b> (Art. 3). Whether it counts as <b>infringement</b> depends on whether you have permission or can claim fair use (Arts. 44–65, decided case by case).</p>
+      </div>
+    </div>
+
+    <p class="subhead">Four uses, from lower to higher risk</p>
+    <p class="subnote">A rule of thumb: if what the AI produces looks a lot like the original, it infringes. A summary of plain facts or ideas is usually fine. The closer you get to a word-for-word translation or a copied rewrite, the riskier it gets.</p>
+    <div class="ladder">
+      <div class="step s1">
+        <div class="lv">Lower risk</div>
+        <h4>Reading help and summaries</h4>
+        <p>The main risk is that uploading equals copying. A high-level summary you make just to understand something yourself carries less risk on the output side, because copyright protects the expression, not the ideas. But uploading the full text is still a copy and a disclosure to a third party.</p>
+        <span class="law">Art. 3 reproduction · Art. 10-1 idea/expression</span>
+      </div>
+      <div class="step s2">
+        <div class="lv">Higher risk</div>
+        <h4>Translation</h4>
+        <p>Translation is an &ldquo;adaptation,&rdquo; a right that belongs only to the author, and the result is a derivative work. You have more room for personal use. But once you share it — or the translation closely reproduces the original’s wording — you need permission.</p>
+        <span class="law">Art. 28 adaptation · Art. 3(1)(11)</span>
+      </div>
+      <div class="step s3">
+        <div class="lv">Highest risk</div>
+        <h4>Rewriting</h4>
+        <p>Rewriting is also an adaptation, or derivative work. The closer it comes to replacing the original, the worse it looks under the fourth fair-use factor (effect on the market) — especially if you share or reuse the result.</p>
+        <span class="law">Art. 28 adaptation · Art. 65 market effect</span>
+      </div>
+    </div>
+
+    <p class="subhead">A few important 2026 court cases (all outside Taiwan)</p>
+    <p class="subnote">First, to be clear: these cases mostly sue <b>AI companies</b> over how they train their models, not everyday users like you. They are all <b>U.S. cases and do not bind Taiwan’s courts.</b> They just show you where the international debate stands.</p>
+    <div class="cases">
+      <div class="casecard">
+        <span class="yr">U.S. · final approval, July 2026</span>
+        <h4>Bartz v. Anthropic ($1.5 billion settlement)</h4>
+        <p>The largest copyright settlement in U.S. history. Earlier, Judge Alsup drew a key line: training AI on <em>lawfully obtained</em> books can be fair use, but downloading them from a pirate library is not. The settlement covers only how the content was obtained (the input side), and as a settlement it sets no binding precedent.</p>
+        <div class="take"><b>What this means for users:</b> how you got the full text matters. A lawful subscription is not the same as a pirated copy. But even with a lawful subscription, uploading it to a third-party AI is still a separate act of copying.</div>
+        <div class="srcrow"><span class="sl">Sources</span>
+          <a href="https://www.jurist.org/news/2026/07/judge-approves-record-1-5-billion-settlement-involving-anthropic/" target="_blank" rel="noreferrer">JURIST (legal news)↗</a>
+          <a href="https://www.lawcommentary.com/articles/judge-approves-anthropics-15-billion-copyright-settlement-over-pirated-books" target="_blank" rel="noreferrer">Law Commentary ↗</a>
+        </div>
+      </div>
+      <div class="casecard">
+        <span class="yr">U.S. (SDNY) · filed May 2026</span>
+        <h4>Elsevier et al. v. Meta</h4>
+        <p>Five major academic and educational publishers (Elsevier, Cengage, Hachette, Macmillan, and McGraw Hill), together with author Scott Turow, are suing Meta and Mark Zuckerberg. They say Meta downloaded millions of books and journal articles from pirate libraries like LibGen and Sci-Hub — and scraped others from behind paywalls — to train Llama, then removed copyright management information (CMI) to hide the source. This is the first copyright suit publishers have brought against an AI company (case no. 1:26-cv-03689).</p>
+        <div class="take"><b>Directly related to your databases:</b> these publishers are taking &ldquo;academic content used to train AI without permission&rdquo; to court. The dispute is about unlawful sourcing plus removing copyright information. The case has been filed but not yet decided.</div>
+        <div class="srcrow"><span class="sl">Sources</span>
+          <a href="https://www.courtlistener.com/docket/73294740/elsevier-inc-v-meta-platforms-inc/" target="_blank" rel="noreferrer">CourtListener (court docket)↗</a>
+          <a href="https://www.hklaw.com/en/insights/publications/2026/05/major-publishers-challenge-ai-training-practices" target="_blank" rel="noreferrer">Holland &amp; Knight (law-firm analysis)↗</a>
+        </div>
+      </div>
+      <div class="casecard">
+        <span class="yr">U.S. · cert. denied, March 2026</span>
+        <h4>Thaler v. Perlmutter</h4>
+        <p>The Supreme Court declined to hear the appeal, confirming that human authorship is required to register a copyright. Output made entirely by AI, without real human control, cannot be protected by U.S. copyright.</p>
+        <div class="take"><b>Why it matters:</b> can you claim rights in what AI translates or rewrites for you? For output made purely by AI, usually not.</div>
+        <div class="srcrow"><span class="sl">Sources</span>
+          <a href="https://www.hklaw.com/en/insights/publications/2026/03/the-final-word-supreme-court-refuses-to-hear-case-on-ai-authorship" target="_blank" rel="noreferrer">Holland &amp; Knight ↗</a>
+          <a href="https://www.finnegan.com/en/insights/ip-updates/supreme-court-declines-to-hear-thaler-v-perlmutter-leaving-human-authorship-requirement-intact.html" target="_blank" rel="noreferrer">Finnegan (IP law firm)↗</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="subhead">What Taiwan’s official guidance says</p>
+    <p class="subnote">The Ministry of Digital Affairs (MODA) <em>Reference Handbook on AI Use in the Public Sector</em> (Jan 2026) and the National Science and Technology Council (NSTC) <em>Guidelines on Using Generative AI</em> (Oct 2023) are written for government agencies. But the same principles apply to students and staff, and they back up the advice on this page.</p>
+    <div class="official">
+      <div class="oh"><span class="obadge">Taiwan official guidance</span><strong>What the government itself says about using data with AI</strong></div>
+      <ol>
+        <li><b>Which laws apply:</b> the government notes that AI use touches the Copyright Act, the Personal Data Protection Act, the Trade Secrets Act, and more. <span class="cite">(Handbook 1.6)</span></li>
+        <li><b>Keep the data clean:</b> data you train on or use should leave out anything that infringes copyright or personal data. <span class="cite">(Handbook checklist 2.3.2)</span></li>
+        <li><b>Off-the-shelf AI &ldquo;eats&rdquo; your data — don’t feed it secrets:</b> data you give a commercial AI service &ldquo;may be reused directly by the provider.&rdquo; Don’t enter personal or confidential data into a public or API-connected service. Write confidential documents yourself and don’t use generative AI for them. <span class="cite">(Handbook 3.1.3, 4.3.6; NSTC guidelines)</span></li>
+        <li><b>Follow the service terms:</b> when you use an AI service, follow its terms of use to stay within the law. <span class="cite">(Handbook 4.2.7)</span></li>
+        <li><b>Don’t treat AI as an expert, and don’t fully trust it:</b> in fields that demand precision, like law and medicine, don’t use generative AI as a substitute for an expert. A person must make the final professional call; don’t rely on the output blindly. <span class="cite">(Handbook p.9; NSTC guidelines)</span></li>
+      </ol>
+      <div class="osrc"><span class="sl">Official sources</span>
+        <a href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer">MODA · Public-Sector AI Handbook ↗</a>
+        <a href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer">NSTC · Guidelines on Using Generative AI ↗</a>
+      </div>
+    </div>
+
+    <p class="subhead">By region: how the law regulates it, and how libraries open their data to AI</p>
+    <p class="subnote">First, a common term: <b>text and data mining (TDM)</b> means letting a computer read and analyze many texts at once. The left column below shows how the law regulates <b>feeding data to AI</b>. The right column takes a different angle: how the organizations that <b>own</b> the data — libraries and archives — make their collections easier for AI to find and use. That means turning collections into open datasets and APIs, or feeding them to AI models. The field calls this &ldquo;collections as data.&rdquo;</p>
+    <div class="cmp">
+      <table>
+        <thead><tr><th>Region</th><th>The law: can you feed data to AI?</th><th>How data owners open their data to AI</th></tr></thead>
+        <tbody>
+          <tr><th>Taiwan</th><td>No special exception for AI or TDM. It falls back on case-by-case fair use, which is uncertain. The AI Basic Act (passed Dec 2025) sets principles but doesn’t loosen copyright.</td><td>The National Central Library, NCCU and others keep digitizing collections and moving to open access. But turning collections into open datasets that AI can use directly is still at an early stage.</td></tr>
+          <tr><th>U.S.</th><td>No special exception either; it relies on fair use. Courts suggest training on <em>lawfully bought</em> content may be allowed, but pirated content is not.</td><td>Harvard’s Institutional Data Initiative released Institutional Books (394 million pages) to make its collection AI-ready. HathiTrust offers a full-text features dataset for computational research. The Library of Congress promotes &ldquo;collections as data.&rdquo;</td></tr>
+          <tr><th>U.K.</th><td>Only &ldquo;noncommercial research&rdquo; TDM is allowed (§29A). A 2025 plan to extend this to commercial use (with an opt-out for rights holders) was dropped after creators pushed back.</td><td>The British Library releases digitized collections as &ldquo;collections as data&rdquo; datasets. The National Library of Scotland has published an AI statement.</td></tr>
+          <tr><th>EU</th><td>TDM for research is open (rights holders can’t refuse). General TDM is allowed too, but rights holders can declare an opt-out in advance — and most publishers already have.</td><td>France’s BnF (Gallica), the Netherlands’ KB, Norway’s National Library AI Lab, and Europeana turn collections into APIs and open datasets for AI search and research.</td></tr>
+          <tr><th>Japan</th><td>The broadest exception: you may use others’ works for purposes like analysis and training (§30-4). But &ldquo;help me understand this article&rdquo; doesn’t count — that still needs permission.</td><td>The National Diet Library (NDL) makes out-of-copyright collections full-text searchable by AI, and open-sources training datasets and OCR models (CC BY).</td></tr>
+          <tr><th>South&nbsp;Korea</th><td>Lawmakers want a TDM exception, but the bill (since 2021) still hasn’t passed. 2023 government guidance encourages getting permission first and letting rights holders opt out.</td><td>The National Library builds copyright-cleared &ldquo;AI training datasets&rdquo; to feed a national LLM, and runs a &ldquo;Library+&rdquo; platform and an AI agent.</td></tr>
+          <tr><th>China</th><td>The law doesn’t spell out TDM. Since 2023, rules require generative-AI services to respect copyright. Court rulings vary (Beijing found AI output protectable; Guangzhou found a service provider liable).</td><td>Public information on national open datasets or feeding AI is limited, so we won’t guess here.</td></tr>
+          <tr><th>Hong&nbsp;Kong&nbsp;/&nbsp;Macau</th><td>Hong Kong is considering a TDM exception (lawful access required, with an opt-out for rights holders) and is still consulting. For Macau, public information on the rules is scarce.</td><td>In Hong Kong, digitizing collections and opening data is still developing. For Macau, public information is scarce.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="subnote" style="margin-top:12px">Note: Taiwan, Hong Kong, China, and Macau are separate legal systems; their rulings and rules don’t carry over to one another. The table is a general picture. For any specific case, check the local law and the latest developments. See &ldquo;Regional rules &amp; libraries opening data&rdquo; in the sources below.</p>
+
+    <p class="subhead">Safer ways to do it</p>
+    <p class="subnote">In practice: from what’s public so far, people are rarely sued just for pasting a single PDF into AI to study it, and personal noncommercial research has some room to claim fair use. But &ldquo;rarely sued&rdquo; is not the same as &ldquo;clearly legal.&rdquo; And breaking a contract is a separate question from whether you can claim fair use under copyright.</p>
+    <div class="safelist">
+      <div class="q"><span class="n">1</span><div><h3>Use a licensed tool that won’t train on or keep your data</h3><p>Enterprise or education editions that clearly don’t store or train on your content carry the least risk. Avoid free tools that keep or harvest what you enter.<a class="law" href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer" style="text-decoration:none">NSTC guidelines ↗</a></p></div></div>
+      <div class="q"><span class="n">2</span><div><h3>Use the database’s built-in AI features</h3><p>Such as the ScienceDirect Reading Assistant, Ovid, or the ProQuest Research Assistant. The publishers have already licensed these.<a class="law" href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="text-decoration:none">NCCU Library · database AI features ↗</a></p></div></div>
+      <div class="q"><span class="n">3</span><div><h3>Use open-access or CC-licensed content</h3><p>Still check the CC terms. NC or ND licenses may not work with a commercial AI platform.<a class="law" href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" rel="noreferrer" style="text-decoration:none">Creative Commons ↗</a></p></div></div>
+      <div class="q"><span class="n">4</span><div><h3>Don’t upload the full text</h3><p>Paste your own notes, a few short quotes, or the key points — not the whole PDF.<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">MODA handbook ↗</a></p></div></div>
+      <div class="q"><span class="n">5</span><div><h3>Get permission when you need it, or ask your subject librarian</h3><p>If you’re not sure what a database allows, ask a librarian or the publisher first.<a class="law" href="#matrix" style="text-decoration:none">Back to the terms above ↑</a></p></div></div>
+      <div class="q"><span class="n">6</span><div><h3>Pause before you upload</h3><p>Before you attach a file, check whether it involves copyright, privacy, or confidential material.<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">MODA handbook ↗</a></p></div></div>
+    </div>
+
+    <details class="foldsec"><summary>Another question: who owns what AI creates?</summary>
+    <p class="subnote">So far we’ve talked about the input side (whether you can feed content to AI). This is the output side: whether what AI generates, translates, or rewrites for you can be protected, and who owns it. The answer varies by country, and it matters for whether you can claim any rights. Foreign rules are only for reference; in Taiwan, our Copyright Act and the TIPO’s views control.</p>
+    <div class="owns">
+      <div class="jblock">
+        <h4>Taiwan</h4>
+        <div class="st">Copyright Act Arts. 3, 10 · TIPO view</div>
+        <ul>
+          <li>Made entirely by AI with <b>no real human creative input</b> → not protected by copyright.</li>
+          <li>AI used as a <b>tool</b>, with real human creative input → the result can be protected, and the rights generally go to the person who created it.</li>
+          <li>The level of human contribution is still decided <b>case by case</b>.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://www.tipo.gov.tw/tw/copyright/692-63403.html" target="_blank" rel="noreferrer">TIPO ruling (email 1141017b) ↗</a>
+        </div>
+      </div>
+      <div class="jblock">
+        <h4>U.S.</h4>
+        <div class="st">Human-authorship rule</div>
+        <ul>
+          <li>Made purely by AI, without real human authorship → <b>not</b> protected by copyright.</li>
+          <li>Thaler v. Perlmutter: the Supreme Court declined to hear it in March 2026, keeping this rule.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://www.hklaw.com/en/insights/publications/2026/03/the-final-word-supreme-court-refuses-to-hear-case-on-ai-authorship" target="_blank" rel="noreferrer">Holland &amp; Knight (Thaler)↗</a>
+        </div>
+      </div>
+      <div class="jblock">
+        <h4>Hong Kong / U.K. (common law)</h4>
+        <div class="st">HK Copyright Ordinance §§11(3), 17(6)</div>
+        <ul>
+          <li><b>Computer-generated works can be protected</b> — as long as enough skill, labor, or judgment went in.</li>
+          <li>The author is &ldquo;the person who made the necessary arrangements.&rdquo; Protection lasts 50 years. This is broader than Taiwan or the U.S.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://www.elegislation.gov.hk/hk/cap528" target="_blank" rel="noreferrer">HK Copyright Ordinance (official)↗</a>
+          <a href="https://www.penningtonslaw.com/insights/ai-art-and-global-approaches-to-copyright-law-us-supreme-court-declines-to-review-the-case-of-thaler-v-perlmutter/" target="_blank" rel="noreferrer">Penningtons (common-law comparison)↗</a>
+        </div>
+      </div>
+      <div class="jblock">
+        <h4>Mainland China</h4>
+        <div class="st">Court cases</div>
+        <ul>
+          <li>In Nov 2023, the Beijing Internet Court found, in one case, that AI-generated content <b>can</b> be protected.</li>
+          <li>This is a single case, not a general rule, and China is a separate legal system from Hong Kong and Taiwan.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://www.scmp.com/tech/tech-trends/article/3243570/beijing-courts-ruling-ai-generated-content-can-be-covered-copyright-eschews-us-stand-far-reaching" target="_blank" rel="noreferrer">SCMP (Beijing case)↗</a>
+        </div>
+      </div>
+    </div>
+
+    </details>
+
+    <details class="foldsec"><summary>The flip side: keeping AI from training on your own work</summary>
+    <p class="subnote">If you’re an author or a teacher and want to keep AI from scraping or training on your papers, slides, or other work, here are some options.</p>
+    <div class="safelist">
+      <div class="q"><span class="n">A</span><div><h3>Images and artwork</h3><p>Use Glaze (protective — it makes your style harder to copy) or Nightshade (a countermeasure — it turns images into &ldquo;poison samples&rdquo; that disrupt training). Both come from the University of Chicago.<a class="law" href="https://glaze.cs.uchicago.edu/" target="_blank" rel="noreferrer" style="text-decoration:none">Glaze ↗</a> <a class="law" href="https://nightshade.cs.uchicago.edu/whatis.html" target="_blank" rel="noreferrer" style="text-decoration:none">Nightshade ↗</a></p></div></div>
+      <div class="q"><span class="n">B</span><div><h3>Websites and text</h3><p>Set up robots.txt to block crawlers. The ai.robots.txt project lists AI crawlers, and the EFF explains how.<a class="law" href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noreferrer" style="text-decoration:none">ai.robots.txt ↗</a> <a class="law" href="https://www.eff.org/deeplinks/2023/12/no-robotstxt-how-ask-chatgpt-and-google-bard-not-use-your-website-training" target="_blank" rel="noreferrer" style="text-decoration:none">EFF ↗</a></p></div></div>
+      <div class="q"><span class="n">C</span><div><h3>Publishing contracts</h3><p>When you sign a publishing contract, you can add the Authors Guild’s model &ldquo;no AI training&rdquo; clause (2025).<a class="law" href="https://authorsguild.org/news/model-clause-prohibiting-ai-training/" target="_blank" rel="noreferrer" style="text-decoration:none">Author's Guild ↗</a></p></div></div>
+      <div class="q"><span class="n">D</span><div><h3>Track licensing deals</h3><p>Use Ithaka S+R’s Generative AI Licensing Agreement Tracker to see which publishers have signed AI deals.<a class="law" href="https://sr.ithaka.org/our-work/generative-ai-licensing-agreement-tracker/" target="_blank" rel="noreferrer" style="text-decoration:none">Ithaka Tracker ↗</a></p></div></div>
+    </div>
+
+        </details>
+
+    <details class="foldsec"><summary>How publishers deal with outside AI, plus MCP (open for details)</summary>
+    <p class="subnote">The AI tools built into database platforms (like Scopus AI or JSTOR’s tools) are covered on a separate Library page →&nbsp;<a href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:600;text-decoration:none">NCCU Library · database AI features ↗</a>. This section is about something else: how publishers deal with consumer AI platforms. There are roughly two models.</p>
+    <div class="owns">
+      <div class="jblock">
+        <h4>Model A · Upstream: license content for AI to train on</h4>
+        <div class="st">A license fee up front · common with OpenAI, Microsoft, Google</div>
+        <ul>
+          <li>The publisher sells content to an AI company to train its model, usually for a <b>one-time or installment license fee</b>.</li>
+          <li>Academic examples: <b>Taylor &amp; Francis</b> × Microsoft (about US$10M), <b>Springer Nature</b> × Google (about US$23M), and <b>Wiley</b> (about US$49M in AI licensing in fiscal 2026). Cambridge lets authors opt in instead.</li>
+          <li>OpenAI is the most active buyer. Its chair, Bret Taylor, testified in 2026 that these licenses are &ldquo;<b>to avoid litigation</b>.&rdquo;</li>
+          <li><b>The debate:</b> most authors aren’t told and don’t get paid, so some argue for open access instead.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://digiday.com/media/a-timeline-of-the-major-deals-between-publishers-and-ai-tech-companies-in-2025/" target="_blank" rel="noreferrer">Digiday (deal timeline)↗</a>
+          <a href="https://www.bloomberg.com/news/articles/2025-06-10/academic-publishers-sign-ai-deals-as-trump-cuts-research-funding" target="_blank" rel="noreferrer">Bloomberg ↗</a>
+          <a href="https://sr.ithaka.org/our-work/generative-ai-licensing-agreement-tracker/" target="_blank" rel="noreferrer">Ithaka licensing tracker ↗</a>
+        </div>
+      </div>
+      <div class="jblock">
+        <h4>Model B · Downstream: plug into an answer engine, shown live with citations</h4>
+        <div class="st">Pay per use · Perplexity’s approach</div>
+        <ul>
+          <li>The content appears inside the AI’s answers with <b>source links</b>, so users read it directly (it’s not used for training).</li>
+          <li><b>Perplexity’s Publishers’ Program:</b> each time the content is cited, the publisher shares in ad or subscription revenue (publishers get 80% under the Comet Plus plan). Unlike OpenAI’s pay-up-front model, this pays per use.</li>
+          <li>Mistral × AFP works this way too (explicitly &ldquo;not for training,&rdquo; only live citation).</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://llmpulse.ai/blog/perplexity-publishers-program/" target="_blank" rel="noreferrer">Perplexity Publishers’ Program explained ↗</a>
+          <a href="https://everything-pr.com/perplexity-s-publisher-deals-what-pr-pros-need-to-know/" target="_blank" rel="noreferrer">PR News (Comet Plus revenue share)↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="official" style="margin-top:16px">
+      <div class="oh"><span class="obadge">A first for academia</span><strong>Wiley × Perplexity (2025)</strong></div>
+      <ol>
+        <li>Wiley plugged its <b>STM (science, technology, medicine) materials</b> into Perplexity’s answer engine.</li>
+        <li>Students and staff can <b>use the Wiley content their school already bought right inside Perplexity</b> (in fields like nursing, business, and engineering). Answers include citations you can trace back.</li>
+        <li>Access comes through the school’s <b>Perplexity Enterprise Pro</b> subscription. Wiley is Perplexity’s <b>first education partner</b> (announced May 2025). Pilot schools include Texas A&amp;M and Texas State.</li>
+        <li><b>For comparison:</b> smaller publishers can’t negotiate deals on their own, so collective licensing is growing — for example, the U.S. Copyright Clearance Center (CCC) AI license and the U.K.’s CLA.</li>
+      </ol>
+      <div class="osrc"><span class="sl">Official sources</span>
+        <a href="https://www.perplexity.ai/hub/blog/perplexity-partners-with-wiley-to-power-educational-ai-search" target="_blank" rel="noreferrer">Perplexity official blog ↗</a>
+        <a href="https://newsroom.wiley.com/press-releases/press-release-details/2025/Wiley-and-Perplexity-Announce-New-AI-Search-Partnership/default.aspx" target="_blank" rel="noreferrer">Wiley press release ↗</a>
+        <a href="https://www.amediaoperator.com/analysis/collective-licensing-ai-pls-cla-copyright/" target="_blank" rel="noreferrer">Collective licensing (CCC / CLA) ↗</a>
+      </div>
+    </div>
+
+    <p class="subhead">Newest: connecting databases straight to AI with MCP</p>
+    <p class="subnote">A newer approach that started in late 2025. <b>MCP (Model Context Protocol)</b> is an open standard from Anthropic that OpenAI, Google, and Microsoft now support (it’s maintained by the Linux Foundation). Think of it as &ldquo;a USB-C port for AI&rdquo;: it lets tools like ChatGPT and Claude <b>connect straight to</b> a publisher’s server and pull peer-reviewed full text, with citations, in real time. That’s more direct and reliable than pasting a PDF yourself or asking the AI to search the web.</p>
+    <div class="owns">
+      <div class="jblock">
+        <h4>Who’s doing it, and how to connect</h4>
+        <ul>
+          <li><b>Wiley</b> launched its &ldquo;Scholar Gateway / AI Gateway&rdquo; MCP server (Oct 2025, with Anthropic). It connects about 3 million articles and works with Claude, Perplexity, and Mistral.</li>
+          <li><b>Scite.ai</b> has an MCP server (March 2026) covering 1.6 billion &ldquo;smart citations.&rdquo; <b>Statista</b> has one too. The platform provider Silverchair uses &ldquo;Discovery Bridge&rdquo; to bring more publishers online quickly.</li>
+          <li><b>How to connect:</b> the publisher runs an &ldquo;MCP server.&rdquo; You add it as a &ldquo;connector&rdquo; in Claude or ChatGPT, and the AI can then search and pull full text directly, with sources cited.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://newsroom.wiley.com/press-releases/press-release-details/2025/Wiley-Partners-with-Anthropic-to-Accelerate-Responsible-AI-Integration-Across-Scholarly-Research/default.aspx" target="_blank" rel="noreferrer">Wiley press release ↗</a>
+          <a href="https://www.silverchair.com/news/mcp-101/" target="_blank" rel="noreferrer">Silverchair (MCP primer)↗</a>
+        </div>
+      </div>
+      <div class="jblock">
+        <h4>Does it cost money? What to watch for</h4>
+        <ul>
+          <li><b>Cost:</b> two models so far. Most work through your institution’s <b>existing subscription</b> (if your school subscribes, you can connect). Some charge <b>per use (pay-per-event)</b>. It’s early, and pricing isn’t settled.</li>
+          <li><b>Risks:</b> the MCP server <b>can see your queries</b>. There are security concerns like prompt injection. Most are still in beta.</li>
+          <li><b>Why it matters for libraries:</b> which databases offer an official MCP, and how it’s licensed and priced, will become new questions for purchasing and patron services.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://aarontay.substack.com/p/mcp-servers-and-academic-search-the" target="_blank" rel="noreferrer">Aaron Tay (MCP &amp; academic search)↗</a>
+        </div>
+      </div>
+    </div>
+
+    </details>
+
+    <details class="foldsec"><summary>Glossary (open any term you don’t know)</summary>
+      <dl class="gloss">
+        <dt>Text and data mining (TDM)</dt><dd>Letting a computer read and analyze many texts at once, instead of reading them one by one.</dd>
+        <dt>Fair use</dt><dd>Copyright law lets you use someone’s work without permission in certain cases. Taiwan weighs four factors, case by case, so it’s never guaranteed.</dd>
+        <dt>Reproduction (copying)</dt><dd>Making a copy of a work, including uploading it to a server. Whether it infringes depends on permission or fair use.</dd>
+        <dt>Adaptation</dt><dd>Re-creating a work into a new version, such as a translation or a rewrite. This right belongs only to the author.</dd>
+        <dt>RAG (retrieval-augmented generation)</dt><dd>The AI looks up sources first, then answers from them. Answers usually include citations, so it’s less likely to make things up.</dd>
+        <dt>MCP (Model Context Protocol)</dt><dd>An open standard that lets AI plug straight into a data source — like a USB-C port for AI.</dd>
+        <dt>Opt-out</dt><dd>When a rights holder declares in advance that their work may not be used by AI.</dd>
+        <dt>Answer engine</dt><dd>An AI search tool, like Perplexity, that gives you a direct answer with sources.</dd>
+        <dt>Open access (OA) / CC license</dt><dd>The author shares the work under a more open license. Still check which CC license it is (NC bans commercial use; ND bans changes).</dd>
+        <dt>Public domain</dt><dd>Works whose copyright has expired, so anyone can use them freely.</dd>
+      </dl>
+    </details>
+
+    <details class="refs">
+      <summary>Full list of sources</summary>
+      <div class="refgroup">
+        <h5>Key court cases</h5>
+        <div class="reflist">
+          <a href="https://www.jurist.org/news/2026/07/judge-approves-record-1-5-billion-settlement-involving-anthropic/" target="_blank" rel="noreferrer">JURIST — Anthropic $1.5B settlement, final approval ↗</a>
+          <a href="https://www.lawcommentary.com/articles/judge-approves-anthropics-15-billion-copyright-settlement-over-pirated-books" target="_blank" rel="noreferrer">Law Commentary — Anthropic settlement ↗</a>
+          <a href="https://www.courtlistener.com/docket/73294740/elsevier-inc-v-meta-platforms-inc/" target="_blank" rel="noreferrer">CourtListener — Elsevier et al. v. Meta docket (1:26-cv-03689) ↗</a>
+          <a href="https://www.hklaw.com/en/insights/publications/2026/05/major-publishers-challenge-ai-training-practices" target="_blank" rel="noreferrer">Holland &amp; Knight — Elsevier et al. v. Meta analysis ↗</a>
+          <a href="https://www.hklaw.com/en/insights/publications/2026/03/the-final-word-supreme-court-refuses-to-hear-case-on-ai-authorship" target="_blank" rel="noreferrer">Holland &amp; Knight — Thaler v. Perlmutter (cert. denied) ↗</a>
+          <a href="https://www.finnegan.com/en/insights/ip-updates/supreme-court-declines-to-hear-thaler-v-perlmutter-leaving-human-authorship-requirement-intact.html" target="_blank" rel="noreferrer">Finnegan — Thaler v. Perlmutter ↗</a>
+        </div>
+      </div>
+      <div class="refgroup">
+        <h5>Regional rules &amp; libraries opening data (how the law regulates vs. how data is opened to AI)</h5>
+        <div class="reflist">
+          <a href="https://www.techpolicy.press/ai-training-and-copyright-infringement-solutions-from-asia/" target="_blank" rel="noreferrer">TechPolicy.Press — TDM laws in Korea and Asia ↗</a>
+          <a href="https://asiaiplaw.com/article/south-korea-issues-guidance-on-copyright-and-ai-training-data" target="_blank" rel="noreferrer">Asia IP — South Korea’s 2026 AI copyright guidance ↗</a>
+          <a href="https://arxiv.org/html/2502.15858v2" target="_blank" rel="noreferrer">arXiv — Generative AI training and copyright (U.S./China/global survey) ↗</a>
+          <a href="https://openhumanitiesdata.metajnl.com/articles/10.5334/johd.263" target="_blank" rel="noreferrer">Journal of Open Humanities Data — collections as data and AI (Nat. Libraries of Scotland &amp; the Netherlands, Europeana) ↗</a>
+          <a href="https://tech.yahoo.com/ai/articles/ai-chatbots-more-books-learn-130607809.html" target="_blank" rel="noreferrer">AP — Harvard’s Institutional Books: making collections AI-ready ↗</a>
+          <a href="https://www.bl.uk/stories/blogs/posts/ai-and-machine-learning-with-british-library-collections" target="_blank" rel="noreferrer">British Library — collections as data ↗</a>
+          <a href="https://labs.loc.gov/" target="_blank" rel="noreferrer">U.S. Library of Congress — LC Labs ↗</a>
+          <a href="https://www.ajupress.com/view/20260204091870703" target="_blank" rel="noreferrer">National Library of Korea — 2026 AI work plan ↗</a>
+        </div>
+      </div>
+      <div class="refgroup">
+        <h5>Taiwan law and commentary</h5>
+        <div class="reflist">
+          <a href="https://www.tipo.gov.tw/tw/tipo1/425-23854.html" target="_blank" rel="noreferrer">Taiwan Intellectual Property Office (TIPO) — IP Rights Journal ↗</a>
+          <a href="https://www.is-law.com/evaluation-of-generative-ai-models-accessing-creative-commons-resources-through-fair-use-guidelines/" target="_blank" rel="noreferrer">Is-Law — TIPO rulings and Art. 65 fair use ↗</a>
+          <a href="https://www.leeandli.com/TW/Newsletters/7218.htm" target="_blank" rel="noreferrer">Lee and Li — reproduction and fair use ↗</a>
+          <a href="https://www.copyrightnote.org/ArticleContent.aspx?ID=9&amp;aid=3154" target="_blank" rel="noreferrer">Copyright Note — fair use and generative AI ↗</a>
+          <a href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer">MODA — Public-Sector AI Handbook (2026) ↗</a>
+          <a href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer">NSTC — Guidelines on Using Generative AI in Government (2023) ↗</a>
+        </div>
+      </div>
+      <div class="refgroup">
+        <h5>EU and Japan</h5>
+        <div class="reflist">
+          <a href="https://iknow.stpi.niar.org.tw/post/Read.aspx?PostID=21730" target="_blank" rel="noreferrer">STPI iKnow — comparing U.S./Japan/EU TDM laws ↗</a>
+          <a href="https://www.is-law.com/evaluation-of-generative-ai-models-accessing-creative-commons-resources-through-fair-use-guidelines/" target="_blank" rel="noreferrer">Is-Law — Japan Copyright Act §30-4 ↗</a>
+        </div>
+      </div>
+      <div class="refgroup">
+        <h5>Publisher deals with outside AI</h5>
+        <div class="reflist">
+          <a href="https://www.perplexity.ai/hub/blog/perplexity-partners-with-wiley-to-power-educational-ai-search" target="_blank" rel="noreferrer">Perplexity official — the Wiley partnership ↗</a>
+          <a href="https://newsroom.wiley.com/press-releases/press-release-details/2025/Wiley-and-Perplexity-Announce-New-AI-Search-Partnership/default.aspx" target="_blank" rel="noreferrer">Wiley press release — the Perplexity partnership ↗</a>
+          <a href="https://digiday.com/media/a-timeline-of-the-major-deals-between-publishers-and-ai-tech-companies-in-2025/" target="_blank" rel="noreferrer">Digiday — publisher × AI deal timeline ↗</a>
+          <a href="https://www.bloomberg.com/news/articles/2025-06-10/academic-publishers-sign-ai-deals-as-trump-cuts-research-funding" target="_blank" rel="noreferrer">Bloomberg — academic publishers’ AI licensing ↗</a>
+          <a href="https://llmpulse.ai/blog/perplexity-publishers-program/" target="_blank" rel="noreferrer">Perplexity Publishers’ Program explained ↗</a>
+          <a href="https://www.amediaoperator.com/analysis/collective-licensing-ai-pls-cla-copyright/" target="_blank" rel="noreferrer">Collective licensing (CCC / CLA) ↗</a>
+          <a href="https://sr.ithaka.org/our-work/generative-ai-licensing-agreement-tracker/" target="_blank" rel="noreferrer">Ithaka S+R — Generative AI Licensing Agreement Tracker ↗</a>
+        </div>
+      </div>
+      <div class="refgroup">
+        <h5>Library AI, protecting your work, and tools</h5>
+        <div class="reflist">
+          <a href="https://lab.ndl.go.jp/dl/" target="_blank" rel="noreferrer">National Diet Library (Japan) — Next Digital Library (official) ↗</a>
+          <a href="https://github.com/ndl-lab" target="_blank" rel="noreferrer">National Diet Library (Japan) — open-source code &amp; datasets (official) ↗</a>
+          <a href="https://authorsguild.org/news/model-clause-prohibiting-ai-training/" target="_blank" rel="noreferrer">Authors Guild — model no-AI-training clause ↗</a>
+          <a href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noreferrer">ai.robots.txt (GitHub) ↗</a>
+          <a href="https://www.eff.org/deeplinks/2023/12/no-robotstxt-how-ask-chatgpt-and-google-bard-not-use-your-website-training" target="_blank" rel="noreferrer">EFF — how to block AI with robots.txt ↗</a>
+          <a href="https://www.elegislation.gov.hk/hk/cap528" target="_blank" rel="noreferrer">HK Copyright Ordinance (official)↗</a>
+        </div>
+      </div>
+    </details>
+
+    <div class="legaldisc">
+      <span class="i">!</span>
+      <p><b>This is an information summary, not legal advice.</b> The Library prepared it for outreach and education. It is not a lawyer’s opinion, and it does <b>not guarantee or endorse whether any particular use is legal or counts as fair use</b>. Copyright and fair use are decided case by case, and this field changes fast (checked Aug 4, 2026). For NCCU’s official policy or license purchases, confirm the exact contract with the Library, the Office of Research and Development, or the university’s legal office — and consult a lawyer if needed.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer id="about">
+  <div class="foot">
+    <div>
+      <h3>About this page</h3>
+      <p>This page pulls together each platform’s <strong>public terms, usage policies, and API terms</strong>. It reads general website use, TDM, API use, and AI licensing separately. Where the public terms don’t say, we mark it &ldquo;Unspecified.&rdquo; Silence does not mean consent.</p>
+      <p>Numbers like &ldquo;500 PDFs per hour&rdquo; or &ldquo;1,000 articles an hour&rdquo; are limits the terms use to define <strong>abnormal or bulk use</strong>. They are not a download allowance. Don’t treat them as a quota.</p>
+      <p>Terms change. Before you cite this in a research plan, library guidance, or a purchasing decision, open the official source and check again.</p>
+    </div>
+    <div>
+      <h3>Sources &amp; verification</h3>
+      <p class="meta">Last checked: 2026-08-04</p>
+      <p>Each database is based primarily on its official terms page. ACM, Cambridge, EBSCO, Elsevier, IEEE, JSTOR, Oxford Academic, ProQuest, SAGE, Springer&nbsp;Nature, Taylor&nbsp;&amp;&nbsp;Francis and Wiley were each checked against their current terms and source links. DBpia, CNKI, JapanKnowledge, Nikkei, Asahi and Airiti often sit behind login walls, so the terms are as compiled at the time of checking.</p>
+      <p class="meta" style="margin-top:14px">National Chengchi University Library<br>Outreach &amp; Consultation Section</p>
+    </div>
+  </div>
+  <div class="aidisc wrap">
+    <div class="aidisc-h">How we used AI (this page is the example)</div>
+    <p><strong>NCCU Library staff</strong> and a generative AI tool (<strong>Claude Opus 4.8</strong>, by Anthropic) made this page together. Staff set the goals and structure, checked every legal and case source, and reviewed all the content. The AI helped draft and polish the text, organize the material, and write the code and layout. Every legal statement rests on an official or authoritative legal source. This is a summary of information, not legal advice. We also wrote this paragraph as a working example of how to disclose AI use: name the tool, say what the AI did, and show how a person checked it and takes responsibility.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+const S = {ban:"Prohibited", cond:"Conditional", lic:"License req.", unclear:"Unspecified"};
+
+const DB = [
+  {name:"ACM Digital Library",
+   dl:{s:"ban",  t:"No download cap for institutional users in general, but batch harvesting by bots or systematic activity is excluded."},
+   tdm:{s:"unclear", t:"The public terms don’t cover every TDM case; confirm case by case."},
+   ai:{s:"unclear", t:"ACM hasn’t decided whether or how the Digital Library may be used for LLM training; there’s no single public license."},
+   src:[["Digital Library Usage Policies","https://www.acm.org/publications/policies/dl_use_policies"],["ACM’s view on LLM access","https://cacm.acm.org/opinion/now-is-the-time-to-give-llms-access-to-the-acm-digital-library/"]],
+   raw:`[Institutional subscription] Institutional customers have no annual download limit, except for downloads caused by bots or systematic activity.
+
+[Individual-user policy] Don’t reproduce all or most of the database wholesale. Don’t use bots or intelligent agents — they slow the system for everyone and count as misuse. If it finds systematic downloading, ACM may suspend or cancel the subscription and block the source IP.
+
+[AI / LLM] ACM hasn’t decided whether or how the Digital Library may be used to train large language models (LLMs), and there’s no single public AI license that covers every case. ACM says it will weigh the opportunities and risks case by case before signing with any AI company or project.`},
+
+  {name:"Cambridge Core",
+   dl:{s:"ban", t:"Don’t bulk-download with bots on your own; contact Cambridge first for programmatic or large-scale needs."},
+   tdm:{s:"cond", t:"You may do noncommercial TDM on content you can lawfully access. Link back to the original and delete local copies when the project ends."},
+   ai:{s:"unclear", t:"The public policy doesn’t clearly cover generative AI, RAG, or model training."},
+   src:[["Cambridge Core Terms","https://www.cambridge.org/core/legal-notices/terms"],["Text and data mining","https://www.cambridge.org/core/services/open-research/text-and-data-mining"]],
+   raw:`[Text and data mining] You may download, extract, store, and index content you lawfully access for text and data mining (TDM), and you may host, load, combine, and analyze the TDM results — as long as your site links back to the underlying content. Delete any local copies stored for TDM when the research project ends.
+
+[Bulk download] All content is provided &ldquo;as is.&rdquo; Cambridge doesn’t guarantee it’s suitable for machine analysis and currently offers no API access. Cambridge monitors use and downloads by various means and may impose limits (including technical protection measures). The download rate must not exceed 500 PDFs per hour; if you go over, Cambridge may withdraw access to restricted content. For programmatic or large-scale downloading, or delivery in a specific format, contact openresearch@cambridge.org first.
+
+(Under the current Open Research TDM policy, TDM is limited to noncommercial use and requires lawful access. The public policy doesn’t clearly cover generative AI, RAG, or model training.)`},
+
+  {name:"DBpia",
+   dl:{s:"ban", t:"The terms explicitly warn against unauthorized crawling, copying, or bulk collection of content."},
+   tdm:{s:"unclear", t:"No general TDM permission appears in the public agreement."},
+   ai:{s:"unclear", t:"The public terms don’t fully address external AI / RAG use."},
+   src:[["DBpia Terms of Use","https://www.dbpia.co.kr/link/agreement"]],
+   raw:`If a member does any of the following, the company may suspend the service for a time after prior notice — and likewise if the company’s or a third party’s rights are infringed or at risk.
+
+Users may copy, transmit, publish, distribute, broadcast, or otherwise use information obtained through the service without the company’s prior approval, but not for profit and not for a third party’s use.
+
+If you crawl or copy the company’s content without permission, you may face civil and criminal liability under copyright law, unfair-competition law, and other laws.
+
+(The public membership agreement shows no explicit permission for general TDM or external AI / RAG; confirm such uses with DBpia or your institution.)`},
+
+  {name:"EBSCOhost",
+   dl:{s:"ban", t:"Systematic or regular downloading to build a dataset is banned — including crawlers, bots, and equivalent manual batches."},
+   tdm:{s:"ban", t:"Systematic downloading to build a dataset is expressly banned, which closes off the usual TDM route."},
+   ai:{s:"ban", t:"Expressly bans using the content with AI tools or machine-learning technology for any purpose."},
+   src:[["EBSCO License Agreement","https://www.ebsco.com/license-agreement"]],
+   raw:`The licensee and authorized users agree to follow the 1976 Copyright Act and any contract, copyright, or other limits the publisher sets in the database or service. Under these terms, you may download or print a limited amount of citations, abstracts, full text, or portions — but only as copyright law allows. You may not make the information public, use the database or service as part or the basis of any publication prepared for sale, or reproduce, alter, or use it for sale or distribution.
+
+[Bulk download / scraping] Systematic or regular downloading of all or part of the database or service to build a dataset (electronic or print) is strictly forbidden. You may not use robots, spiders, crawlers, or other automated download programs, algorithms, or devices to continuously and automatically search, extract, scrape, deep-link, or index the licensed content, or to interfere with its use.
+
+[AI / machine learning] Authorized users may not use AI tools or machine-learning technology that includes the database or service content for any purpose. Recent license agreements add two express bans: (1) using the product for machine learning, algorithm development, testing, or improvement, or any other AI purpose; and (2) taking any content or information obtained through the product to build, use, or input into any large language model (LLM) or related technology, whether the LLM is public or private.
+
+[Software] Don’t reproduce or distribute the software without permission; don’t reverse-engineer, decompile, disassemble, modify, translate, seek the source code, or create derivative works.`},
+
+  {name:"Elsevier／ScienceDirect／Scopus", scope:"Judge ScienceDirect full text and Scopus metadata separately",
+   dl:{s:"ban", t:"Bans continuous automated harvesting, extraction, deep-linking, or indexing by bots, crawlers, or equivalent manual batches."},
+   tdm:{s:"cond", t:"Noncommercial academic research is allowed through the official TDM API, subject to reasonable rate limits."},
+   ai:{s:"lic", t:"Bans combining the content with AI tools; sharing it with a third party (including outside AI) needs Elsevier’s written consent."},
+   src:[["Website terms","https://www.elsevier.com/legal/elsevier-website-terms-and-conditions"],["TDM FAQ","https://www.elsevier.com/about/policies-and-standards/text-and-data-mining/faq"]],
+   raw:`[AI] You may not combine the service content with AI tools (including training algorithms, testing, processing, analyzing, generating output from, and/or developing any kind of AI tool). Elsevier also states on its pages that it reserves all rights, including text and data mining, AI training, and similar technologies.
+
+[Bulk download] You may not use any robot, spider, crawler, or other automated download program, algorithm, or device — or an equivalent manual process — to (i) continuously and automatically search, extract, deep-link, or index any content; (ii) collect personal information to send unsolicited material; or (iii) disrupt the service. If the service includes a robot-exclusion file or header, you agree to follow it and not bypass it.
+
+[Text and data mining] The API sets no strict cap on the number of downloads but does apply reasonable rate limits; Elsevier may revoke an API key in cases of abuse or if system stability is affected. The TDM service supports only noncommercial academic research and provides a dedicated TDM repository. If TDM output is accessed, processed, or hosted by a third-party vendor, that needs Elsevier’s written consent, and the vendor may not use the data for other products or services.`},
+
+  {name:"IEEE Xplore",
+   dl:{s:"ban", t:"Bans systematic downloading with bots or intelligent agents; violations suspend personal and institutional access."},
+   tdm:{s:"lic", t:"Noncommercial TDM must go through an approved API and licensing process."},
+   ai:{s:"lic", t:"Without IEEE’s written consent, you may not use it for AI training, development, benchmarking, uploading, or mining."},
+   src:[["IEEE Xplore Terms of Use","https://ieeexplore.ieee.org/Xplorehelp/overview-of-ieee-xplore/terms-of-use"],["IEEE — allowed API uses","https://developer.ieee.org/Allowed_API_Uses"]],
+   raw:`[Bulk download] You may not use bots or intelligent agents to access, search, or systematically download any part of IEEE Xplore, and you may not batch-copy or commercially distribute it in any form. Systematic downloading of any part of a database, volume, or journal is strictly forbidden; using a bot or intelligent agent breaks the subscription license agreement. IEEE monitors site activity to detect systematic downloading; suspicious behavior leads to suspension of personal and institutional access, and repeated violations end the subscription.
+
+[API terms] (a) Content may be shown only per individual query, not in bulk; (b) don’t keep or store any content after the license ends; (c) don’t use bots, spiders, retrieval apps, or other devices to retrieve or index content, and don’t let a third party do so; (e) don’t distribute content in a form that humans or machines can harvest; (f) require every user who accesses content through the API to agree not to save it in bulk.
+
+[AI / machine learning / LLM] Without IEEE’s prior written consent, the licensee (and its employees, agents, and third parties acting for it) may not use any IEEE content to build, train, improve, develop, maintain, or contribute to any AI, machine-learning system, or large language model (whether owned by the licensee or a third party). This includes, but isn’t limited to, uploading, transmitting, or providing IEEE content to any AI / machine-learning system / LLM for training or inclusion in its dataset. The terms also define AI, machine-learning systems, and LLMs (giving GPT-3, GPT-4, PaLM 2, and others as examples).
+
+(Noncommercial TDM requires a valid institutional subscription, plus advance notice to IEEE and access and use terms agreed with IEEE.)`},
+
+  {name:"JapanKnowledge",
+   dl:{s:"ban", t:"Bans crawling, extraction, automated collection, and heavy downloading in a short time."},
+   tdm:{s:"ban", t:"General TDM is expressly banned and needs a separate license."},
+   ai:{s:"ban", t:"Expressly bans use for training or developing generative AI, AI, RAG, or RPA."},
+   src:[["JapanKnowledge Terms of Use","https://japanknowledge.com/library/terms01.html"]],
+   raw:`When using the service, members may not:
+(1) Use the content for anything beyond the member’s own personal use, such as distributing it to third parties or building a database.
+(5) Reverse-engineer the content, or analyze its source code or protocols.
+(6) Buy, sell, distribute, reuse, or modify copies of the content; adapt it into books or other services; publish it under someone else’s name; or otherwise infringe the copyright, trademark, or other IP rights of the company, its licensors, or third parties.
+(9) Use automated means (such as crawling or scraping) to collect, extract, process, analyze, or store the service’s data.
+(10) Download large amounts of content from the service in a short time.
+(15) Use it for training or developing generative AI and the like (including AI, retrieval-augmented generation (RAG), RPA, programs, software, and similar), or act for that purpose.`},
+
+  {name:"JSTOR／Artstor",
+   dl:{s:"ban", t:"Bans scraping, harvesting, and systematic downloading of large or substantial portions."},
+   tdm:{s:"cond", t:"Research must go through JSTOR’s designated research and text-analysis channels."},
+   ai:{s:"ban", t:"You may not use the content to train, fine-tune, or improve AI models. But using an LLM for analysis inside JSTOR’s approved text-analysis channel is allowed."},
+   src:[["JSTOR Terms and Conditions","https://about.jstor.org/terms/"]],
+   raw:`Unless the license for Early Journals, Open JSTOR, Open Artstor, or a shared collection clearly allows it, institutional licensees and users may not:
+• Use the service, collection-management software, or any content for commercial purposes or profit (for example, selling access); Artstor content may not be used in commercially published material;
+• Use the content to train large language models or other generative AI technology, unless expressly allowed;
+• Do any automated downloading or exporting of content, including web crawling, web scraping, data scraping, or other automated extraction;
+• Systematically print, download, copy, or distribute a large part of the content, including a large part of a journal or an Artstor collection, or use it to replace a print copy.
+
+(Under the 2025 updated terms: you may do TDM for academic research and share the analysis inside JSTOR’s approved text-analysis channel; using an LLM to run the text analysis there is allowed. What’s banned is using the content to train or improve AI models, and the results may not substitute for access to the JSTOR or publisher site.)`},
+
+  {name:"Oxford Academic／OUP",
+   dl:{s:"ban", t:"Don’t assume you may batch-collect full text; it depends on the institutional contract and fair use."},
+   tdm:{s:"cond", t:"Noncommercial TDM requires lawful access and must follow the institutional subscription agreement; commercial use is negotiated separately."},
+   ai:{s:"unclear", t:"The public policy doesn’t clearly grant rights for external AI / RAG."},
+   src:[["OUP Text and Data Mining","https://academic.oup.com/pages/purchasing/rights-and-permissions/text-and-data-mining"]],
+   raw:`[Text and data mining] Noncommercial TDM rights apply only when the user has lawful access, with the details set out in the subscription agreement between OUP and your institution. Commercial TDM rights require a specific agreement and an extra fee.
+
+(The above is from OUP’s &ldquo;text and data mining&rdquo; policy page. The specific limits on bulk downloading, and whether external AI / RAG is covered, come down to OUP’s general terms of use and the subscription agreement your institution signed — the public policy doesn’t clearly grant rights for external generative AI / RAG.)`},
+
+  {name:"ProQuest",
+   dl:{s:"ban", t:"Bans systematic or regular downloading of all or a substantial part, plus automated searching and metadata harvesting."},
+   tdm:{s:"ban", t:"A standard subscription usually doesn’t include text/data mining; check whether a separate product like TDM Studio is available."},
+   ai:{s:"unclear", t:"The public standard terms don’t uniformly address all generative AI / RAG uses."},
+   src:[["ProQuest Terms and Conditions","https://about.proquest.com/zh/about/terms-and-conditions/"]],
+   raw:`[Bulk download] Systematically or regularly downloading all or a substantial part of the product, or using it to build a dataset (electronic or print), is strictly forbidden. To protect the product for authorized users’ research and teaching, you may not run automated searches against ProQuest systems (including automated &ldquo;bots,&rdquo; link checkers, or other scripts), except for unburdensome federated search.
+
+Customers and their authorized users may not:
+• Translate, reverse-engineer, disassemble, decompile, discover, or modify ProQuest software; remove any copyright or proprietary notices; circumvent use limits or protection devices; run penetration tests or denial-of-service attacks;
+• Publish, broadcast, sell, or provide access to the service or the data obtained in a way that could infringe ProQuest’s or its licensors’ rights;
+• Use the service to create or run a product that competes with or interferes with ProQuest;
+• Text-mine, data-mine, or extract metadata from the service.
+
+(Exception: ProQuest also offers &ldquo;TDM Studio.&rdquo; Inside its designated Workbench, you may create &ldquo;derived data&rdquo; from the text of eligible databases — such as summaries and factual extracts — but it may not substitute for the full text. This is a separate purchase/agreement, apart from the standard subscription terms. AI use is not uniformly addressed in the public standard terms.)`},
+
+  {name:"SAGE",
+   dl:{s:"ban", t:"Don’t bulk-collect content with crawlers on your own."},
+   tdm:{s:"cond", t:"With lawful access, you may do qualifying noncommercial TDM; commercial use needs a separate license."},
+   ai:{s:"lic", t:"Generative AI, LLM training, and RAG all need a separate license from SAGE."},
+   src:[["Sage TDM and AI Policy","https://www.sagepub.com/tdm-ai-policy"]],
+   raw:`Sage content (including website content) is copyrighted. Unless stated otherwise, each use needs Sage’s prior written permission.
+
+[Noncommercial TDM] You don’t need a license to do noncommercial TDM on content you already lawfully access, or on the Sage website. To do noncommercial TDM on Sage journal content, use the CrossRef API.
+
+[Commercial TDM] Commercial TDM on the Sage website and content needs a license from Sage, even if you already lawfully access the content (apply through CCC RightFind or at permissions@sagepub.com).
+
+[AI] To use the Sage website and content for any AI purpose — including generative AI, training a large language model (LLM), retrieval-augmented generation (RAG), and other uses — you need lawful access to the content and a license from Sage (apply at permissions@sagepub.com).`},
+
+  {name:"Springer Nature／SpringerLink／Nature",
+   dl:{s:"ban", t:"Bans unauthorized systematic or automated downloading."},
+   tdm:{s:"lic", t:"Reserves TDM rights, usually requiring an official service, API, or license; OA content follows its CC license."},
+   ai:{s:"lic", t:"Expressly reserves rights for AI development, training, improvement, and machine reading."},
+   src:[["TDM Reservation Policy","https://datasolutions.springernature.com/tdm-reservation-policy/"],["General Terms of Use","https://www.springernature.com/gp/legal/general-terms-of-use/15067848"]],
+   raw:`All copyright, proprietary rights, and third-party rights in material obtained through springernature.com belong to their respective holders. Unless a specific case says otherwise, you have only the legal right to copy small amounts for personal purposes, keeping all copyright and proprietary notices. Website content and data may not be distributed in any form, or deployed on a third-party site.
+
+[TDM / AI rights reservation] Springer Nature expressly reserves all rights in the content for any form of text and data mining as defined in Article 4(3) of EU Directive 2019/790, and for the development, training, programming, improvement, or enrichment of any AI system. Content published under an open-access (OA) license follows that OA license; TDM rights in all other content are reserved, and inquiries should go to the publisher.
+
+(In practice: researchers at subscribing institutions can obtain TDM rights for noncommercial research, usually through Springer Nature’s TDM API, subject to rate limits (for example, one request per second). API use may carry an extra fee.)`},
+
+  {name:"Taylor & Francis／Routledge",
+   dl:{s:"ban", t:"Don’t batch-scrape the website on your own."},
+   tdm:{s:"cond", t:"With lawful access, you may do noncommercial TDM under conditions; commercial use is quoted separately."},
+   ai:{s:"lic", t:"LLM / SLM / RAG go through a content-licensing partnership; contact them for a separate project."},
+   src:[["Text and data mining policy","https://taylorandfrancis.com/our-policies/textanddatamining/"],["Content for AI models","https://taylorandfrancis.com/medical-publication-professionals/content-for-ai-models/"]],
+   raw:`[Text and data mining] If you or your institution subscribes to Taylor & Francis content, you may do noncommercial TDM on subscribed and open-access content at no extra cost. For commercial TDM, contact T&F to discuss your needs and get a quote. (Don’t batch-scrape the website on your own.)
+
+[AI] Taylor & Francis offers its high-quality scholarly content as a partner for training large language models (LLMs), small language models (SLMs), and retrieval-augmented generation (RAG) models. This kind of AI use is a separately negotiated content-licensing partnership — contact their specialist team. It does not come with a subscription or with TDM rights.`},
+
+  {name:"WARC",
+   dl:{s:"ban", t:"Don’t crawl, scrape, or bulk-download the site’s data."},
+   tdm:{s:"ban", t:"The terms ban automated extraction and data mining, which closes off batch analysis."},
+   ai:{s:"ban", t:"Expressly bans uploading or inputting any content into AI / an LLM."},
+   src:[["LIONS Website Terms of Use","https://www.lions.co/en/website-terms-of-use"]],
+   raw:`Don’t crawl, scrape, download, upload, sell, or offer for sale any data on this site. You also agree not to use (or cause the use of) any computerized or other manual or automated program, mechanism, tool, or process — including any crawler or spider bot — to access, extract, download, data-mine, display, transmit, or publish any data on this site.
+
+In addition: (i) don’t upload or input any material, including our content, data, or information (in whole or in part), into any form of artificial intelligence (AI) source or large language model (LLM).
+
+If you break these terms, you are liable for all losses, costs, claims, and damages we incur and/or suffer as a result.`},
+
+  {name:"Wiley Online Library",
+   dl:{s:"ban", t:"Don’t use crawlers, bots, or other automated means to access or copy the content."},
+   tdm:{s:"cond", t:"TDM must go through a Wiley-approved channel (such as an approved API / Crossref), subject to rate limits."},
+   ai:{s:"ban", t:"A standard subscription doesn’t include AI use; using AI to extract, train on, analyze, or process the content is banned."},
+   src:[["Wiley Terms and Conditions","https://onlinelibrary.wiley.com/terms-and-conditions"],["Text and Data Mining","https://onlinelibrary.wiley.com/library-info/resources/text-and-datamining"]],
+   raw:`You have the specific rights below; all other rights — including text and data mining (TDM), AI training, and similar technologies — are reserved.
+
+[Bulk download] You may not use any crawler, spider, bot, or other automated means to access or copy the Wiley Online Library, an electronic product, or any data in it; nor deep-link, bypass robot-exclusion headers, or get around other access restrictions.
+
+[AI] You may not use or enable AI technologies and tools to extract, train on, test, analyze, process, reproduce, distribute, publicly provide access to, and/or generate output from the Wiley Online Library, an electronic product, or its content; nor upload, copy, or host content for AI technologies and tools to use directly or indirectly (for example, through third-party plugins, extensions, or decentralized custom chatbots).
+
+[Text and data mining] Except as Wiley or applicable law expressly allows, you may not do TDM on the site or content. Academic subscribers may do TDM on subscribed content for noncommercial purposes, under license (or under a legal right in applicable law), at no extra cost. To keep the platform stable, TDM must go through Wiley’s API service (accept the click-through TDM license and get an API token), not by scraping. Corporate subscribers should contact their account manager.`},
+
+  {name:"中國知網 CNKI", scope:"The public page is a personal membership agreement, not an institutional license",
+   dl:{s:"ban", t:"Bans downloading with bots, spiders, or crawlers; abnormal downloading may trigger verification, throttling, or suspension."},
+   tdm:{s:"unclear", t:"The public membership agreement shows no full general TDM permission."},
+   ai:{s:"unclear", t:"No clear, uniform terms for external generative AI / RAG."},
+   src:[["CNKI Membership Agreement","https://wap.oversea.cnki.net/cn/member/agreement.html"]],
+   raw:`6. While using the service, the following will be treated as a breach — please note carefully:
+6.1 Breaking this agreement;
+6.2 Downloading CNKI articles through any bot, spider, crawler, screen-scraping, or other program or software;
+6.3 Articles downloaded from CNKI are for your own use only and may not be spread to third parties by sharing, forwarding, and the like.
+
+(This is a public personal membership agreement, not an institutional license. There is no full, explicit permission for general batch TDM or external AI / RAG; for such uses, check your institutional contract or confirm with CNKI or the library.)`},
+
+  {name:"日經テレコン Nikkei Telecom", scope:"The original terms are images and can’t be copied as text; rely on the official PDF",
+   dl:{s:"ban", t:"Don’t download, store, or reuse, except as the platform allows."},
+   tdm:{s:"ban", t:"No batch processing without permission."},
+   ai:{s:"ban", t:"Without written permission, don’t input it into generative AI, or use it for AI / RPA / bot training or analysis."},
+   src:[["Nikkei Telecom Terms of Use (revised 2026-02-02)","https://telecom.nikkei.co.jp/credit/prepaid/terms/"],["Notice on the generative-AI terms revision","https://t21help.nikkei.co.jp/oshirase/2023/09/20230911-1.html"]],
+   raw:`(The original terms are images, so the text can’t be copied. The following is filled in from Nikkei’s current public terms [revised 2026-02-02] and its official notice on the generative-AI terms revision.)
+
+All IP rights in the service’s data, images, video, software, and so on belong to Nikkei or its information providers. Except as Nikkei permits in writing or on the service screen, customers may not, in any form:
+(1) Download or store the information the service provides (except saving information printed under the general terms);
+(2) Produce products that make use of the service’s information;
+(3) Reprint or submit the information or adaptations of it to newspapers, magazines, information services, other media and websites, or email services;
+(4) Log in to or access the service using functions or interfaces Nikkei hasn’t expressly provided, or by methods Nikkei hasn’t expressly specified in advance.
+
+[AI] Nikkei has added to its general terms an express ban on putting the service’s content into generative AI.`},
+
+  {name:"朝日新聞クロスサーチ Asahi Cross Search",
+   dl:{s:"ban", t:"Bans heavy viewing, downloading, and abnormal access (for example, showing thousands of articles in an hour)."},
+   tdm:{s:"ban", t:"No batch analysis without permission."},
+   ai:{s:"ban", t:"Expressly bans use for training or processing with generative AI, LLMs, RAG, bots, or software."},
+   src:[["Asahi Cross Search Terms of Use","https://xsearch.asahi.com/exp/jpn/library/rule.html"]],
+   raw:`You may not do any of the following to the service or its content, in whole or in part:
+(6) Without Asahi Shimbun’s prior written consent, use content in ways that infringe the rights of Asahi Shimbun, its copyright holders, or third parties with lawful rights — for example, copying, storing, editing, processing, translating, adapting, publishing, selling, transmitting, screening, lending, distributing, or altering content beyond the scope of these terms.
+(9) Use generative AI and similar technologies (including but not limited to AI, large language models (LLMs), retrieval-augmented generation (RAG), bots, and software) for training, development, analysis, or processing.
+(10) Display a large amount of content in a short time, or download more than necessary (for example, showing 1,000 articles in an hour on one device).`},
+
+  {name:"華藝線上圖書館 Airiti Library",
+   dl:{s:"ban", t:"Bans crawlers, bots, automated queries, and downloading, and you may not import it into a third-party database."},
+   tdm:{s:"ban", t:"The public terms give no general batch-TDM permission and expressly ban automated extraction."},
+   ai:{s:"ban", t:"Expressly bans providing it to automated learning systems, AI training platforms, or a third party for AI processing."},
+   src:[["Airiti Library Terms of Use","https://www.airitilibrary.com/Home/Editor"]],
+   raw:`The site’s content and services are for personal, noncommercial use only. Users may use the site’s features to search, view, print, and download through browsers, phones, and other devices.
+
+The site bans users from using automated programs to search, download, harvest data, or extract content — or from loading the site’s content into systems or databases developed by themselves or others. Users also may not put the site’s data into their own or a third party’s automated learning systems or data-training platforms, or provide it to a third party for AI-related data processing and development.`}
+];
+
+const FILTERS = [
+  {id:"all",     label:"All",              test:()=>true},
+  {id:"ai-ban",  label:"AI clearly banned", test:d=>d.ai.s==="ban"},
+  {id:"tdm-ok",  label:"TDM conditional",   test:d=>d.tdm.s==="cond"},
+  {id:"lic",     label:"License required",  test:d=>[d.dl.s,d.tdm.s,d.ai.s].includes("lic")},
+  {id:"unclear", label:"Terms unclear",     test:d=>[d.dl.s,d.tdm.s,d.ai.s].includes("unclear")}
+];
+
+// ---- summary bars ----
+function buildBars(){
+  const order=["ban","cond","lic","unclear"];
+  document.querySelectorAll(".bars").forEach(box=>{
+    const lane=box.dataset.lane;
+    const counts={ban:0,cond:0,lic:0,unclear:0};
+    DB.forEach(d=>counts[d[lane].s]++);
+    order.forEach(k=>{
+      if(!counts[k]) return;
+      const pct=Math.round(counts[k]/DB.length*100);
+      const row=document.createElement("div"); row.className="barrow";
+      row.innerHTML=`<span class="bl">${S[k]}</span>
+        <span class="bartrack"><span class="barfill" style="width:${pct}%;background:var(--${k})"></span></span>
+        <span class="bn">${counts[k]}</span>`;
+      box.appendChild(row);
+    });
+  });
+}
+
+// ---- render table ----
+const rowsEl=document.getElementById("rows");
+const countEl=document.getElementById("count");
+let query="", filter="all", openName=null;
+
+function pill(cell){
+  return `<span class="pill ${cell.s}"><i></i>${S[cell.s]}</span>`;
+}
+
+function render(){
+  const q=query.trim().toLowerCase();
+  const ftest=FILTERS.find(f=>f.id===filter).test;
+  const list=DB.filter(d=>{
+    const hay=[d.name,d.scope,d.dl.t,d.tdm.t,d.ai.t,d.raw].filter(Boolean).join(" ").toLowerCase();
+    return (!q||hay.includes(q)) && ftest(d);
+  });
+
+  rowsEl.innerHTML="";
+  if(!list.length){
+    rowsEl.innerHTML=`<div class="empty">No databases match. Try “AI”, “TDM”, “API”, or clear the filter.</div>`;
+  }
+  list.forEach(d=>{
+    const open=openName===d.name;
+    const art=document.createElement("article");
+    art.className="row"+(open?" open":"");
+
+    const btn=document.createElement("button");
+    btn.className="rmain"; btn.setAttribute("aria-expanded",open);
+    btn.innerHTML=`
+      <span class="dbname">${d.name}${d.scope?`<small>${d.scope}</small>`:""}</span>
+      <span><b>Bulk download</b>${pill(d.dl)}</span>
+      <span><b>TDM</b>${pill(d.tdm)}</span>
+      <span><b>External AI / RAG</b>${pill(d.ai)}</span>
+      <span class="chev" aria-hidden="true">${open?"−":"+"}</span>`;
+    btn.addEventListener("click",()=>{openName=open?null:d.name; render();});
+    art.appendChild(btn);
+
+    if(open){
+      const det=document.createElement("div"); det.className="detail";
+      det.innerHTML=`
+        <div class="dgrid">
+          <div class="dcell"><div class="dh">${pill(d.dl)}<strong>Bulk download &amp; scraping</strong></div><p>${d.dl.t}</p></div>
+          <div class="dcell"><div class="dh">${pill(d.tdm)}<strong>Text &amp; data mining (TDM)</strong></div><p>${d.tdm.t}</p></div>
+          <div class="dcell"><div class="dh">${pill(d.ai)}<strong>External generative AI / RAG</strong></div><p>${d.ai.t}</p></div>
+        </div>
+        <details class="evidence">
+          <summary>Source clause excerpts</summary>
+          <div class="body">${d.raw.replace(/</g,"&lt;")}</div>
+        </details>
+        <div class="sources">
+          <span class="slabel">Official sources</span>
+          ${d.src.map(s=>`<a href="${s[1]}" target="_blank" rel="noreferrer">${s[0]} ↗</a>`).join("")}
+        </div>`;
+      art.appendChild(det);
+    }
+    rowsEl.appendChild(art);
+  });
+
+  countEl.textContent=`Showing ${list.length} / ${DB.length} databases`;
+}
+
+// ---- controls ----
+const filtersEl=document.getElementById("filters");
+FILTERS.forEach(f=>{
+  const b=document.createElement("button");
+  b.textContent=f.label; b.className=f.id==="all"?"active":"";
+  b.addEventListener("click",()=>{
+    filter=f.id; openName=null;
+    filtersEl.querySelectorAll("button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); render();
+  });
+  filtersEl.appendChild(b);
+});
+
+const qEl=document.getElementById("q"), clrEl=document.getElementById("clr");
+qEl.addEventListener("input",e=>{
+  query=e.target.value; clrEl.style.display=query?"block":"none"; openName=null; render();
+});
+clrEl.addEventListener("click",()=>{query="";qEl.value="";clrEl.style.display="none";openName=null;render();qEl.focus();});
+
+// Show today's date so the gap between "checked on" and "today" is obvious
+(function(){
+  const el=document.getElementById("today");
+  if(el){const d=new Date();
+    el.textContent=d.toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"});}
+})();
+
+buildBars();
+render();
+
+/* ---------- interactive decision flow ---------- */
+const ST={
+  src:[["db","A full-text article from a subscribed database"],["cc","Open access / CC-licensed"],["own","Something I wrote myself"],["pirate","Pirated or unknown source"]],
+  tool:[["builtin","The database’s built-in AI"],["inst","A licensed tool that won’t store or train on it"],["free","A free tool that may train on it"]],
+  use:[["read","Understand or summarize"],["translate","Translate"],["rewrite","Rewrite, and share it"]]
+};
+function stVerdict(s){
+  const R=(lv,t,w,d)=>({lv:lv,title:t,why:w,todo:d});
+  if(!s.src) return null;
+  if(s.src==="pirate") return R("red","Don’t — the source itself is a problem","If content comes from a pirate site or an unknown source, just getting it may already break copyright. This is the line the court drew in Bartz v. Anthropic.","Use a licensed library subscription or an open-access source instead.");
+  if(s.src==="own") return R("ok","OK — you’re the copyright holder","It’s your own writing, so it’s your call.","Just watch for large chunks of others’ text, interviewees’ personal data, or confidential material.");
+  if(s.src==="cc") return R("amber","Check the CC license first","Open access doesn’t mean anything goes. An NC (noncommercial) license may not work with a commercial AI platform. An ND (no-derivatives) license means you can’t translate or rewrite it.","Check the license label (CC BY, BY-NC, BY-ND, and so on). If you’re not sure, treat it as not allowed.");
+  if(!s.tool) return null;
+  if(s.tool==="builtin") return R("ok","Best choice — use the database’s own AI","Tools like Scopus AI, ScienceDirect Reading Assistant, and JSTOR’s AI are built and licensed by the publishers. Your content stays with them, and the answers include citations.","Use these built-in tools. Don’t paste the PDF anywhere else.");
+  if(s.tool==="free") return R("red","Highest risk — don’t put full text into a free AI","Pasting a whole subscribed article into a free tool that may keep and train on it copies the full text and hands it to a third party. It usually breaks the database’s terms too.","Use a tool that won’t store or train on it, or the database’s built-in AI. Or paste only the key points.");
+  if(!s.use) return null;
+  if(s.use==="read") return R("amber","Usually OK — but check the terms first","Using a licensed tool that won’t store or train on it, just to understand the article yourself, is the safer choice. But uploading full text still makes a copy. First, check that this database doesn’t ban outside AI (see “The terms” below).","Make sure both the source and the tool are allowed. Don’t let the summary copy the original word for word.");
+  if(s.use==="translate") return R("amber","Translation: fine for yourself, license it to share","Translation counts as an “adaptation” under copyright law. You have room to do it for yourself. But once you share or publish it, you usually need permission.","Keep it small, and don’t treat it as a replacement for the original. Get a license before you share it.");
+  return R("blue","Rewrite and share = you need permission","Rewriting is an “adaptation” that creates a new work. If you share, publish, or sell it, you usually need the copyright holder’s permission.","Quote the source and write the rest yourself, or get a license first.");
+}
+const STLV={ok:"OK / low risk",amber:"Caution / depends",blue:"Check / license needed",red:"Not advised"};
+
+(function initSelfTest(){
+  const body=document.getElementById("flowbody");
+  const stepEl=document.getElementById("flowstep");
+  if(!body) return;
+  const sel={src:null,tool:null,use:null};
+  const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  function group(key,label,opts){
+    return `<div class="stq"><div class="stq-l">${label}</div><div class="stopts">`+
+      opts.map(o=>`<button class="stbtn${sel[key]===o[0]?" on":""}" data-k="${key}" data-v="${o[0]}">${esc(o[1])}</button>`).join("")+
+      `</div></div>`;
+  }
+  function draw(){
+    let html=`<p class="st-intro">Pick your situation. The matching advice appears <b>right away</b> below.</p>`;
+    html+=group("src","① Where does the content come from?",ST.src);
+    if(sel.src==="db") html+=group("tool","② Which kind of AI tool?",ST.tool);
+    if(sel.src==="db"&&sel.tool==="inst") html+=group("use","③ What do you want the AI to do?",ST.use);
+    const v=stVerdict(sel);
+    if(v){
+      stepEl.textContent="Result";
+      html+=`<div class="flowres ${v.lv} st-res"><span class="flowbadge"><span class="dot"></span>${STLV[v.lv]}</span>`+
+        `<h3>${esc(v.title)}</h3><p>${esc(v.why)}</p>`+
+        `<div class="do"><b>What to do</b><span>${esc(v.todo)}</span></div></div>`;
+    }else{
+      stepEl.textContent="Keep going";
+      html+=`<div class="st-wait">Pick the next answer to see advice.</div>`;
+    }
+    if(sel.src) html+=`<div class="flownav"><button data-act="reset">↺ Start over</button></div>`;
+    body.innerHTML=html;
+    body.querySelectorAll(".stbtn").forEach(b=>b.addEventListener("click",()=>{
+      const k=b.dataset.k;
+      sel[k]=(sel[k]===b.dataset.v)?null:b.dataset.v;
+      if(k==="src"&&sel.src!=="db"){sel.tool=null;sel.use=null;}
+      if(k==="tool"&&sel.tool!=="inst"){sel.use=null;}
+      draw();
+    }));
+    const rb=body.querySelector("[data-act='reset']");
+    if(rb) rb.addEventListener("click",()=>{sel.src=null;sel.tool=null;sel.use=null;draw();});
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
