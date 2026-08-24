@@ -654,7 +654,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       <div class="casecard">
         <span class="yr">美國 SDNY · 2026/5 起訴</span>
         <h4>Elsevier 等 v. Meta</h4>
-        <p>五大學術與教育出版社（Elsevier、Cengage、Hachette、Macmillan、McGraw Hill）與作家 Scott Turow，提告 Meta 與 Zuckerberg，主張其從 LibGen、Sci-Hub 等盜版庫下載、並爬取付費牆後的數百萬本書與期刊論文訓練 Llama，且移除著作權管理資訊（CMI）以掩飾來源。這是出版社首度對 AI 公司提起的著作權訴訟（案號 1:26-cv-03689）。</p>
+        <p>五大學術與教育出版社（Elsevier、Cengage、Hachette、Macmillan、McGraw Hill）與作家 Scott Turow，提告 Meta 與 Zuckerberg，主張其從盜版書庫下載、並爬取付費牆後的數百萬本書與期刊論文訓練 Llama，且移除著作權管理資訊（CMI）以掩飾來源。這是出版社首度對 AI 公司提起的著作權訴訟（案號 1:26-cv-03689）。</p>
         <div class="take"><b>與你的資料庫直接相關：</b>Elsevier 等把「學術內容被盜用訓練」搬上法庭；爭點是「非法取得＋移除版權資訊」，目前尚在起訴階段、未判決。</div>
         <div class="srcrow"><span class="sl">出處</span>
           <a href="https://www.courtlistener.com/docket/73294740/elsevier-inc-v-meta-platforms-inc/" target="_blank" rel="noreferrer">CourtListener（法院判決檔）↗</a>
@@ -701,7 +701,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
           <tr><th>英國</th><td>只有「非商業研究」能做 TDM（§29A）；2025 本想開放到商業用途（讓權利人可退出），因創作界反彈而喊停。</td><td>大英圖書館把數位館藏做成「Collections as Data」開放資料集釋出；蘇格蘭國圖發布 AI 使用聲明。</td></tr>
           <tr><th>歐盟</th><td>研究用途 TDM 開放（權利人不能拒絕）；一般用途也可做，但權利人能事先聲明「不給用（opt-out）」，出版社大多已聲明。</td><td>法國國圖（Gallica）、荷蘭 KB、挪威國圖 AI-Lab、Europeana 等，把館藏做成 API／開放資料集，方便 AI 檢索與研究。</td></tr>
           <tr><th>日本</th><td>例外最寬——為「分析、訓練」等目的可用他人作品（§30-4）；但「幫我把這篇讀懂」不算，仍要授權。</td><td>國會圖書館（NDL）把版權過期館藏做成全文 AI 檢索，並開源訓練資料集與 OCR 模型（CC BY）。</td></tr>
-          <tr><th>韓國</th><td>想修法給 TDM 例外，但草案（2021 起）一直沒過；政府 2023 指引鼓勵先取得授權、並讓權利人可退出。</td><td>國家圖書館建置「AI 訓練資料集」（版權已清）餵給國家級 LLM；推「Library+」平台與 AI agent。</td></tr>
+          <tr><th>韓國</th><td>2021 曾提 TDM 例外草案（未過）；主管部會 2025 底表示傾向不採 TDM 例外、改走合理使用。2023 指引鼓勵先取得授權、讓權利人可退出。</td><td>國家圖書館建置「AI 訓練資料集」（版權已清）餵給國家級 LLM；推「Library+」平台與 AI agent。</td></tr>
           <tr><th>中國</th><td>法律沒明講 TDM；2023 起要求生成式 AI 服務要守著作權；法院判決不一（北京可受保護、廣州服務商侵權）。</td><td>國家級「開放資料集／餵 AI」的公開資訊有限，這裡先不臆測。</td></tr>
           <tr><th>港／澳</th><td>香港正研議開放 TDM（須合法取得、可讓權利人退出），還在諮詢。澳門相關規範公開資訊少。</td><td>香港部分館藏數位化與開放資料仍在發展；澳門公開資訊少。</td></tr>
         </tbody>
@@ -839,12 +839,12 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         <h4>誰在做、怎麼接</h4>
         <ul>
           <li><b>Wiley</b> 推出「Scholar Gateway／AI Gateway」MCP 伺服器（2025/10，與 Anthropic 合作），可接約 300 萬篇文章，支援 Claude、Perplexity、Mistral。</li>
-          <li><b>Scite.ai</b> MCP（2026/3）接 16 億條「智慧引文」；<b>Statista</b> 也有；平台商 Silverchair 用「Discovery Bridge」讓更多出版社快速上線。</li>
+          <li><b>Scite.ai</b> MCP（2026/2）接 16 億條「智慧引文」；<b>Statista</b> 也有；平台商 Silverchair 用「Discovery Bridge」讓更多出版社快速上線。</li>
           <li><b>怎麼接：</b>出版社架一台「MCP 伺服器」，你在 Claude／ChatGPT 裡把它加成「連接器」，AI 就能直接搜尋、取全文，回答會標出處。</li>
         </ul>
         <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
           <a href="https://newsroom.wiley.com/press-releases/press-release-details/2025/Wiley-Partners-with-Anthropic-to-Accelerate-Responsible-AI-Integration-Across-Scholarly-Research/default.aspx" target="_blank" rel="noreferrer">Wiley 官方新聞稿 ↗</a>
-          <a href="https://www.silverchair.com/news/mcp-101/" target="_blank" rel="noreferrer">Silverchair（MCP 導讀）↗</a>
+          <a href="https://www.silverchair.com/news/silverchair-launches-discovery-bridge-mcp/" target="_blank" rel="noreferrer">Silverchair · Discovery Bridge MCP（官方）↗</a>
         </div>
       </div>
       <div class="jblock">
@@ -857,6 +857,21 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
           <a href="https://aarontay.substack.com/p/mcp-servers-and-academic-search-the" target="_blank" rel="noreferrer">Aaron Tay（MCP 與學術搜尋分析）↗</a>
         </div>
+      </div>
+    </div>
+
+    <div class="official" style="margin-top:16px">
+      <div class="oh"><span class="obadge">社群 DIY</span><strong>網友已經自己接 OA 了——但付費牆全文接不到</strong></div>
+      <ul>
+        <li><b>OA 可以自己串：</b>社群已做出許多 MCP 伺服器，把開放內容直接接進 Claude／ChatGPT，不必透過別人建好的入口——例如 <b>OpenAlex</b>（2.4 億筆以上的開放學術目錄）、<b>paper-search-mcp</b>（一次聯邦 arXiv、PubMed、Unpaywall、CORE、Europe PMC、DOAJ、Zenodo 等數十個 OA 來源）、以及把個人書目庫接上的 <b>Zotero MCP</b>。</li>
+        <li><b>付費牆接不到：</b>這些只能拿到 OA 全文與開放中繼資料；訂閱牆後的全文（Elsevier、Wiley 等）自架 MCP 進不去——這正是出版社官方 gateway 存在的原因。</li>
+        <li><b>紅線：</b>能自由接的只有 OA；用任何方式讓 MCP 跨過付費牆、去取得未經授權的全文，正是 Bartz、Elsevier v. Meta 兩案的核心爭議，屬侵權紅線，別碰。</li>
+        <li><b>「所有圖書館目錄」還沒成形：</b>開放學術目錄（OpenAlex）、個人書目庫（Zotero）已可用；但把每一間圖書館的 OPAC 都聯邦成一個 MCP，仍在個別實驗階段。</li>
+      </ul>
+      <div class="osrc"><span class="sl">出處</span>
+        <a href="https://github.com/openags/paper-search-mcp" target="_blank" rel="noreferrer">paper-search-mcp（聯邦 OA 來源）↗</a>
+        <a href="https://github.com/oksure/openalex-research-mcp" target="_blank" rel="noreferrer">OpenAlex MCP ↗</a>
+        <a href="https://arxiv.org/pdf/2602.01686" target="_blank" rel="noreferrer">arXiv：無中介 AI 學術引用 ↗</a>
       </div>
     </div>
 

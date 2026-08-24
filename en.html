@@ -654,7 +654,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       <div class="casecard">
         <span class="yr">U.S. (SDNY) · filed May 2026</span>
         <h4>Elsevier et al. v. Meta</h4>
-        <p>Five major academic and educational publishers (Elsevier, Cengage, Hachette, Macmillan, and McGraw Hill), together with author Scott Turow, are suing Meta and Mark Zuckerberg. They say Meta downloaded millions of books and journal articles from pirate libraries like LibGen and Sci-Hub — and scraped others from behind paywalls — to train Llama, then removed copyright management information (CMI) to hide the source. This is the first copyright suit publishers have brought against an AI company (case no. 1:26-cv-03689).</p>
+        <p>Five major academic and educational publishers (Elsevier, Cengage, Hachette, Macmillan, and McGraw Hill), together with author Scott Turow, are suing Meta and Mark Zuckerberg. They say Meta downloaded millions of books and journal articles from pirate (shadow) libraries — and scraped others from behind paywalls — to train Llama, then removed copyright management information (CMI) to hide the source. This is the first copyright suit publishers have brought against an AI company (case no. 1:26-cv-03689).</p>
         <div class="take"><b>Directly related to your databases:</b> these publishers are taking &ldquo;academic content used to train AI without permission&rdquo; to court. The dispute is about unlawful sourcing plus removing copyright information. The case has been filed but not yet decided.</div>
         <div class="srcrow"><span class="sl">Sources</span>
           <a href="https://www.courtlistener.com/docket/73294740/elsevier-inc-v-meta-platforms-inc/" target="_blank" rel="noreferrer">CourtListener (court docket)↗</a>
@@ -701,7 +701,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
           <tr><th>U.K.</th><td>Only &ldquo;noncommercial research&rdquo; TDM is allowed (§29A). A 2025 plan to extend this to commercial use (with an opt-out for rights holders) was dropped after creators pushed back.</td><td>The British Library releases digitized collections as &ldquo;collections as data&rdquo; datasets. The National Library of Scotland has published an AI statement.</td></tr>
           <tr><th>EU</th><td>TDM for research is open (rights holders can’t refuse). General TDM is allowed too, but rights holders can declare an opt-out in advance — and most publishers already have.</td><td>France’s BnF (Gallica), the Netherlands’ KB, Norway’s National Library AI Lab, and Europeana turn collections into APIs and open datasets for AI search and research.</td></tr>
           <tr><th>Japan</th><td>The broadest exception: you may use others’ works for purposes like analysis and training (§30-4). But &ldquo;help me understand this article&rdquo; doesn’t count — that still needs permission.</td><td>The National Diet Library (NDL) makes out-of-copyright collections full-text searchable by AI, and open-sources training datasets and OCR models (CC BY).</td></tr>
-          <tr><th>South&nbsp;Korea</th><td>Lawmakers want a TDM exception, but the bill (since 2021) still hasn’t passed. 2023 government guidance encourages getting permission first and letting rights holders opt out.</td><td>The National Library builds copyright-cleared &ldquo;AI training datasets&rdquo; to feed a national LLM, and runs a &ldquo;Library+&rdquo; platform and an AI agent.</td></tr>
+          <tr><th>South&nbsp;Korea</th><td>A TDM-exception bill was introduced in 2021 but hasn’t passed. In late 2025 the culture ministry signaled it likely won’t adopt a TDM exception and will rely on fair use instead. 2023 guidance encourages getting permission first, with an opt-out for rights holders.</td><td>The National Library builds copyright-cleared &ldquo;AI training datasets&rdquo; to feed a national LLM, and runs a &ldquo;Library+&rdquo; platform and an AI agent.</td></tr>
           <tr><th>China</th><td>The law doesn’t spell out TDM. Since 2023, rules require generative-AI services to respect copyright. Court rulings vary (Beijing found AI output protectable; Guangzhou found a service provider liable).</td><td>Public information on national open datasets or feeding AI is limited, so we won’t guess here.</td></tr>
           <tr><th>Hong&nbsp;Kong&nbsp;/&nbsp;Macau</th><td>Hong Kong is considering a TDM exception (lawful access required, with an opt-out for rights holders) and is still consulting. For Macau, public information on the rules is scarce.</td><td>In Hong Kong, digitizing collections and opening data is still developing. For Macau, public information is scarce.</td></tr>
         </tbody>
@@ -839,12 +839,12 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         <h4>Who’s doing it, and how to connect</h4>
         <ul>
           <li><b>Wiley</b> launched its &ldquo;Scholar Gateway / AI Gateway&rdquo; MCP server (Oct 2025, with Anthropic). It connects about 3 million articles and works with Claude, Perplexity, and Mistral.</li>
-          <li><b>Scite.ai</b> has an MCP server (March 2026) covering 1.6 billion &ldquo;smart citations.&rdquo; <b>Statista</b> has one too. The platform provider Silverchair uses &ldquo;Discovery Bridge&rdquo; to bring more publishers online quickly.</li>
+          <li><b>Scite.ai</b> has an MCP server (February 2026) covering 1.6 billion &ldquo;smart citations.&rdquo; <b>Statista</b> has one too. The platform provider Silverchair uses &ldquo;Discovery Bridge&rdquo; to bring more publishers online quickly.</li>
           <li><b>How to connect:</b> the publisher runs an &ldquo;MCP server.&rdquo; You add it as a &ldquo;connector&rdquo; in Claude or ChatGPT, and the AI can then search and pull full text directly, with sources cited.</li>
         </ul>
         <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
           <a href="https://newsroom.wiley.com/press-releases/press-release-details/2025/Wiley-Partners-with-Anthropic-to-Accelerate-Responsible-AI-Integration-Across-Scholarly-Research/default.aspx" target="_blank" rel="noreferrer">Wiley press release ↗</a>
-          <a href="https://www.silverchair.com/news/mcp-101/" target="_blank" rel="noreferrer">Silverchair (MCP primer)↗</a>
+          <a href="https://www.silverchair.com/news/silverchair-launches-discovery-bridge-mcp/" target="_blank" rel="noreferrer">Silverchair (MCP primer)↗</a>
         </div>
       </div>
       <div class="jblock">
@@ -857,6 +857,21 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
           <a href="https://aarontay.substack.com/p/mcp-servers-and-academic-search-the" target="_blank" rel="noreferrer">Aaron Tay (MCP &amp; academic search)↗</a>
         </div>
+      </div>
+    </div>
+
+    <div class="official" style="margin-top:16px">
+      <div class="oh"><span class="obadge">Community DIY</span><strong>People already wire up OA themselves — but paywalled full text stays out of reach</strong></div>
+      <ul>
+        <li><b>You can connect OA yourself:</b> the community has built many MCP servers that plug open content straight into Claude or ChatGPT, with no one else’s portal in between — for example <b>OpenAlex</b> (an open catalog of 240M+ scholarly works), <b>paper-search-mcp</b> (which federates dozens of OA sources at once: arXiv, PubMed, Unpaywall, CORE, Europe PMC, DOAJ, Zenodo, and more), and <b>Zotero MCP</b> for your own reference library.</li>
+        <li><b>Paywalled content stays out:</b> these reach only OA full text and open metadata. Full text behind a subscription wall (Elsevier, Wiley, and so on) can’t be reached by a self-hosted MCP — which is exactly why publishers’ official gateways exist.</li>
+        <li><b>The red line:</b> only OA is free to connect. Using an MCP in any way to get around a paywall and obtain unlicensed full text is the core dispute in Bartz and Elsevier v. Meta — it crosses the infringement line, so don’t do it.</li>
+        <li><b>&ldquo;Every library catalog&rdquo; isn’t there yet:</b> an open scholarly catalog (OpenAlex) and a personal library (Zotero) work today, but federating every library’s OPAC into one MCP is still at the experiment stage.</li>
+      </ul>
+      <div class="osrc"><span class="sl">Sources</span>
+        <a href="https://github.com/openags/paper-search-mcp" target="_blank" rel="noreferrer">paper-search-mcp (federates OA sources) ↗</a>
+        <a href="https://github.com/oksure/openalex-research-mcp" target="_blank" rel="noreferrer">OpenAlex MCP ↗</a>
+        <a href="https://arxiv.org/pdf/2602.01686" target="_blank" rel="noreferrer">arXiv: unmediated AI scholarly citations ↗</a>
       </div>
     </div>
 
