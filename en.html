@@ -388,6 +388,11 @@ a{color:inherit;}
 
 
 
+
+/* ---------- key rule callout / deep-dive divider ---------- */
+.keyrule{margin:18px 0 6px;border:1px solid var(--line-strong);border-left:4px solid var(--red);border-radius:12px;background:var(--card);padding:15px 20px;font-size:14px;line-height:1.72;color:var(--ink);}
+.deepdiv{margin:34px 0 2px;font-family:"Noto Sans TC",sans-serif;font-size:13px;font-weight:600;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;}
+
 /* ---------- AI use disclosure ---------- */
 .aidisc{max-width:var(--max);margin:8px auto 0;padding:20px 24px 4px;}
 .aidisc-h{font-family:"Noto Serif TC",serif;font-weight:700;font-size:15px;color:#fff;margin-bottom:8px;
@@ -512,6 +517,19 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
     </div>
   </section>
 
+  <section class="section wrap" id="safe-do">
+    <p class="subhead">Safer ways to do it</p>
+    <p class="subnote">In practice: from what’s public so far, people are rarely sued just for pasting a single PDF into AI to study it, and personal noncommercial research has some room to claim fair use. But &ldquo;rarely sued&rdquo; is not the same as &ldquo;clearly legal.&rdquo; And breaking a contract is a separate question from whether you can claim fair use under copyright.</p>
+    <div class="safelist">
+      <div class="q"><span class="n">1</span><div><h3>Use a licensed tool that won’t train on or keep your data</h3><p>Enterprise or education editions that clearly don’t store or train on your content carry the least risk. Avoid free tools that keep or harvest what you enter.<a class="law" href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer" style="text-decoration:none">NSTC guidelines ↗</a></p></div></div>
+      <div class="q"><span class="n">2</span><div><h3>Use the database’s built-in AI features</h3><p>Such as the ScienceDirect Reading Assistant, Ovid, or the ProQuest Research Assistant. The publishers have already licensed these.<a class="law" href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="text-decoration:none">NCCU Library · database AI features ↗</a></p></div></div>
+      <div class="q"><span class="n">3</span><div><h3>Use open-access or CC-licensed content</h3><p>Still check the CC terms. NC or ND licenses may not work with a commercial AI platform.<a class="law" href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" rel="noreferrer" style="text-decoration:none">Creative Commons ↗</a></p></div></div>
+      <div class="q"><span class="n">4</span><div><h3>Don’t upload the full text</h3><p>Paste your own notes, a few short quotes, or the key points — not the whole PDF.<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">MODA handbook ↗</a></p></div></div>
+      <div class="q"><span class="n">5</span><div><h3>Get permission when you need it, or ask your subject librarian</h3><p>If you’re not sure what a database allows, ask a librarian or the publisher first.<a class="law" href="#matrix" style="text-decoration:none">Down to the terms ↓</a></p></div></div>
+      <div class="q"><span class="n">6</span><div><h3>Pause before you upload</h3><p>Before you attach a file, check whether it involves copyright, privacy, or confidential material.<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">MODA handbook ↗</a></p></div></div>
+    </div>
+  </section>
+
   <section class="section wrap" id="overview">
     <p class="lede">For any one database, three separate sets of rules usually apply: one for <b>bulk downloading</b>, one for <b>text and data mining (TDM)</b>, and one for <b>sending content to outside AI tools</b>. This table sorts the public terms of 19 common academic and news databases into those three columns. You see the bottom line first, then the source text.</p>
 
@@ -531,12 +549,6 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         <div class="headline">None allow it outright.<br>At best, you need a separate license. Most simply forbid it.</div>
         <div class="bars" data-lane="ai"></div>
       </div>
-    </div>
-
-    <div class="wayfinder" aria-label="What do you want to do?">
-      <a class="way" href="#ai-flow"><span class="wn">01</span><h3>Can I upload an article to AI?</h3><p>Use the self-check above. Just a few taps.</p><span class="go">To the self-check →</span></a>
-      <a class="way" href="#matrix"><span class="wn">02</span><h3>What does a given database say?</h3><p>Compare 19 databases: download, TDM, and AI.</p><span class="go">Check the terms →</span></a>
-      <a class="way" href="#ai-copyright"><span class="wn">03</span><h3>What’s the legal basis?</h3><p>2026 court cases, rules in Taiwan, the EU and Japan, and copyright analysis.</p><span class="go">See the basis →</span></a>
     </div>
 
     <div class="note">
@@ -600,7 +612,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       <p>Terms often say &ldquo;follow copyright law,&rdquo; but copyright is a separate set of rules. This section explains the two layers — the contract and copyright — then walks you through 2026 court cases and the rules in different countries.</p>
     </div>
 
-    <p class="lead">Many terms say &ldquo;follow copyright law.&rdquo; But keep this in mind: <b>the terms are a contract, and copyright law is a separate set of rules. The two work independently.</b> Even if you could claim fair use under copyright, the contract can still forbid it. (Breaking a contract and infringing copyright are two different things.) So to judge whether it’s a problem to download an article and hand it to AI to summarize, translate, or rewrite, look at both layers on their own.</p>
+    <div class="keyrule"><b>One rule covers most cases:</b> when you upload a whole article to AI — <b>before the AI even summarizes, that upload is already a &ldquo;reproduction&rdquo; and hands the content to a third party</b>. Whether it’s a problem has two layers: ① the <b>database terms (a contract)</b> and ② <b>copyright</b>. They work independently — even if fair use applies under copyright, the contract can still forbid it.</div>
 
     <div class="twolayer">
       <div class="layer contract">
@@ -615,7 +627,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       </div>
     </div>
 
-    <p class="subhead">Four uses, from lower to higher risk</p>
+    <p class="subhead">Three uses, from lower to higher risk</p>
     <p class="subnote">A rule of thumb: if what the AI produces looks a lot like the original, it infringes. A summary of plain facts or ideas is usually fine. The closer you get to a word-for-word translation or a copied rewrite, the riskier it gets.</p>
     <div class="ladder">
       <div class="step s1">
@@ -638,7 +650,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       </div>
     </div>
 
-    <p class="subhead">A few important 2026 court cases (all outside Taiwan)</p>
+    <details class="foldsec"><summary>2026 court cases: the one takeaway — how you got the full text matters most; piracy is out, and even a lawful subscription doesn’t mean you can re-upload it (open for the three cases)</summary>
     <p class="subnote">First, to be clear: these cases mostly sue <b>AI companies</b> over how they train their models, not everyday users like you. They are all <b>U.S. cases and do not bind Taiwan’s courts.</b> They just show you where the international debate stands.</p>
     <div class="cases">
       <div class="casecard">
@@ -662,16 +674,18 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         </div>
       </div>
       <div class="casecard">
-        <span class="yr">U.S. · cert. denied, March 2026</span>
-        <h4>Thaler v. Perlmutter</h4>
-        <p>The Supreme Court declined to hear the appeal, confirming that human authorship is required to register a copyright. Output made entirely by AI, without real human control, cannot be protected by U.S. copyright.</p>
-        <div class="take"><b>Why it matters:</b> can you claim rights in what AI translates or rewrites for you? For output made purely by AI, usually not.</div>
+        <span class="yr">U.S. (SDNY) · filed 2023, in litigation 2026</span>
+        <h4>New York Times v. OpenAI / Microsoft</h4>
+        <p>The New York Times is suing OpenAI and Microsoft, claiming they used millions of its articles without permission to train ChatGPT, and that ChatGPT can reproduce its reporting almost word for word, hurting subscriptions. In April 2025 the court let the core copyright claims proceed; in January 2026 it ordered OpenAI to hand over 20 million ChatGPT conversation logs. Case No. 1:23-cv-11195, still in litigation.</p>
+        <div class="take"><b>The case most relevant to you:</b> this is the landmark test of whether training AI on copyrighted content is fair use. The outcome will shape licensing for publishers, news, and scholarly content.</div>
         <div class="srcrow"><span class="sl">Sources</span>
-          <a href="https://www.hklaw.com/en/insights/publications/2026/03/the-final-word-supreme-court-refuses-to-hear-case-on-ai-authorship" target="_blank" rel="noreferrer">Holland &amp; Knight ↗</a>
-          <a href="https://www.finnegan.com/en/insights/ip-updates/supreme-court-declines-to-hear-thaler-v-perlmutter-leaving-human-authorship-requirement-intact.html" target="_blank" rel="noreferrer">Finnegan (IP law firm)↗</a>
+          <a href="https://www.nysd.uscourts.gov/sites/default/files/2025-04/yf%2023cv11195%20OpenAI%20MTD%20opinion%20april%204%202025.pdf" target="_blank" rel="noreferrer">SDNY motion-to-dismiss opinion (official) ↗</a>
+          <a href="https://en.wikipedia.org/wiki/The_New_York_Times_v._Microsoft_and_OpenAI" target="_blank" rel="noreferrer">Wikipedia (case overview) ↗</a>
         </div>
       </div>
     </div>
+
+    </details>
 
     <p class="subhead">What Taiwan’s official guidance says</p>
     <p class="subnote">The Ministry of Digital Affairs (MODA) <em>Reference Handbook on AI Use in the Public Sector</em> (Jan 2026) and the National Science and Technology Council (NSTC) <em>Guidelines on Using Generative AI</em> (Oct 2023) are written for government agencies. But the same principles apply to students and staff, and they back up the advice on this page.</p>
@@ -690,36 +704,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       </div>
     </div>
 
-    <p class="subhead">By region: how the law regulates it, and how libraries open their data to AI</p>
-    <p class="subnote">First, a common term: <b>text and data mining (TDM)</b> means letting a computer read and analyze many texts at once. The left column below shows how the law regulates <b>feeding data to AI</b>. The right column takes a different angle: how the organizations that <b>own</b> the data — libraries and archives — make their collections easier for AI to find and use. That means turning collections into open datasets and APIs, or feeding them to AI models. The field calls this &ldquo;collections as data.&rdquo;</p>
-    <div class="cmp">
-      <table>
-        <thead><tr><th>Region</th><th>The law: can you feed data to AI?</th><th>How data owners open their data to AI</th></tr></thead>
-        <tbody>
-          <tr><th>Taiwan</th><td>No special exception for AI or TDM. It falls back on case-by-case fair use, which is uncertain. The AI Basic Act (passed Dec 2025) sets principles but doesn’t loosen copyright.</td><td>The National Central Library, NCCU and others keep digitizing collections and moving to open access. But turning collections into open datasets that AI can use directly is still at an early stage.</td></tr>
-          <tr><th>U.S.</th><td>No special exception either; it relies on fair use. Courts suggest training on <em>lawfully bought</em> content may be allowed, but pirated content is not.</td><td>Harvard’s Institutional Data Initiative released Institutional Books (394 million pages) to make its collection AI-ready. HathiTrust offers a full-text features dataset for computational research. The Library of Congress promotes &ldquo;collections as data.&rdquo;</td></tr>
-          <tr><th>U.K.</th><td>Only &ldquo;noncommercial research&rdquo; TDM is allowed (§29A). A 2025 plan to extend this to commercial use (with an opt-out for rights holders) was dropped after creators pushed back.</td><td>The British Library releases digitized collections as &ldquo;collections as data&rdquo; datasets. The National Library of Scotland has published an AI statement.</td></tr>
-          <tr><th>EU</th><td>TDM for research is open (rights holders can’t refuse). General TDM is allowed too, but rights holders can declare an opt-out in advance — and most publishers already have.</td><td>France’s BnF (Gallica), the Netherlands’ KB, Norway’s National Library AI Lab, and Europeana turn collections into APIs and open datasets for AI search and research.</td></tr>
-          <tr><th>Japan</th><td>The broadest exception: you may use others’ works for purposes like analysis and training (§30-4). But &ldquo;help me understand this article&rdquo; doesn’t count — that still needs permission.</td><td>The National Diet Library (NDL) makes out-of-copyright collections full-text searchable by AI, and open-sources training datasets and OCR models (CC BY).</td></tr>
-          <tr><th>South&nbsp;Korea</th><td>A TDM-exception bill was introduced in 2021 but hasn’t passed. In late 2025 the culture ministry signaled it likely won’t adopt a TDM exception and will rely on fair use instead. 2023 guidance encourages getting permission first, with an opt-out for rights holders.</td><td>The National Library builds copyright-cleared &ldquo;AI training datasets&rdquo; to feed a national LLM, and runs a &ldquo;Library+&rdquo; platform and an AI agent.</td></tr>
-          <tr><th>China</th><td>The law doesn’t spell out TDM. Since 2023, rules require generative-AI services to respect copyright. Court rulings vary (Beijing found AI output protectable; Guangzhou found a service provider liable).</td><td>Public information on national open datasets or feeding AI is limited, so we won’t guess here.</td></tr>
-          <tr><th>Hong&nbsp;Kong&nbsp;/&nbsp;Macau</th><td>Hong Kong is considering a TDM exception (lawful access required, with an opt-out for rights holders) and is still consulting. For Macau, public information on the rules is scarce.</td><td>In Hong Kong, digitizing collections and opening data is still developing. For Macau, public information is scarce.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="subnote" style="margin-top:12px">Note: Taiwan, Hong Kong, China, and Macau are separate legal systems; their rulings and rules don’t carry over to one another. The table is a general picture. For any specific case, check the local law and the latest developments. See &ldquo;Regional rules &amp; libraries opening data&rdquo; in the sources below.</p>
-
-    <p class="subhead">Safer ways to do it</p>
-    <p class="subnote">In practice: from what’s public so far, people are rarely sued just for pasting a single PDF into AI to study it, and personal noncommercial research has some room to claim fair use. But &ldquo;rarely sued&rdquo; is not the same as &ldquo;clearly legal.&rdquo; And breaking a contract is a separate question from whether you can claim fair use under copyright.</p>
-    <div class="safelist">
-      <div class="q"><span class="n">1</span><div><h3>Use a licensed tool that won’t train on or keep your data</h3><p>Enterprise or education editions that clearly don’t store or train on your content carry the least risk. Avoid free tools that keep or harvest what you enter.<a class="law" href="https://www.nstc.gov.tw/folksonomy/list/c79bf57b-dc94-4aff-8d14-3262b5559cfc?l=ch" target="_blank" rel="noreferrer" style="text-decoration:none">NSTC guidelines ↗</a></p></div></div>
-      <div class="q"><span class="n">2</span><div><h3>Use the database’s built-in AI features</h3><p>Such as the ScienceDirect Reading Assistant, Ovid, or the ProQuest Research Assistant. The publishers have already licensed these.<a class="law" href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="text-decoration:none">NCCU Library · database AI features ↗</a></p></div></div>
-      <div class="q"><span class="n">3</span><div><h3>Use open-access or CC-licensed content</h3><p>Still check the CC terms. NC or ND licenses may not work with a commercial AI platform.<a class="law" href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank" rel="noreferrer" style="text-decoration:none">Creative Commons ↗</a></p></div></div>
-      <div class="q"><span class="n">4</span><div><h3>Don’t upload the full text</h3><p>Paste your own notes, a few short quotes, or the key points — not the whole PDF.<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">MODA handbook ↗</a></p></div></div>
-      <div class="q"><span class="n">5</span><div><h3>Get permission when you need it, or ask your subject librarian</h3><p>If you’re not sure what a database allows, ask a librarian or the publisher first.<a class="law" href="#matrix" style="text-decoration:none">Back to the terms above ↑</a></p></div></div>
-      <div class="q"><span class="n">6</span><div><h3>Pause before you upload</h3><p>Before you attach a file, check whether it involves copyright, privacy, or confidential material.<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">MODA handbook ↗</a></p></div></div>
-    </div>
-
+    <p class="deepdiv">Want to go deeper? The rest is optional background.</p>
     <details class="foldsec"><summary>Another question: who owns what AI creates?</summary>
     <p class="subnote">So far we’ve talked about the input side (whether you can feed content to AI). This is the output side: whether what AI generates, translates, or rewrites for you can be protected, and who owns it. The answer varies by country, and it matters for whether you can claim any rights. Foreign rules are only for reference; in Taiwan, our Copyright Act and the TIPO’s views control.</p>
     <div class="owns">
@@ -784,8 +769,39 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
 
         </details>
 
-    <details class="foldsec"><summary>How publishers deal with outside AI, plus MCP (open for details)</summary>
-    <p class="subnote">The AI tools built into database platforms (like Scopus AI or JSTOR’s tools) are covered on a separate Library page →&nbsp;<a href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:600;text-decoration:none">NCCU Library · database AI features ↗</a>. This section is about something else: how publishers deal with consumer AI platforms. There are roughly two models.</p>
+    <details class="foldsec"><summary>How data owners help AI find and surface their content (open for details)</summary>
+    <p class="subnote">A different angle: what if <b>you or your institution owns the content</b> (a library, an archive, a publisher, an author)? How do you make sure AI can find and cite it? More and more people ask ChatGPT or Perplexity instead of searching, and each AI answer usually cites only a handful of sources — if yours is left out, you disappear from this new front door. Here are a few directions. (Database platforms’ built-in AI tools like Scopus AI and JSTOR are on a separate Library page →&nbsp;<a href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:600;text-decoration:none">NCCU Library · database AI features ↗</a>.)</p>
+    <div class="owns">
+      <div class="jblock">
+        <h4>Let AI crawl and cite you (GEO)</h4>
+        <div class="st">Generative engine optimization · anyone can do it</div>
+        <ul>
+          <li><b>Let AI crawlers in:</b> allow GPTBot, PerplexityBot, ClaudeBot, and Google-Extended in robots.txt — this is the <b>opposite</b> of the &ldquo;protect your work&rdquo; section: if you want to be cited, they have to be able to read you.</li>
+          <li><b>Publish an llms.txt:</b> a file at your domain root — &ldquo;a sitemap for AI&rdquo; — listing your most citation-worthy content (about 70% of sites don’t have one yet).</li>
+          <li><b>Make content extractable:</b> answer first, headings phrased as real questions, one idea per paragraph, plenty of lists and tables, and a FAQ or TL;DR — so AI can grab and quote it.</li>
+          <li><b>Make your identity clear:</b> use structured data (schema) and align your institution/author entity with Wikipedia and Wikidata, so AI attributes you correctly.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://llmrefs.com/generative-engine-optimization" target="_blank" rel="noreferrer">GEO 2026 guide ↗</a>
+          <a href="https://www.toponseek.com/en/blogs/generative-engine-optimization/" target="_blank" rel="noreferrer">GEO signals &amp; workflow ↗</a>
+        </div>
+      </div>
+      <div class="jblock">
+        <h4>Turn collections into open data (Collections as Data)</h4>
+        <div class="st">What libraries, archives, and museums do</div>
+        <ul>
+          <li>Package collections as open datasets and APIs so AI can search and study them directly — the field calls this &ldquo;collections as data.&rdquo;</li>
+          <li><b>Examples:</b> Japan’s NDL (full-text AI search plus CC BY open datasets and OCR models), Harvard’s Institutional Books (394 million pages, AI-ready), HathiTrust’s full-text features dataset, the British Library’s collections as data, APIs from France’s Gallica / the Netherlands’ KB / Norway’s National Library / Europeana, the U.S. Library of Congress’s LC Labs, and the National Library of Korea’s AI training datasets.</li>
+          <li><b>Taiwan:</b> the National Central Library, NCCU and others keep digitizing and moving to open access, but turning collections into datasets AI can use directly is still at an early stage.</li>
+        </ul>
+        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+          <a href="https://openhumanitiesdata.metajnl.com/articles/10.5334/johd.263" target="_blank" rel="noreferrer">Journal of Open Humanities Data ↗</a>
+          <a href="https://tech.yahoo.com/ai/articles/ai-chatbots-more-books-learn-130607809.html" target="_blank" rel="noreferrer">AP: Harvard’s Institutional Books ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="subhead" style="margin-top:22px">How publishers give content to AI (business models)</p>
     <div class="owns">
       <div class="jblock">
         <h4>Model A · Upstream: license content for AI to train on</h4>
@@ -867,6 +883,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         <li><b>Paywalled content stays out:</b> these reach only OA full text and open metadata. Full text behind a subscription wall (Elsevier, Wiley, and so on) can’t be reached by a self-hosted MCP — which is exactly why publishers’ official gateways exist.</li>
         <li><b>The red line:</b> only OA is free to connect. Using an MCP in any way to get around a paywall and obtain unlicensed full text is the core dispute in Bartz and Elsevier v. Meta — it crosses the infringement line, so don’t do it.</li>
         <li><b>&ldquo;Every library catalog&rdquo; isn’t there yet:</b> an open scholarly catalog (OpenAlex) and a personal library (Zotero) work today, but federating every library’s OPAC into one MCP is still at the experiment stage.</li>
+        <li><b>Public-domain heritage: the cleanest use:</b> no paywall, no licensing red line. The community has already turned <b>Smithsonian Open Access</b> (about 3 million CC0 items) and <b>Wikidata</b> into MCPs, and open sources like DPLA, Europeana, the Internet Archive, and Wikimedia Commons can be connected too. Institution-run <b>official</b> servers are still emerging; the model widely seen as best practice is to <b>expose only metadata and send people back to the original</b> — so the AI gives traceable, first-source pointers instead of ingesting the whole item, and the institution keeps control.</li>
       </ul>
       <div class="osrc"><span class="sl">Sources</span>
         <a href="https://github.com/openags/paper-search-mcp" target="_blank" rel="noreferrer">paper-search-mcp (federates OA sources) ↗</a>
@@ -901,8 +918,8 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
           <a href="https://www.lawcommentary.com/articles/judge-approves-anthropics-15-billion-copyright-settlement-over-pirated-books" target="_blank" rel="noreferrer">Law Commentary — Anthropic settlement ↗</a>
           <a href="https://www.courtlistener.com/docket/73294740/elsevier-inc-v-meta-platforms-inc/" target="_blank" rel="noreferrer">CourtListener — Elsevier et al. v. Meta docket (1:26-cv-03689) ↗</a>
           <a href="https://www.hklaw.com/en/insights/publications/2026/05/major-publishers-challenge-ai-training-practices" target="_blank" rel="noreferrer">Holland &amp; Knight — Elsevier et al. v. Meta analysis ↗</a>
-          <a href="https://www.hklaw.com/en/insights/publications/2026/03/the-final-word-supreme-court-refuses-to-hear-case-on-ai-authorship" target="_blank" rel="noreferrer">Holland &amp; Knight — Thaler v. Perlmutter (cert. denied) ↗</a>
-          <a href="https://www.finnegan.com/en/insights/ip-updates/supreme-court-declines-to-hear-thaler-v-perlmutter-leaving-human-authorship-requirement-intact.html" target="_blank" rel="noreferrer">Finnegan — Thaler v. Perlmutter ↗</a>
+          <a href="https://www.nysd.uscourts.gov/sites/default/files/2025-04/yf%2023cv11195%20OpenAI%20MTD%20opinion%20april%204%202025.pdf" target="_blank" rel="noreferrer">SDNY — NYT v. OpenAI motion-to-dismiss opinion (official, Apr 2025) ↗</a>
+          <a href="https://en.wikipedia.org/wiki/The_New_York_Times_v._Microsoft_and_OpenAI" target="_blank" rel="noreferrer">Wikipedia — NYT v. OpenAI / Microsoft (case overview) ↗</a>
         </div>
       </div>
       <div class="refgroup">
@@ -1379,12 +1396,12 @@ const STLV={ok:"OK / low risk",amber:"Caution / depends",blue:"Check / license n
     if(sel.src==="db"&&sel.tool==="inst") html+=group("use","③ What do you want the AI to do?",ST.use);
     const v=stVerdict(sel);
     if(v){
-      stepEl.textContent="Result";
+      stepEl.textContent="";
       html+=`<div class="flowres ${v.lv} st-res"><span class="flowbadge"><span class="dot"></span>${STLV[v.lv]}</span>`+
         `<h3>${esc(v.title)}</h3><p>${esc(v.why)}</p>`+
         `<div class="do"><b>What to do</b><span>${esc(v.todo)}</span></div></div>`;
     }else{
-      stepEl.textContent="Keep going";
+      stepEl.textContent="";
       html+=`<div class="st-wait">Pick the next answer to see advice.</div>`;
     }
     if(sel.src) html+=`<div class="flownav"><button data-act="reset">↺ Start over</button></div>`;
