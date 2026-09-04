@@ -528,6 +528,57 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       <div class="q"><span class="n">5</span><div><h3>Get permission when you need it</h3><p>If you’re not sure what a database allows, check with the publisher or platform, or request a license.<a class="law" href="#matrix" style="text-decoration:none">Down to the terms ↓</a></p></div></div>
       <div class="q"><span class="n">6</span><div><h3>Pause before you upload</h3><p>Before you attach a file, check whether it involves copyright, privacy, or confidential material.<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">MODA handbook ↗</a></p></div></div>
     </div>
+
+    <p class="subhead" style="margin-top:26px">When a database says no: what you can legally do</p>
+    <p class="subnote">Often people need a lot of text for digital humanities, bibliometrics, or model training — not to pirate anything. Instead of scraping it yourself or dropping full text into an outside AI, here are legal paths, organized as &ldquo;what you want to do → which route to take.&rdquo; (What’s actually available still depends on your institution’s license and each platform’s terms.)</p>
+    <div class="owns">
+      <div class="jblock">
+        <h4>Want to bulk-download or write a crawler?</h4>
+        <div class="st">→ Use official APIs and cloud analysis platforms</div>
+        <ul>
+          <li><b>Official TDM APIs:</b> lawful subscribers can get an API key from the <b>Elsevier ScienceDirect API</b> and pull full text and abstracts within the rate limits; the <b>Crossref TDM API</b> gives unified metadata and TDM access across many journals — far lower risk than scraping yourself.</li>
+          <li><b>Cloud analysis (no need to download full text locally):</b> if your school licenses <b>ProQuest TDM Studio</b>, use its interface or Jupyter notebooks for large-scale mining; JSTOR also offers an official text-analysis service (Constellate closed in mid-2025; now JSTOR Text Analysis Support). <b>HathiTrust HTRC</b> uses <b>non-consumptive research</b>: the algorithm is sent into a secure server to run, or only statistical &ldquo;extracted features&rdquo; are released, so copyrighted full text never leaves.</li>
+        </ul>
+      </div>
+      <div class="jblock">
+        <h4>Training a model, doing RAG, or building a local knowledge base?</h4>
+        <div class="st">→ Use clearly open-licensed data</div>
+        <ul>
+          <li><b>OpenAlex:</b> 250M+ scholarly metadata records, open with a free API, and a community MCP already exists — currently the best option for letting AI search scholarly context legally.</li>
+          <li><b>PubMed Central OA Subset / arXiv / Europe PMC:</b> millions of open full-text articles cleared for machine reading.</li>
+          <li><b>CORE / Unpaywall:</b> to find a specific paywalled paper, use these to locate a lawful Green OA (author self-archived) version.</li>
+        </ul>
+      </div>
+      <div class="jblock">
+        <h4>Just want AI to help synthesize or organize?</h4>
+        <div class="st">→ Use metadata + your own notes, not the whole PDF</div>
+        <ul>
+          <li><b>Metadata instead of full text:</b> export a bibliographic file from WOS/Scopus (RIS/CSV with titles, abstracts, keywords) and hand those abstracts — which raise no full-text reproduction issue — to AI for topic clustering or trend analysis.</li>
+          <li><b>Citation-note method:</b> jot down the core ideas and methods in Zotero/EndNote, and give AI only <b>your own notes</b> or short excerpts, sidestepping reproduction and contract concerns.</li>
+        </ul>
+      </div>
+      <div class="jblock">
+        <h4>Really must analyze full text with AI?</h4>
+        <div class="st">→ Use the publisher’s built-in AI, or a local offline model</div>
+        <ul>
+          <li><b>Publishers’ built-in AI:</b> like Scopus AI or the Web of Science Research Assistant — already licensed by the publisher, with citations you can trace; the easiest and most compliant option.</li>
+          <li><b>Local offline models (Ollama / LM Studio):</b> run on your own computer offline, so nothing is sent to a third-party server (no third-party disclosure) — more defensible than uploading to OpenAI’s or Anthropic’s public cloud.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
+      <a href="https://dev.elsevier.com/" target="_blank" rel="noreferrer">Elsevier Developer Portal ↗</a>
+      <a href="https://openalex.org/" target="_blank" rel="noreferrer">OpenAlex ↗</a>
+      <a href="https://unpaywall.org/" target="_blank" rel="noreferrer">Unpaywall ↗</a>
+    </div>
+
+    <div class="keyrule" style="border-left-color:var(--red);margin-top:22px">
+      <b>Researchers, take special note — never feed a manuscript under review or unpublished into AI:</b> if you’re helping with peer review or serving as an editor, <b>don’t upload an unpublished manuscript under review, its data, or its figures into any public or unlicensed generative AI</b>. <b>COPE</b>, <b>ICMJE</b>, and the major publishers (Elsevier, Springer&nbsp;Nature, Wiley, SAGE, and others) expressly forbid this, for two reasons: ① review material is <b>confidential</b>, so uploading it to a public-cloud AI is a disclosure to a third party; ② if an author’s <b>unpublished</b> work is logged by an AI or folded into training, it can seriously harm their rights. Dropping a paper under review into AI to draft your review is treated as a serious research-ethics violation and a breach of confidentiality.
+      <div class="srcrow" style="margin-top:10px"><span class="sl">Sources</span>
+        <a href="https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools" target="_blank" rel="noreferrer">COPE ↗</a>
+        <a href="https://www.icmje.org/recommendations/" target="_blank" rel="noreferrer">ICMJE recommendations ↗</a>
+      </div>
+    </div>
   </section>
 
   <section class="section wrap" id="overview">
@@ -612,18 +663,18 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       <p>Terms often say &ldquo;follow copyright law,&rdquo; but copyright is a separate set of rules. This section explains the two layers — the contract and copyright — then walks you through 2026 court cases and the rules in different countries. <b>What follows is general information to help you judge the direction — not legal advice for your specific case; when in doubt, consult a professional.</b></p>
     </div>
 
-    <div class="keyrule"><b>One rule covers most cases:</b> when you upload a whole article to AI — <b>before the AI even summarizes, that upload usually already involves a &ldquo;reproduction&rdquo; and hands the content to a third party</b>. Whether it’s a problem has two layers: ① the <b>database terms (a contract)</b> and ② <b>copyright</b>. They work independently — even if fair use applies under copyright, the contract can still forbid it.</div>
+    <div class="keyrule"><b>One rule covers most cases:</b> when you upload a whole article to a <b>public cloud AI service</b> — <b>before the AI even summarizes, that upload usually already involves a &ldquo;reproduction&rdquo; and hands the content to a third-party platform</b> (a model you run privately on-premises or offline may not involve a third party). Whether it’s a problem has two layers: ① the <b>database terms (a contract)</b> and ② <b>copyright</b>. They work independently — even if fair use applies under copyright, the contract can still forbid it.</div>
 
     <div class="twolayer">
       <div class="layer contract">
         <span class="tag">Layer 1 · Contract</span>
         <h3>The database license terms</h3>
-        <p>This is usually the most direct limit. As the table above shows, most database terms forbid or restrict handing full text to an outside AI. Even if fair use might apply under copyright, the contract can still restrict it. The library buys a license — you don’t personally own the content.</p>
+        <p>This is usually the most direct limit. As the table above shows, most database terms forbid or restrict handing full text to an outside AI. Even if fair use might apply under copyright, the contract can still restrict it. The library buys a license — you don’t personally own the content. But the contract layer can be pushed back on, too: in the U.K., Jisc (which negotiates for universities) urged them in 2024 to <b>refuse overly restrictive AI clauses</b> and protect staff and students’ lawful research and noncommercial mining.</p>
       </div>
       <div class="layer copyright">
         <span class="tag">Layer 2 · Copyright law</span>
         <h3>Reproduction, adaptation, fair use</h3>
-        <p>When you upload full text to AI, <b>you usually make a copy and hand it to a third party — before the AI even starts to summarize.</b> Under Taiwan’s Copyright Act, this is usually an act of <b>reproduction</b> (Art. 3). Whether it counts as <b>infringement</b> depends on whether you have permission or can claim fair use (Arts. 44–65, decided case by case).</p>
+        <p>When you upload full text to AI, <b>you usually make a copy and hand it to a third party — before the AI even starts to summarize.</b> Under Taiwan’s Copyright Act, this is usually an act of <b>reproduction</b> (Art. 3). Whether it counts as <b>infringement</b> depends on whether you have permission or can claim fair use (Arts. 44–65, decided case by case). <b>It’s even clearer internationally</b>: even Japan — often called the most permissive, with an &ldquo;information analysis&rdquo; exception (§30-4) — had its Agency for Cultural Affairs rule in 2024 that scraping a <b>database sold for analysis</b>, or <b>vectorizing content for RAG output</b>, falls under the proviso for &ldquo;unreasonably harming the rights holder&rsquo;s interests&rdquo; and is <b>not exempt</b>. So a database license holds up even against the most permissive copyright exception.</p>
       </div>
     </div>
 
@@ -650,13 +701,23 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       </div>
     </div>
 
-    <details class="foldsec"><summary>2026 court cases: the one takeaway — how you got the full text matters most; piracy is out, and even a lawful subscription doesn’t mean you can re-upload it (open for the three cases)</summary>
-    <p class="subnote">First, to be clear: these cases mostly sue <b>AI companies</b> over how they train their models, not everyday users like you. They are all <b>U.S. cases and do not bind Taiwan’s courts.</b> They just show you where the international debate stands.</p>
+    <details class="foldsec"><summary>Key cases (including Taiwan’s first): how you got the content matters most; even noncommercial, open-source sharing can infringe if you reproduce content in bulk without permission (open for the cases)</summary>
+    <p class="subnote">First, to be clear: the foreign cases mostly sue <b>AI companies</b> over how they train their models, and don’t bind Taiwan’s courts — they just show the international debate. But Taiwan now has its <b>first case</b> — against an <b>individual</b>, and <b>criminal</b> — and that’s the one to read.</p>
     <div class="cases">
+      <div class="casecard" style="border-color:var(--red);">
+        <span class="yr" style="color:var(--red)">Taiwan · complaint filed Jul 2025 (later settled)</span>
+        <h4>CNA v. an NTU PhD student (Taiwan’s first)</h4>
+        <p>To fill a gap in Traditional Chinese training data, an NTU PhD student compiled web text into an open dataset, &ldquo;fineweb-zhtw,&rdquo; and shared it free on Hugging Face — but it contained about <b>140,000 unauthorized news items from Taiwan’s Central News Agency (CNA)</b> (2011–2021). In July 2025 CNA filed a <b>criminal copyright complaint</b>; the two sides later settled, so no court ruled.</p>
+        <div class="take"><b>The most direct warning for students and staff:</b> ① <b>noncommercial, academic, open-source sharing is not a free pass</b> — reproducing others’ content in bulk without permission and making it public can still infringe. ② Taiwan’s Copyright Act carries <b>criminal liability</b> for unauthorized reproduction and public transmission — not just &ldquo;delete it or pay up.&rdquo; ③ Taiwan has no TDM fair-use exception, so the room is highly uncertain.</div>
+        <div class="srcrow"><span class="sl">Sources</span>
+          <a href="https://www.twreporter.org/a/taiwan-sovereign-ai-zhtw-llm-copyright-conflict" target="_blank" rel="noreferrer">The Reporter (in-depth) ↗</a>
+          <a href="https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23202" target="_blank" rel="noreferrer">STPI iKnow (criminal-liability review) ↗</a>
+        </div>
+      </div>
       <div class="casecard">
         <span class="yr">U.S. · final approval, July 2026</span>
         <h4>Bartz v. Anthropic ($1.5 billion settlement)</h4>
-        <p>The largest copyright settlement in U.S. history. Earlier, Judge Alsup drew a key line: training AI on <em>lawfully obtained</em> books can be fair use, but downloading them from a pirate library is not. The settlement covers only how the content was obtained (the input side), and as a settlement it sets no binding precedent.</p>
+        <p>The largest copyright settlement in U.S. history. In a <b>partial summary-judgment</b> ruling, Judge Alsup initially suggested that training AI on <em>lawfully obtained</em> books <b>may have room for</b> fair use, while downloading them from a pirate library infringes. But the case then settled, so this view was <b>never reviewed on appeal and is not yet nationwide precedent</b>; the settlement itself covers only how the content was obtained (the input side).</p>
         <div class="take"><b>What this means for users:</b> how you got the full text matters. A lawful subscription is not the same as a pirated copy. But even with a lawful subscription, uploading it to a third-party AI may still be a separate act of copying.</div>
         <div class="srcrow"><span class="sl">Sources</span>
           <a href="https://www.jurist.org/news/2026/07/judge-approves-record-1-5-billion-settlement-involving-anthropic/" target="_blank" rel="noreferrer">JURIST (legal news)↗</a>
@@ -681,6 +742,15 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         <div class="srcrow"><span class="sl">Sources</span>
           <a href="https://www.nysd.uscourts.gov/sites/default/files/2025-04/yf%2023cv11195%20OpenAI%20MTD%20opinion%20april%204%202025.pdf" target="_blank" rel="noreferrer">SDNY motion-to-dismiss opinion (official) ↗</a>
           <a href="https://en.wikipedia.org/wiki/The_New_York_Times_v._Microsoft_and_OpenAI" target="_blank" rel="noreferrer">Wikipedia (case overview) ↗</a>
+        </div>
+      </div>
+      <div class="casecard">
+        <span class="yr">U.S. (SDNY) · filed 2024, in litigation 2026</span>
+        <h4>Dow Jones / New York Post v. Perplexity</h4>
+        <p>Dow Jones (parent of the Wall Street Journal) and the New York Post are suing the AI answer engine Perplexity, claiming it <b>scrapes past the paywall</b>, stores copyrighted articles in a vector database for RAG, reproduces much of the original in its answers, and lets users &ldquo;skip the links&rdquo; — never clicking through to the source — creating <b>market substitution</b>. Case No. 1:24-cv-07984, in litigation.</p>
+        <div class="take"><b>What this means for external AI / RAG:</b> <b>&ldquo;citing the source&rdquo; is not the same as &ldquo;legal use&rdquo;</b> — if the AI’s answer effectively substitutes for the original’s value, adding a source link may not avoid liability.</div>
+        <div class="srcrow"><span class="sl">Sources</span>
+          <a href="https://www.courtlistener.com/docket/69280523/dow-jones-company-inc-v-perplexity-ai-inc/" target="_blank" rel="noreferrer">CourtListener (court docket) ↗</a>
         </div>
       </div>
     </div>
@@ -822,10 +892,6 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
           <li><b>Make content extractable:</b> answer first, headings phrased as real questions, one idea per paragraph, plenty of lists and tables, and a FAQ or TL;DR — so AI can grab and quote it.</li>
           <li><b>Make your identity clear:</b> use structured data (schema) and align your institution/author entity with Wikipedia and Wikidata, so AI attributes you correctly.</li>
         </ul>
-        <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
-          <a href="https://llmrefs.com/generative-engine-optimization" target="_blank" rel="noreferrer">GEO 2026 guide ↗</a>
-          <a href="https://www.toponseek.com/en/blogs/generative-engine-optimization/" target="_blank" rel="noreferrer">GEO signals &amp; workflow ↗</a>
-        </div>
       </div>
       <div class="jblock">
         <h4>Turn collections into open data (Collections as Data)</h4>
@@ -845,11 +911,11 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
     <p class="subhead" style="margin-top:22px">How publishers give content to AI (business models)</p>
     <div class="owns">
       <div class="jblock">
-        <h4>Model A · Upstream: license content for AI to train on</h4>
+        <h4>Model A: license your content to AI companies to &ldquo;train&rdquo; their models</h4>
         <div class="st">A license fee up front · common with OpenAI, Microsoft, Google</div>
         <ul>
           <li>The publisher sells content to an AI company to train its model, usually for a <b>one-time or installment license fee</b>.</li>
-          <li>Academic examples: <b>Taylor &amp; Francis</b> × Microsoft (about US$10M), <b>Springer Nature</b> × Google (about US$23M), and <b>Wiley</b> (about US$49M in AI licensing in fiscal 2026). Cambridge lets authors opt in instead.</li>
+          <li>Academic examples: <b>Taylor &amp; Francis</b> × Microsoft (about US$10M), <b>Springer Nature</b> × Google (reported at about US$23M), and <b>Wiley</b> (about US$49M in AI licensing in fiscal 2026). Cambridge lets authors opt in instead.</li>
           <li>OpenAI is the most active buyer. Its chair, Bret Taylor, testified in 2026 that these licenses are &ldquo;<b>to avoid litigation</b>.&rdquo;</li>
           <li><b>The debate:</b> most authors aren’t told and don’t get paid, so some argue for open access instead.</li>
         </ul>
@@ -860,11 +926,11 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         </div>
       </div>
       <div class="jblock">
-        <h4>Model B · Downstream: plug into an answer engine, shown live with citations</h4>
-        <div class="st">Pay per use · Perplexity’s approach</div>
+        <h4>Model B: plug your content into an AI &ldquo;answer engine,&rdquo; shown live in answers with citations</h4>
+        <div class="st">Paid per use · this is how Perplexity does it</div>
         <ul>
-          <li>The content appears inside the AI’s answers with <b>source links</b>, so users read it directly (it’s not used for training).</li>
-          <li><b>Perplexity’s Publishers’ Program:</b> each time the content is cited, the publisher shares in ad or subscription revenue (publishers get 80% under the Comet Plus plan). Unlike OpenAI’s pay-up-front model, this pays per use.</li>
+          <li>Your content shows up directly inside the AI’s answers, <b>with source links</b>, so users read it right there. This model is &ldquo;live citation,&rdquo; not using your content to train a model.</li>
+          <li><b>Perplexity’s Publishers’ Program:</b> every time the AI cites your content, you get a share of the ad or subscription revenue (publishers keep 80% under the Comet Plus plan). Unlike OpenAI’s one-off licensing fee, here the more you’re cited, the more you earn.</li>
           <li>Mistral × AFP works this way too (explicitly &ldquo;not for training,&rdquo; only live citation).</li>
         </ul>
         <div class="srcrow" style="margin-top:12px"><span class="sl">Sources</span>
@@ -1045,7 +1111,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
   </div>
   <div class="aidisc wrap">
     <div class="aidisc-h">How we used AI (this page is the example)</div>
-    <p><strong>NCCU Library staff</strong> and a generative AI tool (<strong>Claude Opus 4.8</strong>, by Anthropic) made this page together. Staff set the goals and structure, checked every legal and case source, and reviewed all the content. The AI helped draft and polish the text, organize the material, and write the code and layout. Every legal statement rests on an official or authoritative legal source. This is a summary of information, not legal advice. We also wrote this paragraph as a working example of how to disclose AI use: name the tool, say what the AI did, and show how a person checked it and takes responsibility.</p>
+    <p>The <strong>structure and sources of this page were refined through repeated human prompting</strong> (using a generative AI tool: <strong>Claude Opus 4.8</strong>, by Anthropic), <strong>then checked and finalized by hand</strong>. All legal statements rest on official or authoritative sources; this is an information summary, not legal advice. This paragraph also serves as a working example of how to disclose AI use.</p>
   </div>
 </footer>
 
@@ -1143,7 +1209,7 @@ If you crawl or copy the company’s content without permission, you may face ci
   {name:"JSTOR／Artstor",
    dl:{s:"ban", t:"Bans scraping, harvesting, and systematic downloading of large or substantial portions."},
    tdm:{s:"cond", t:"Research must go through JSTOR’s designated research and text-analysis channels."},
-   ai:{s:"ban", t:"You may not use the content to train, fine-tune, or improve AI models. But using an LLM for analysis inside JSTOR’s approved text-analysis channel is allowed."},
+   ai:{s:"ban", t:"You may not use the content to train, fine-tune, or improve AI models. Using an LLM for analysis is allowed only inside JSTOR’s approved text-analysis environment (Constellate closed in mid-2025; now JSTOR Text Analysis Support) — not by dropping downloaded PDFs into an outside ChatGPT or Claude."},
    src:[["JSTOR Terms and Conditions","https://about.jstor.org/terms/"]],
    raw:`Unless the license for Early Journals, Open JSTOR, Open Artstor, or a shared collection clearly allows it, institutional licensees and users may not:
 • Use the service, collection-management software, or any content for commercial purposes or profit (for example, selling access); Artstor content may not be used in commercially published material;

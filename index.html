@@ -528,6 +528,57 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       <div class="q"><span class="n">5</span><div><h3>需要時取得授權</h3><p>不確定特定資料庫的允許範圍時，直接向出版社或資料庫平台確認、或申請授權。<a class="law" href="#matrix" style="text-decoration:none">往下查條款 ↓</a></p></div></div>
       <div class="q"><span class="n">6</span><div><h3>上傳前先停一下</h3><p>按下夾檔前，先確認是否涉及著作權、隱私或機密。<a class="law" href="https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248" target="_blank" rel="noreferrer" style="text-decoration:none">數發部手冊 ↗</a></p></div></div>
     </div>
+
+    <p class="subhead" style="margin-top:26px">資料庫不給的時候，合法怎麼做？</p>
+    <p class="subnote">很多人需要大量文本，是為了做數位人文、文獻計量或訓練模型，並非要盜版。與其自己爬、或把全文丟外部 AI，這裡按「你想做什麼 → 改走哪條合法路」整理。（實際可用範圍仍以你機構的授權與各平台條款為準。）</p>
+    <div class="owns">
+      <div class="jblock">
+        <h4>想大量下載／自己寫爬蟲？</h4>
+        <div class="st">→ 改用官方 API 與雲端分析平台</div>
+        <ul>
+          <li><b>官方 TDM API：</b>合法訂閱者可到 <b>Elsevier ScienceDirect API</b> 申請 API Key，在速率限制內擷取全文與摘要；<b>Crossref TDM API</b> 可統一取多家期刊的中繼資料與 TDM 存取——比自己爬蟲風險低很多。</li>
+          <li><b>雲端分析（不必把全文下載到本地）：</b>學校若有採購 <b>ProQuest TDM Studio</b>，可用其介面或 Jupyter Notebook 做大量文獻探勘；JSTOR 也提供官方文字分析服務（Constellate 已於 2025/7 停用、由 JSTOR Text Analysis Support 接手）。<b>HathiTrust HTRC</b> 則採「<b>非消耗性研究</b>」：把演算法送進安全伺服器運算、或只釋出統計特徵資料集，受版權保護的全文完全不外流。</li>
+        </ul>
+      </div>
+      <div class="jblock">
+        <h4>想訓練模型／做 RAG／建本地知識庫？</h4>
+        <div class="st">→ 改用著作權明確開放的資料</div>
+        <ul>
+          <li><b>OpenAlex：</b>2.5 億筆以上學術中繼資料，開源、免費 API，社群也已做成 MCP——目前讓 AI 合法檢索學術脈絡的最佳替代。</li>
+          <li><b>PubMed Central OA Subset／arXiv／Europe PMC：</b>數百萬篇允許機器讀取的開放全文。</li>
+          <li><b>CORE／Unpaywall：</b>想找某篇付費論文，可用它們找合法的 Green OA（作者自存版）。</li>
+        </ul>
+      </div>
+      <div class="jblock">
+        <h4>只是想請 AI 幫忙綜整、梳理？</h4>
+        <div class="st">→ 用「中繼資料＋自己的筆記」，別丟整篇 PDF</div>
+        <ul>
+          <li><b>用中繼資料代替全文：</b>從 WOS／Scopus 匯出書目檔（RIS／CSV，含標題、摘要、關鍵字），把這些沒有全文重製爭議的摘要交給 AI 做主題分群或趨勢梳理。</li>
+          <li><b>引文筆記法：</b>在 Zotero／EndNote 摘記核心概念與方法，只把「你自己的筆記」或少量段落給 AI，避開重製與合約爭議。</li>
+        </ul>
+      </div>
+      <div class="jblock">
+        <h4>非用 AI 分析全文不可？</h4>
+        <div class="st">→ 用原廠內建 AI，或本地離線模型</div>
+        <ul>
+          <li><b>資料庫原廠 AI：</b>如 Scopus AI、Web of Science Research Assistant——底層已獲出版商授權、附引用回溯，最省事也最合規。</li>
+          <li><b>本地離線模型（Ollama／LM Studio）：</b>在自己電腦離線運行，不把資料傳給第三方伺服器（無第三方揭露風險），合規上優於傳到 OpenAI／Anthropic 的公有雲。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
+      <a href="https://dev.elsevier.com/" target="_blank" rel="noreferrer">Elsevier Developer Portal ↗</a>
+      <a href="https://openalex.org/" target="_blank" rel="noreferrer">OpenAlex ↗</a>
+      <a href="https://unpaywall.org/" target="_blank" rel="noreferrer">Unpaywall ↗</a>
+    </div>
+
+    <div class="keyrule" style="border-left-color:var(--red);margin-top:22px">
+      <b>研究者特別注意——審稿中、未發表的稿件，絕對別餵 AI：</b>你若在幫忙同儕審查（peer review）或擔任編輯，<b>不得把評閱中的未發表稿件、數據或圖表上傳到任何公開或未授權的生成式 AI</b>。這在學術界已被 <b>COPE</b>、<b>ICMJE</b> 與各大出版社（Elsevier、Springer&nbsp;Nature、Wiley、SAGE 等）明文禁止，理由有二：①審稿內容屬<b>保密資訊</b>，上傳公有雲 AI 等同向第三方外洩；②作者<b>尚未發表</b>的成果若被 AI 記錄、甚至納入訓練，會嚴重損害其權益。為省時間把待審論文丟給 AI 代寫審稿意見，已被視為嚴重的學術倫理違規與洩密。
+      <div class="srcrow" style="margin-top:10px"><span class="sl">出處</span>
+        <a href="https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools" target="_blank" rel="noreferrer">COPE ↗</a>
+        <a href="https://www.icmje.org/recommendations/" target="_blank" rel="noreferrer">ICMJE 指引 ↗</a>
+      </div>
+    </div>
   </section>
 
   <section class="section wrap" id="overview">
@@ -612,18 +663,18 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       <p>條款寫「遵循著作權法」，但著作權是另一套規則。這一段把「合約」和「著作權」兩層分開講清楚，再帶你看 2026 的判例和各國法規。<b>以下為一般性說明，幫助你判斷方向，不是個案法律意見；遇到具體情況請諮詢專業。</b></p>
     </div>
 
-    <div class="keyrule"><b>一條原則就能推斷八成情況：</b>把整篇文章上傳給 AI—<b>在 AI 開始摘要前，這個「上傳」動作通常已涉及一次「重製」、並把內容交給了第三方</b>。會不會有問題，拆兩層看：①<b>資料庫條款（合約）</b> ②<b>著作權</b>。兩層各自獨立—就算著作權上能主張合理使用，合約仍可另外禁止。</div>
+    <div class="keyrule"><b>一條原則就能推斷八成情況：</b>把整篇文章上傳給<b>公有雲端 AI 服務</b>—<b>在 AI 開始摘要前，這個「上傳」動作通常已涉及一次「重製」，並把內容交給了第三方平台</b>（若是校內私有部署、或個人電腦離線運行的模型，則未必涉及第三方）。會不會有問題，拆兩層看：①<b>資料庫條款（合約）</b> ②<b>著作權</b>。兩層各自獨立—就算著作權上能主張合理使用，合約仍可另外禁止。</div>
 
     <div class="twolayer">
       <div class="layer contract">
         <span class="tag">Layer 1 · 合約</span>
         <h3>資料庫授權條款</h3>
-        <p>通常是最直接的限制。如同上方比較表所示，多數資料庫條款禁止或限制把全文交給外部 AI—這一層即使著作權上可能主張合理使用，合約仍可能另外限制。「圖書館買的是授權，不是你個人擁有內容。」</p>
+        <p>通常是最直接的限制。如同上方比較表所示，多數資料庫條款禁止或限制把全文交給外部 AI—這一層即使著作權上可能主張合理使用，合約仍可能另外限制。「圖書館買的是授權，不是你個人擁有內容。」不過合約層也能反過來爭取：英國 Jisc（代表各大學談判）2024 年即呼籲大學<b>堅拒過度限制的 AI 條款</b>，以捍衛師生合法的研究輔助與非商業探勘。</p>
       </div>
       <div class="layer copyright">
         <span class="tag">Layer 2 · 著作權法</span>
         <h3>重製、改作、合理使用</h3>
-        <p>把全文上傳到 AI，<b>在 AI 開始摘要之前，動作通常已產生一份重製物、並把內容交給了第三方</b>。在台灣著作權法上，這通常會構成一次「重製」<b>行為</b>（§3）；是否構成<b>侵權</b>，還要看有沒有授權或合理使用（§44–65，須逐案判斷）。</p>
+        <p>把全文上傳到 AI，<b>在 AI 開始摘要之前，動作通常已產生一份重製物、並把內容交給了第三方</b>。在台灣著作權法上，這通常會構成一次「重製」<b>行為</b>（§3）；是否構成<b>侵權</b>，還要看有沒有授權或合理使用（§44–65，須逐案判斷）。<b>放到國際看更清楚</b>：連號稱最寬鬆、設有「資訊解析」例外（§30-4）的日本，文化廳 2024 年都認定——擅自爬取「<b>供分析販售的資料庫</b>」、或為 RAG 把內容<b>向量化以輸出</b>，都落入但書「不當損害權利人利益」而<b>不適用免責</b>。可見資料庫的授權，即使遇上最寬鬆的著作權例外仍具防護力。</p>
       </div>
     </div>
 
@@ -650,13 +701,23 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       </div>
     </div>
 
-    <details class="foldsec"><summary>2026 判例：重點只有一個—「怎麼取得」全文最關鍵，盜版不行、合法訂閱也不代表能再上傳（點開看三案）</summary>
-    <p class="subnote">先講清楚：這些幾乎都是在告「AI 公司」怎麼訓練模型，不是告你我這種使用者；而且<b>都是美國案子，對台灣法院沒有約束力</b>，只是讓你了解國際上吵到哪裡。</p>
+    <details class="foldsec"><summary>指標判例（含台灣首例）：「怎麼取得」最關鍵；就算非商業、開源分享，未授權整批重製仍可能觸法（點開看案例）</summary>
+    <p class="subnote">先講清楚：國外那幾件多是在告「AI 公司」怎麼訓練模型，對台灣法院沒有約束力，只是讓你了解國際爭點。但台灣已經有<b>第一件</b>——而且是告「個人」、走刑事——那件最該看。</p>
     <div class="cases">
+      <div class="casecard" style="border-color:var(--red);">
+        <span class="yr" style="color:var(--red)">台灣 · 2025/7 提告（後和解）</span>
+        <h4>中央社 v. 台大博士生（台灣首例）</h4>
+        <p>一名台大博士生為補足繁體中文語料，把網路文本整理成開源資料集「fineweb-zhtw」、無償公開於 Hugging Face，卻含約 <b>14 萬筆未授權的中央社新聞</b>（2011–2021）。中央社 2025/7 提起<b>著作權侵害刑事告訴</b>，後雙方和解，法院未及表態。</p>
+        <div class="take"><b>對師生最直接的警示：</b>①<b>非商業、學術、開源分享 ≠ 免責</b>——未授權整批重製並公開，仍可能侵權。②台灣《著作權法》的擅自重製、公開傳輸<b>設有刑事責任</b>，不是「大不了刪掉賠錢」。③台灣沒有 TDM 合理使用專條，空間高度不確定。</div>
+        <div class="srcrow"><span class="sl">出處</span>
+          <a href="https://www.twreporter.org/a/taiwan-sovereign-ai-zhtw-llm-copyright-conflict" target="_blank" rel="noreferrer">報導者（深度報導）↗</a>
+          <a href="https://iknow.stpi.niar.org.tw/Post/Read.aspx?PostID=23202" target="_blank" rel="noreferrer">STPI iKnow（著作權刑責再檢討）↗</a>
+        </div>
+      </div>
       <div class="casecard">
         <span class="yr">美國 · 2026/7 終局核准</span>
         <h4>Bartz v. Anthropic（15 億美元和解）</h4>
-        <p>美國史上最大著作權和解案。法官 Alsup 先前畫出關鍵界線：用「合法取得」的書訓練 AI 屬合理使用，但從盜版庫「下載取得」則否。和解僅處理「取得／輸入端」，且屬和解、無拘束力先例。</p>
+        <p>美國史上最大著作權和解案。法官 Alsup 在<b>簡易判決</b>中曾初步認為：用「合法取得」的書訓練 AI <b>可能有</b>合理使用空間，但從盜版庫「下載取得」則構成侵權。惟本案隨後達成和解，此見解<b>未經上訴審查、尚未形成全國性判例</b>；和解本身也僅處理「取得／輸入端」。</p>
         <div class="take"><b>對使用端的啟示：</b>你「怎麼取得」全文很關鍵—合法訂閱 ≠ 盜版副本；但即使合法訂閱，再上傳給第三方 AI 仍可能構成一次獨立的重製。</div>
         <div class="srcrow"><span class="sl">出處</span>
           <a href="https://www.jurist.org/news/2026/07/judge-approves-record-1-5-billion-settlement-involving-anthropic/" target="_blank" rel="noreferrer">JURIST（法律新聞）↗</a>
@@ -681,6 +742,15 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         <div class="srcrow"><span class="sl">出處</span>
           <a href="https://www.nysd.uscourts.gov/sites/default/files/2025-04/yf%2023cv11195%20OpenAI%20MTD%20opinion%20april%204%202025.pdf" target="_blank" rel="noreferrer">SDNY 駁回動議判決（官方）↗</a>
           <a href="https://en.wikipedia.org/wiki/The_New_York_Times_v._Microsoft_and_OpenAI" target="_blank" rel="noreferrer">Wikipedia（案件總覽）↗</a>
+        </div>
+      </div>
+      <div class="casecard">
+        <span class="yr">美國 SDNY · 2024 起訴、2026 審理中</span>
+        <h4>Dow Jones／紐約郵報 v. Perplexity</h4>
+        <p>華爾街日報母公司道瓊與紐約郵報，告 AI 答案引擎 Perplexity，主張其<b>爬取繞過付費牆</b>、把受版權文章存入向量庫做 RAG，回答時大量重現原文、讓使用者「skip the links」不再點進原網站，形成<b>市場替代</b>。案號 1:24-cv-07984，審理中。</p>
+        <div class="take"><b>對「外部 AI／RAG」的啟示：</b>「<b>有標註出處」不等於「合法使用」</b>——若 AI 的回答已實質替代原文的價值，附上來源連結也未必能免責。</div>
+        <div class="srcrow"><span class="sl">出處</span>
+          <a href="https://www.courtlistener.com/docket/69280523/dow-jones-company-inc-v-perplexity-ai-inc/" target="_blank" rel="noreferrer">CourtListener（法院判決檔）↗</a>
         </div>
       </div>
     </div>
@@ -822,10 +892,6 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
           <li><b>內容要「可被擷取」：</b>重點先講、標題用問句、一段一觀念、多用清單與表格、加 FAQ 與每段 TL;DR，讓 AI 好抓、好引。</li>
           <li><b>把身分講清楚：</b>用結構化資料（schema），並讓機構／作者實體對得上 Wikipedia／Wikidata，AI 較容易正確歸屬。</li>
         </ul>
-        <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
-          <a href="https://llmrefs.com/generative-engine-optimization" target="_blank" rel="noreferrer">GEO 2026 指南 ↗</a>
-          <a href="https://www.toponseek.com/en/blogs/generative-engine-optimization/" target="_blank" rel="noreferrer">GEO 訊號與做法 ↗</a>
-        </div>
       </div>
       <div class="jblock">
         <h4>把館藏做成「開放資料」（Collections as Data）</h4>
@@ -845,11 +911,11 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
     <p class="subhead" style="margin-top:22px">出版社怎麼把內容給 AI 用（商業模式）</p>
     <div class="owns">
       <div class="jblock">
-        <h4>模式 A · 上游：授權內容給 AI「訓練」</h4>
+        <h4>模式 A：把內容授權給 AI 公司，拿去「訓練」模型</h4>
         <div class="st">先付一筆授權金 · OpenAI、微軟、Google 多採此</div>
         <ul>
           <li>把內容賣給 AI 公司拿去訓練模型，通常是<b>一次性或分期的授權金</b>。</li>
-          <li>學術例子：<b>Taylor &amp; Francis</b> × 微軟（約 US$10M）、<b>Springer Nature</b> × Google（約 US$23M）、<b>Wiley</b>（2026 會計年度 AI 授權約 US$49M）；Cambridge 改採「作者可選擇加入（opt-in）」。</li>
+          <li>學術例子：<b>Taylor &amp; Francis</b> × 微軟（約 US$10M）、<b>Springer Nature</b> × Google（據報約 US$23M）、<b>Wiley</b>（2026 會計年度 AI 授權約 US$49M）；Cambridge 改採「作者可選擇加入（opt-in）」。</li>
           <li>OpenAI 是最活躍的買家；其董事長 Bret Taylor 2026 作證時直言，這類授權是「<b>為了避免訴訟</b>」。</li>
           <li><b>爭議：</b>多數作者沒被告知、也分不到錢，因此有人主張「乾脆走開放取用」。</li>
         </ul>
@@ -860,11 +926,11 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         </div>
       </div>
       <div class="jblock">
-        <h4>模式 B · 下游：接進 answer engine、即時顯示＋引用</h4>
-        <div class="st">按使用付費 · Perplexity 的做法</div>
+        <h4>模式 B：把內容接進 AI 的「答案引擎」，回答時即時顯示並附上出處</h4>
+        <div class="st">依使用次數付費 · Perplexity 就是這樣做</div>
         <ul>
-          <li>內容被接進 AI 的回答裡、<b>附出處連結</b>，使用者直接讀到（不是拿去訓練）。</li>
-          <li><b>Perplexity 出版商計畫</b>：內容<b>每被引用一次</b>就分廣告／訂閱收入（Comet Plus 方案出版商拿 80%）。跟 OpenAI「先付一筆」不同，這是「用一次算一次」。</li>
+          <li>你的內容會直接出現在 AI 的回答裡、<b>並附上出處連結</b>，讓使用者當場讀到——這種模式是「即時引用」，不是把內容拿去訓練模型。</li>
+          <li><b>Perplexity 出版商計畫</b>：你的內容<b>每被 AI 引用一次</b>，你就分到一部分廣告或訂閱收入（Comet Plus 方案讓出版社拿八成）。這和 OpenAI「一次付清一筆授權金」不同——這裡是「被用越多次、分越多」。</li>
           <li>Mistral × AFP 也屬這類（明講「不拿去訓練」，只即時引用）。</li>
         </ul>
         <div class="srcrow" style="margin-top:12px"><span class="sl">出處</span>
@@ -1045,7 +1111,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
   </div>
   <div class="aidisc wrap">
     <div class="aidisc-h">AI 使用揭露 — 本頁即為示範</div>
-    <p>本網頁由<strong>政大圖書館館員</strong>與生成式 AI（<strong>Claude Opus 4.8</strong>，Anthropic）協作完成：由館員設定需求與架構、查證所有法規與案件出處、審訂全部內容；AI 協助草擬與潤飾文字、整理資料、撰寫程式與版面。所有法律陳述以官方或權威法律來源為準，屬資訊整理、非法律意見。此段同時作為「<strong>如何揭露 AI 使用</strong>」的實際範例—揭露用了哪個工具、AI 做了什麼、以及人如何把關與負責。</p>
+    <p>本網頁的<strong>架構與資料來源，經人工反覆以指令調整</strong>（使用生成式 AI：<strong>Claude Opus 4.8</strong>，Anthropic），<strong>並進行核對與最終定稿</strong>。所有法律陳述以官方或權威來源為準，屬資訊整理、非法律意見；此段同時作為「<strong>如何揭露 AI 使用</strong>」的實際範例。</p>
   </div>
 </footer>
 
@@ -1143,7 +1209,7 @@ const DB = [
   {name:"JSTOR／Artstor",
    dl:{s:"ban", t:"禁止 scraping、harvesting 及系統性下載大量或實質比例內容。"},
    tdm:{s:"cond", t:"研究須透過 JSTOR 指定的研究與文字分析管道進行。"},
-   ai:{s:"ban", t:"不得用內容訓練、微調或強化 AI 模型；但在 JSTOR 核准的文字分析管道內，用 LLM 做分析是允許的。"},
+   ai:{s:"ban", t:"不得用內容訓練、微調或強化 AI 模型；用 LLM 做分析僅限在 JSTOR 官方核准的文字分析環境內（Constellate 已於 2025/7 停用，由 JSTOR Text Analysis Support 接手），不得把下載的 PDF 丟進外部 ChatGPT／Claude。"},
    src:[["JSTOR Terms and Conditions","https://about.jstor.org/terms/"]],
    raw:`除非早期期刊、Open JSTOR、Open Artstor 或共享收藏的授權另有明確允許，機構授權人及使用者不得：
 ・以商業目的或獲利使用服務、收藏管理軟體或任何內容（例如銷售存取權）；Artstor 內容不得用於商業發行的資料；
