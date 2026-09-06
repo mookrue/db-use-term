@@ -247,7 +247,7 @@ a{color:inherit;}
 .srcrow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:auto;}
 .srcrow .sl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
 .srcrow a,.reflist a{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid var(--line-strong);
-  border-radius:7px;font-size:11.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);}
+  border-radius:7px;font-size:11.5px;font-weight:600;text-decoration:none;color:var(--accent);}
 .srcrow a:hover,.reflist a:hover{border-color:var(--accent);color:var(--accent);}
 
 .refs{margin-top:44px;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:8px 22px 20px;}
@@ -316,7 +316,7 @@ a{color:inherit;}
   background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.06);border-radius:9px;padding:11px 13px;}
 .flowres .do b{color:var(--accent);}
 .flowres .rlinks{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
-.flowres .rlinks a{font-size:11.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);
+.flowres .rlinks a{font-size:11.5px;font-weight:600;text-decoration:none;color:var(--accent);
   background:#fff;border:1px solid var(--line-strong);border-radius:7px;padding:5px 10px;}
 .flowres .rlinks a:hover{border-color:var(--accent);color:var(--accent);}
 
@@ -364,7 +364,7 @@ a{color:inherit;}
 .official .cite{color:var(--muted);font-size:11.5px;}
 .official .osrc{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px;padding-top:14px;border-top:1px solid #d4ddee;}
 .official .osrc .sl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);align-self:center;text-transform:uppercase;}
-.official .osrc a{font-size:11.5px;font-weight:500;text-decoration:none;color:var(--ink-soft);
+.official .osrc a{font-size:11.5px;font-weight:600;text-decoration:none;color:var(--accent);
   background:#fff;border:1px solid #d4ddee;border-radius:7px;padding:5px 10px;}
 .official .osrc a:hover{border-color:var(--accent);color:var(--accent);}
 
@@ -389,6 +389,9 @@ a{color:inherit;}
 
 
 
+/* ---------- inline content links ---------- */
+a.law{color:var(--accent)!important;text-decoration:underline!important;font-weight:600;}
+.lead a,.subnote a,.take a,.official ol a,.owns .jblock ul a,dd a{color:var(--accent);text-decoration:underline;font-weight:600;}
 /* ---------- key rule callout / deep-dive divider ---------- */
 .keyrule{margin:18px 0 6px;border:1px solid var(--line-strong);border-left:4px solid var(--red);border-radius:12px;background:var(--card);padding:15px 20px;font-size:14px;line-height:1.72;color:var(--ink);}
 .deepdiv{margin:34px 0 2px;font-family:"Noto Sans TC",sans-serif;font-size:13px;font-weight:600;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;}
@@ -406,7 +409,7 @@ a{color:inherit;}
 .tldr-h{font-family:"Noto Serif TC",serif;font-weight:800;font-size:16px;color:var(--accent);margin-bottom:11px;}
 .tldr ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;}
 .tldr li{font-size:13.5px;line-height:1.62;color:var(--ink-soft);}
-.tldr li a{color:var(--accent);font-weight:600;}
+.tldr li a{color:var(--accent);font-weight:600;text-decoration:underline;}
 .tldr .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;margin-right:8px;font-family:"Noto Sans TC",sans-serif;}
 .tldr .tag.ok{background:var(--ok-bg);color:var(--ok);}
 .tldr .tag.cond{background:var(--cond-bg);color:var(--cond);}
@@ -674,7 +677,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
       <div class="layer copyright">
         <span class="tag">Layer 2 · Copyright law</span>
         <h3>Reproduction, adaptation, fair use</h3>
-        <p>When you upload full text to AI, <b>you usually make a copy and hand it to a third party — before the AI even starts to summarize.</b> Under Taiwan’s Copyright Act, this is usually an act of <b>reproduction</b> (Art. 3). Whether it counts as <b>infringement</b> depends on whether you have permission or can claim fair use (Arts. 44–65, decided case by case). <b>It’s even clearer internationally</b>: even Japan — often called the most permissive, with an &ldquo;information analysis&rdquo; exception (§30-4) — had its Agency for Cultural Affairs rule in 2024 that scraping a <b>database sold for analysis</b>, or <b>vectorizing content for RAG output</b>, falls under the proviso for &ldquo;unreasonably harming the rights holder&rsquo;s interests&rdquo; and is <b>not exempt</b>. So a database license holds up even against the most permissive copyright exception.</p>
+        <p>When you upload full text to AI, <b>you usually make a copy and hand it to a third party — before the AI even starts to summarize.</b> Under Taiwan’s Copyright Act, this is usually an act of <b>reproduction</b> (Art. 3). Whether it counts as <b>infringement</b> depends on whether you have permission or can claim fair use (Arts. 44–65, decided case by case). <b>It’s even clearer internationally.</b> Japan is often called the most permissive place for AI, because it has an &ldquo;information analysis&rdquo; exception (§30-4). But in 2024 Japan’s Agency for Cultural Affairs made clear: if a database was made to be sold for analysis, then scraping it without permission — or <b>vectorizing it for RAG</b> — still counts as &ldquo;unreasonably harming the rights holder’s interests,&rdquo; so it is <b>not exempt</b>. In other words, a database license holds up even against the most permissive copyright exception.</p>
       </div>
     </div>
 
@@ -881,7 +884,7 @@ footer{margin-top:64px;background:#15233f;color:#cbd3e0;}
         </details>
 
     <details class="foldsec"><summary>How data owners help AI find and surface their content (open for details)</summary>
-    <p class="subnote">A different angle: what if <b>you or your institution owns the content</b> (a library, an archive, a publisher, an author)? How do you make sure AI can find and cite it? More and more people ask ChatGPT or Perplexity instead of searching, and each AI answer usually cites only a handful of sources — if yours is left out, you disappear from this new front door. Here are a few directions. (Database platforms’ built-in AI tools like Scopus AI and JSTOR are on a separate Library page →&nbsp;<a href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:600;text-decoration:none">NCCU Library · database AI features ↗</a>.)</p>
+    <p class="subnote">A different angle: what if <b>you or your institution owns the content</b> (a library, an archive, a publisher, an author)? How do you make sure AI can find and cite it? More and more people ask ChatGPT or Perplexity instead of searching, and each AI answer usually cites only a handful of sources — if yours is left out, you disappear from this new front door. Here are a few directions. (Database platforms’ built-in AI tools like Scopus AI and JSTOR are on a separate Library page →&nbsp;<a href="https://sites.google.com/view/ncculibgenai/" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:600;text-decoration:underline">NCCU Library · database AI features ↗</a>.)</p>
     <div class="owns">
       <div class="jblock">
         <h4>Let AI crawl and cite you (GEO)</h4>
